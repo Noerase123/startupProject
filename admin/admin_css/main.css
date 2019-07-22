@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    top: 50px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  li a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  .header {
+      background-color: #555;
+      color:white;
+      display: inline-block;
+      width: 100%;
+      position:fixed;
+      top:0;
+      padding: 16px;
+  }
+  
+  .header p {
+      display: inline;
+  }
+  
+  .container {
+      margin-top: 50px; 
+      margin-left: 220px;
+  }
+  
+  .content {
+    margin-top: 20px;
+  }
+
+  .head-content {
+      float:right;
+  }
+
+  .head-content p {
+      margin-left: 10px;
+      padding: 10px;
+  }
+
+  .card img {
+      height: 200px;
+      width: 100%;
+  }
+
+
+  /* Float four columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {
+      margin: 0 -5px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1; 
+  }
+
+  .column a {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  .card:hover {
+    background-color: #ddd;
+  }
+
+  .search input[type=text] {
+    width: 25%;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  .addbtn a{
+    padding: 10px 20px;
+    background-color:#f1f1f1;
+    text-decoration:none;
+    font-weight: bold;
+    color:#000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .addbtn a:hover{
+    background-color: #ddd;
+  }
+
+.form {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+.form input[type=text], .form input[type=number], .form select[type=text]{
+  padding: 10px;
+  width: 50%;
+}
+
+.options a {
+  margin-left: 20px;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.options a:hover{
+  opacity: 0.5;
+}
+
+.options .update{
+  background-color: #4CAF50;
+}
+
+.options .delete{
+ background-color: crimson;
+}

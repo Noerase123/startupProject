@@ -1,0 +1,456 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* font-size: 16px; */
+  /* padding: 10px; */
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 1px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  /* background-color: #fff; */
+  /* margin-top: 400px; */
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  margin: 10px 0px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  border-radius: 10px;
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.centercolumn {   
+  float: left;
+  width: 50%;
+  overflow: auto;
+}
+
+.column-content {
+  float: left;
+  width: 50%;
+  overflow: auto;
+}
+
+.column-details {
+  float: left;
+  width: 38%;
+}
+
+.column-details .card{
+  float: right;
+}
+
+.column-content .card {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.column-content .contact {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 50%;
+}
+
+.column-content .card input[type=text], .column-content .card textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.centre {
+  float: left;
+  width: 100%;
+  overflow: auto;
+}
+
+/* left column */
+.leftcolumn {
+  float: left;
+  width: 25%;
+  /* background-color: #f1f1f1; */
+  padding-right: 20px;
+}
+
+/* Right column */
+.rightcolumn {
+  float: right;
+  width: 25%;
+  /* background-color: #f1f1f1; */
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px 10px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+.topnav button.btnmenu {
+  display: none;
+}
+
+.nav .login {
+  float:right;
+}
+
+.nav {
+  display: block;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .centercolumn, .rightcolumn, .leftcolumn, .column-content, .column-details, .column-details .card  {
+    width: 100%;
+    padding: 0;
+    float:none;
+  }
+
+  .nav {
+    display: none;
+  }
+  .topnav button.btnmenu {
+    display: block;
+  }
+
+  .topnav a, .topnav .search {
+    float: none;
+    width: 100%;
+  }
+  /* .topnav .search {
+    width: 100%;
+  } */
+  .nav .login {
+    text-align: center;
+  }
+
+  .picolumn img {
+  
+    height:250px;
+    width: 100%;
+  }
+
+  .column-content .contact {
+    width: 100%;
+  }
+  
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+  .topnav .search {
+    width: 100%;
+  }
+  .nav .login {
+    text-align: center;
+  }
+}
+
+
+.submenu {
+  display: block;
+  margin-left:20px;
+}
+
+#submenu2 {
+  display: none;
+}
+#submenu3 {
+  display: none;
+}
+#submenu4 {
+  display: none;
+}
+
+.submenu a{
+  background-color: #dddddd;
+  color: #000000;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 7px;
+  /* text-align: center; */
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+.submenu a:hover {
+  color: white;
+  background-color: black;
+  
+}
+
+/* Style the topnav links */
+.topnav button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border: none;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  margin: 10px 0px;
+}
+
+/* Change color on hover */
+.topnav button:hover {
+  border-radius: 10px;
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav button {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav .search {
+  float: right;
+  width: 45%;
+  margin: 10px 0px;
+}
+
+.topnav .search input[type=text] {
+  /* background-color: #333;
+  color:white; */
+  border: none;
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 50px;
+  padding: 5px 10px;
+}
+
+.nav a {
+  float:right;
+}
+
+#header {
+  -webkit-animation: fadein 3s;
+  animation: fadein 3s;
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@-webkit-keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#notif {
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-animation: fadeout 4s;
+  animation: fadeout 4s;
+}
+
+@keyframes fadeout {
+  from {background-color: rgb(255, 255, 110);}
+  to {background-color: #fff;}
+}
+
+@-webkit-keyframes fadeout {
+  from {background-color: rgb(255, 255, 110);}
+  to {background-color: #fff;}
+}
+
+/* parallax/////////////////////////////// */
+
+.parallax {
+  /* The image used */
+  /* background-image: url("../image/carousel-3.jpg"); */
+  /* background-color: red; */
+
+
+  /* Full height */
+  min-height: 550px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.icons {
+  font-size: 25px;
+}
+
+.icons a {
+  margin-left: 15px;
+  color: #001c9b;
+}
+
+.bg-dark {
+  background-color: #fff;
+  /* display: none; */
+}
+
+.bg-dark .cart, .bg-dark .order {
+  color:white;
+  padding: 15px;
+  border: none;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  
+}
+
+.bg-dark .cart{
+  background-color: #db8e5a;
+  width: 50%;
+}
+
+.bg-dark .order{
+  background-color: #001c9b;
+  width: 49%;
+}
+
+.bg-dark button:hover {
+  background-color: yellowgreen;
+  color: black;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+}
+
+.picolumn img {
+  
+  display: inline-block;
+  height:250px;
+  width: 250px;
+  margin: 20px 50px;
+  border-radius: 100%;
+  transition: 1s;
+  -webkit-transition: 1s;
+}
+
+.picolumn img:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+
+.card .image img{
+  border-radius: 200px;
+  transition: 1s;
+  -webkit-transition: 1s;
+}
+
+.card .image img:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  border-radius: 0px;
+}
+
+.card .seemore {
+  color: #000000;
+  text-decoration: none;
+  padding: 8px;
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
+.card .seemore:hover{
+  background-color: #ddd;
+}
+
+.card .popular img{
+  cursor:pointer;
+  height:100px;
+  width:100%;
+}
+
+.tooltip{
+  visibility: hidden;
+  padding: 10px;
+  position: relative;
+  margin-top: 100px;
+  background-color: #ddd;
+  text-align: center;
+}
+
+.card .popular:hover .tooltip{
+  visibility: visible;
+  /* padding: 20px; */
+  /* color: #000000; */
+}
+
+.Menu {
+  padding: 5px;
+  background-color: #555555;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
