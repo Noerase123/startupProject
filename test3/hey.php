@@ -23,7 +23,7 @@
     Password: <br> <span id="password-error"></span>
     <input type="text" name="pw" id="password"> <br>
 
-    <input type="submit" value="submit" class="login-btn" id="btn_send">
+    <input type="submit" value="submit" id="btn_send">
 
     <span id="response"></span>
 

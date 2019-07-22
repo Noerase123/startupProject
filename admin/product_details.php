@@ -11,7 +11,7 @@ include '../config.php';
     $res = $viewUser->select_where($table, $id);
 
     foreach ($res as $data) {
-        $title = $data['title'];
+        $ptitle = $data['title'];
         $title_desc = $data['title_desc'];
         $some_text = $data['some_text'];
         $desc = $data['description'];
@@ -20,6 +20,7 @@ include '../config.php';
         $datee = $data['date_created'];
         $price = $data['price'];
         $quantity = $data['quantity'];
+        $pid = $data['id'];
 
         $money = number_format($price,2);
         $qty = number_format($quantity);
@@ -77,7 +78,7 @@ include '../config.php';
             
             <div class="options">
                 <a class="update" href="">Update</a>
-                <a class="delete" href="">Delete</a>
+                <a class="delete" href="<?php echo ADMIN_URL.'delete.php?id='.$pid;?>">Delete</a>
             </div>
 
             <div style="padding: 20px;">

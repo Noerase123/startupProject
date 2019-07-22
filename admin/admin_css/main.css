@@ -171,3 +171,24 @@ body {
 .options .delete{
  background-color: crimson;
 }
+
+.addbtns {
+  padding: 10px;
+  background-color: #ddd;
+}
+
+.addbtns input[type=submit]{
+  font-size: 17px;
+}
+
+.addbtns input[type=submit], .addbtns a {
+  border: 1px solid #000;
+  padding: 10px;
+  background-color: rgb(46, 128, 48);
+  color: #fff;
+}
+
+.addbtns input[type=submit]:hover, 
+.addbtns a:hover {
+  opacity: 0.5;
+}
