@@ -20,6 +20,9 @@ include '../config.php';
         $datee = $data['date_created'];
         $price = $data['price'];
         $quantity = $data['quantity'];
+
+        $money = number_format($price,2);
+        $qty = number_format($quantity);
     }
 ?>
 <!DOCTYPE html>
@@ -27,7 +30,7 @@ include '../config.php';
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Test Website - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_css/main.css" />
     <script src="main.js"></script>
@@ -35,22 +38,38 @@ include '../config.php';
 <body>
 
 <div class="header">
-    <p>Welcome to Admin</p>
+    <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL;?>">Welcome to Admin</a></p>
     <div class="head-content">
         <p>admin</p>
         <p>settings</p>
     </div>
 </div>
 
-<?php 
-include 'require/nav.php';
-?>
+<nav>
+    <ul>
+
+    <p style="font-size:25px;font-weight:bold;">Products</p>
+    <?php 
+        $tbl = "tbl_stack";
+        $res = $viewUser->get_data($tbl);
+        while($row = $res->fetch_assoc()) {
+
+            $title = $row['title'];
+            $id = $row['id'];
+    ?>
+        <li><a href="<?php echo ADMIN_URL.'product_details.php?id='.$id; ?>"><?php echo ucfirst($title); ?></a></li>
+
+    <?php
+        }
+    ?>
+    </ul>
+</nav>
 
 <div class="container">
     <br>
 <h1><?php echo $title; ?></h1>
 
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Products > <?php echo $title; ?></h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'products.php';?>">Products</a> > <?php echo $title; ?></h4></div>
 
     <div class="content">
         <div class="row">
@@ -62,9 +81,16 @@ include 'require/nav.php';
             </div>
 
             <div style="padding: 20px;">
-                <h3 style="float:right;"><img src="../<?php echo $image;?>" alt=""></h3>
                 
-                <h3>Title : <?php echo $title;?></h3>
+                <div style="padding:10px;width:100%;background-color:#ddd;">
+                
+                <img src="../<?php echo $image;?>" style="margin-left:10px;float:right;width:50%" alt="">
+
+                <div style="padding:20px;width:100%;background-color:#f1f1f1;">
+                    <h3>Price : <?php echo $money ? $money.' pesos'  : '0.00' ;?></h3>
+                
+                    <h3>Quantity : <?php echo $qty ? $qty.' pieces' : '0' ;?></h3>
+                </div>
 
                 <h3>Category : <?php echo $category;?></h3>
 
@@ -72,7 +98,13 @@ include 'require/nav.php';
                 
                 <h3>Tags : <?php echo $some_text;?></h3>
                 
-                <h3 style="width:60%;height:280px;overflow:auto;">Description : <?php echo $desc;?></h3>
+                <h3 style="height:280px;overflow:auto;">Description : <?php echo $desc;?></h3>
+
+                </div>
+                
+                
+                
+                
 
             </div>
             

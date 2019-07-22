@@ -146,7 +146,7 @@ include '../require/home_navbar.php';
 <div class="row">
   <div class="centercolumn">
     <div class="card" style="background-color:rgb(255,255,255,0.6);">
-      <h1>Thought you might like</h1>
+      <h1>More like this</h1>
     </div>
   </div>
   </div>

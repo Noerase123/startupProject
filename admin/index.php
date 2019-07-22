@@ -15,14 +15,6 @@ include '../config.php';
 </head>
 <body>
 
-<div class="header">
-    <p>Welcome to Admin</p>
-    <div class="head-content">
-        <p>admin</p>
-        <p>settings</p>
-    </div>
-</div>
-
 <?php 
 include 'require/nav.php';
 ?>
@@ -42,8 +34,8 @@ include 'require/nav.php';
             $link = $row['menu_link'];
     ?>
 
-            <div class="column">
-                <a href="<?php echo $link.'.php'; ?>">
+            <div class="column" id="con">
+                <a href="<?php echo ADMIN_URL.$link.'.php'; ?>">
                 <div class="card">
                 <h3><?php echo strtoupper($menu); ?></h3>
                 <!-- <p><a href="#link">See more</a></p> -->
@@ -53,6 +45,7 @@ include 'require/nav.php';
 
     <?php
         }
+        
     ?>
             
     </div>

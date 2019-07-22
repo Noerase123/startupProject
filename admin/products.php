@@ -15,14 +15,6 @@ include '../config.php';
 </head>
 <body>
 
-<div class="header">
-    <p>Welcome to Admin</p>
-    <div class="head-content">
-        <p>admin</p>
-        <p>settings</p>
-    </div>
-</div>
-
 <?php 
 include 'require/nav.php';
 ?>
@@ -80,6 +72,9 @@ include 'require/nav.php';
                     </div>
                     <?php
                 }
+            }
+            else {
+                echo '<h3 style="color:red;">No Records Found </h3> &nbsp';
             }
         }
 

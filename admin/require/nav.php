@@ -1,6 +1,14 @@
+<div class="header">
+    <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL;?>">Welcome to Admin</a></p>
+    <div class="head-content">
+        <p>admin</p>
+        <p>settings</p>
+    </div>
+</div>
+
 <nav>
     <ul>
-        <li><a href="<?php echo ADMIN_URL.'index2.php';?>">Home</a></li>
+        <li><a href="<?php echo ADMIN_URL;?>">Home</a></li>
 
     <?php 
         $tbl = "SELECT * FROM tbl_menus";
@@ -10,7 +18,7 @@
             $menu = $row['menu_name'];
             $link = $row['menu_link'];
     ?>
-        <li><a href="<?php echo $link.'.php'; ?>"><?php echo ucfirst($menu); ?></a></li>
+        <li><a href="<?php echo ADMIN_URL.$link.'.php'; ?>"><?php echo ucfirst($menu); ?></a></li>
 
     <?php
         }
