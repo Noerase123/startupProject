@@ -20,7 +20,7 @@ foreach ($res as $data) {
     $category = $data['category'];
     $price = $data['price'];
     $quantity = $data['quantity'];
-
+}
 
   if (isset($_POST['update']))
   {
@@ -191,9 +191,3 @@ include '../require/admin_navbar.php';
   
 </body>
 </html>
-
-    
-    <!-- select/////////////////////////////////////////////////////////////////////// -->
-    <?php
-}
-?>

@@ -68,17 +68,17 @@ include '../config.php';
 
 <div class="container">
     <br>
-<h1><?php echo $title; ?></h1>
+<h1><?php echo $ptitle; ?></h1>
 
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'products.php';?>">Products</a> > <?php echo $title; ?></h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'products.php';?>">Products</a> > <?php echo $ptitle; ?></h4></div>
 
     <div class="content">
         <div class="row">
             
             
             <div class="options">
-                <a class="update" href="">Update</a>
-                <a class="delete" href="<?php echo ADMIN_URL.'delete.php?id='.$pid;?>">Delete</a>
+                <a class="update" href="<?php echo ADMIN_URL.'product_update.php?id='.$pid;?>">Update</a>
+                <a class="delete" onclick="return confirm('Are you sure?')" href="<?php echo ADMIN_URL.'ajax/delete.php?id='.$pid;?>">Delete</a>
             </div>
 
             <div style="padding: 20px;">
@@ -91,6 +91,7 @@ include '../config.php';
                     <h3>Price : <?php echo $money ? $money.' pesos'  : '0.00' ;?></h3>
                 
                     <h3>Quantity : <?php echo $qty ? $qty.' pieces' : '0' ;?></h3>
+                    <!-- <h3>Quantity : 1 piece</h3> -->
                 </div>
 
                 <h3>Category : <?php echo $category;?></h3>

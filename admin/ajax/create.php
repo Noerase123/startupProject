@@ -1,6 +1,6 @@
 <?php
 
-include '../../config.php';
+// include '../../config.php';
 
     $success_message = '';
 
@@ -29,7 +29,7 @@ include '../../config.php';
 
     if ($sqlUser->create("tbl_stack", $insert_array))
     {
-      header("location:".ADMIN_URL."index.php?created=1");
+      header("location:".ADMIN_URL."products.php?created=1");
     }
     else {
         echo "sorry please try again.";

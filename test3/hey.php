@@ -13,68 +13,12 @@
 </head>
 <body>
 
-    <form method="POST" action="" id="form">
-
-        <h1 id="login-text"> Please Login!</h1>
-
-    UserName: <br> <span id="uname-error"></span>
-    <input type="text" name="uname" id="uname"><br>
-
-    Password: <br> <span id="password-error"></span>
-    <input type="text" name="pw" id="password"> <br>
-
-    <input type="submit" value="submit" id="btn_send">
-
-    <span id="response"></span>
-
-    </form>
-
-<script type="text/javascript">
-    $('#btn_send').on('click' , () => {
-        alert("click");
-        $('#uname').val("");
-        $('#password').val("");
-        $('#uname-error').hide();
-        $('#password-error').hide();
-        
-        $('#form').validate({
-            rules:{
-                uname:{
-                    required:true,
-                },
-                password: {
-                    required:true,
-                }
-            },
-            messages: {
-                uname: {
-                    required: "please enter username",
-                },
-                password: {
-                    required: "please enter password",
-                }
-            },
-            submitHandler:(label) => {
-                $.ajax({
-                    type: 'POST',
-                    url: "hi.php",
-                    data: $('#form').serialize(),
-                    beforSend: () => {
-                        $('.login-btn').prop("disabled", true).val("please wait...");
-                    },
-                    success:function(data) {
-                        alert("OK!" + data);
-                    },
-                    error: function(data){
-                        alert("not OK!" + data);
-                    }
-                });
-            }
-
-        });
-
-    });
-  </script>
+<form id="my_form" onsubmit="submitForm(); return false;" action="">
+    <p><input id="n" type="text" placeholder="Name..." required></p>
+    <p><input id="e" type="email" placeholder="Email..." required></p>
+    <textarea id="m" name="" cols="30" rows="10" required></textarea>
+    <p><input id="mybtn" type="submit" name="Submit"> <span id="status"></span></p>
+</form>
 
     <!-- <script>
 

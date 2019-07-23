@@ -2,6 +2,29 @@
 
 include '../config.php';
 
+$id_id = $_GET['id'];
+
+$table = "tbl_stack";
+
+$id = array(
+    'id' => $id_id
+);
+
+$res = $viewUser->select_where($table, $id);
+
+foreach ($res as $data) {
+
+    $title = $data['title'];
+    $title_desc = $data['title_desc'];
+    $some_text = $data['some_text'];
+    $desc = $data['description'];
+    $image = $data['image'];
+    $category = $data['category'];
+    $price = $data['price'];
+    $quantity = $data['quantity'];
+}
+
+include 'ajax/update.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,9 +45,10 @@ include 'require/nav.php';
 
 <div class="container">
     <br>
-<h1>Add Item</h1>
+<h1>Update Item</h1>
 
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Products > Add Items</h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'products.php';?>">Products</a> 
+> <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'product_details.php?id='.$id_id;?>"><?php echo $title; ?></a> > Update Items</h4></div>
 
     <div class="content">
         <div class="row">
@@ -35,7 +59,7 @@ include 'require/nav.php';
       
       <h4>Select your category : <br><br>
         <select type="text" value="" id="cat" name="cat">
-          <option><h5>Select category</h5></option>
+          <option><h5><?php echo $category;?></h5></option>
             <?php 
                 $query = "SELECT * FROM tbl_categories ORDER BY id ASC";
 
@@ -43,21 +67,19 @@ include 'require/nav.php';
 
                 while ($row = $res->fetch_assoc()) {
 
-                  $dataArray[] = $row;
+                  $cat = $row['cat_name'];
 
-                  $title = $row['cat_name'];
-
-                  echo '<option>'.$title.'</option>';
+                  echo '<option>'.$cat.'</option>';
                 }
             ?> 
         </select>
       </h4>
 
       <h4>Title :</h4><small style="color:red;" id="title_error"></small>
-      <h4><input type="text" name="title" id="title" ></h4>
+      <h4><input type="text" name="title" value="<?php echo $title; ?>" id="title" ></h4>
       
       <h4>Author(s) :</h4><small style="color:red;" id="title_desc_error"></small>
-      <h4><input type="text" name="titledesc" id="title_desc" ></h4>
+      <h4><input type="text" name="titledesc" value="<?php echo $title_desc; ?>" id="title_desc" ></h4>
       
       <?php
     $query = "SELECT * FROM tbl_ecommerce_config WHERE activated = '1'";
@@ -67,25 +89,26 @@ include 'require/nav.php';
     ?>
 
       <h4>Price :</h4><small style="color:red;" id="price_error"></small>
-        <h4><input type="number" id="price" name="price" ></h4>
+        <h4><input type="number" value="<?php echo $price; ?>" id="price" name="price" ></h4>
 
       <h4>Quantity :</h4><small style="color:red;" id="quantity_error"></small>
-        <h4><input type="number" id="quantity" name="quantity" ></h4>
+        <h4><input type="number" value="<?php echo $quantity; ?>" id="quantity" name="quantity" ></h4>
 
     <?php } ?>
+      
+    <img src="../<?php echo $image; ?>" style="width:25%;" alt="">
 
-      <!-- <div class="fakeimg" style="height:200px;">200 x 400 pixels Allowed</div><br> -->
-      <h4>Upload Image :</h4><small style="color:red;" id="image_error"></small>
-      <input type="file" name="image" id="image">
+    <h4>Change Image :</h4><small style="color:red;" id="image_error"></small>
+    <input type="file" name="image" id="image">
       
       <h4>Some Tags :</h4><small style="color:red;" id="some_text_error"></small>
-      <input type="text" name="sometext" id="sometext" >
+      <input type="text" name="sometext" value="<?php echo $some_text; ?>" id="sometext" >
       
       <h4>Description :</h4><small style="color:red;" id="desc_error"></small>
-      <textarea style="height:100%; width:50%"  rows="10" cols="60" name="desc" id="desc" ></textarea>
+      <textarea style=" width:50%"  rows="10" cols="60" name="desc" id="desc" ><?php echo $desc; ?></textarea>
 
       <div class="addbtns">
-        <input class="submit" type="submit" name="create" id="addbtn" value="Create">
+        <input class="submit" type="submit" name="update" id="addbtn" value="Update">
         <a href="<?php echo ADMIN_URL; ?>products.php" style="text-decoration:none;" name="cancel">Cancel</a>
       </div>
     </form>
@@ -99,10 +122,6 @@ include 'require/nav.php';
     
 </div>
 
-<?php 
-    include 'ajax/create.php';
-?>
-
 <script>
 
     var form = $('#form');
@@ -115,7 +134,7 @@ include 'require/nav.php';
             
                 $.ajax({
                     type: 'POST',
-                    url: "ajax/create.php",
+                    url: "ajax/update.php",
                     data: form.serialize(),
                     success: function(data) {
             

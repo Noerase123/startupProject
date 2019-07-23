@@ -1,6 +1,6 @@
 <?php
 
-include '../config.php';
+include '../../config.php';
 
 $id=$_GET["id"];
 
@@ -8,7 +8,7 @@ $id=$_GET["id"];
 
 if ($sqlUser->delete("tbl_stack", $id)) {
 
-    header("location:".ADMIN_URL."index.php?deleted=$id");
+    header("location:".ADMIN_URL."products.php?deleted=$id");
 
 }
 ?>

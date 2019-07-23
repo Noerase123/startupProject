@@ -192,3 +192,20 @@ body {
 .addbtns a:hover {
   opacity: 0.5;
 }
+
+.notif {
+  padding: 10px;
+  width: 100%;
+  -webkit-animation: fadeout 4s;
+  animation: fadeout 4s;
+}
+
+@keyframes fadeout {
+  from {background-color: rgb(255, 255, 110);}
+  to {background-color: #fff;}
+}
+
+@-webkit-keyframes fadeout {
+  from {background-color: rgb(255, 255, 110);}
+  to {background-color: #fff;}
+}

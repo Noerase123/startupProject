@@ -23,6 +23,10 @@ include 'require/nav.php';
     <br>
 <h1><a style="color:#000;text-decoration:none;" href="products.php">Products</a></h1>
 
+<?php
+    include("require/notif.php");
+?>
+
     <div class="search">
       <form method="GET">
         <input style="margin-top:20px;" type="text" placeholder="Search..." name="query">
@@ -31,8 +35,6 @@ include 'require/nav.php';
     </div><br><br>
     <div class="addbtn"><a style="" href="product_create.php">Add Item<i class="fa fa-plus"></i></a></div>
     
-
-
     <div class="content">
         <div class="row">
 
