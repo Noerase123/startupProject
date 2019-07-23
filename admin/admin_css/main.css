@@ -11,7 +11,7 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 15%;
+    width: 200px;
     top: 50px;
     background-color: #f1f1f1;
     position: fixed;
@@ -93,8 +93,30 @@ body {
     display: table;
     clear: both;
   }
+
+  .search input[type=text] {
+    width: 250px;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  .search button[type=submit] {
+    padding: 10px;
+  }
+
   
   /* Responsive columns */
+  @media screen and (max-width: 860px) {
+    .column {
+      width: 50%;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .search input[type=text], .search button[type=submit] {
+      width: 100%;
+    }
+  }
+
   @media screen and (max-width: 600px) {
     .column {
       width: 100%;
@@ -106,7 +128,7 @@ body {
   /* Style the counter cards */
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+    padding: 10px;
     text-align: center;
     background-color: #f1f1f1; 
   }
@@ -118,12 +140,6 @@ body {
 
   .card:hover {
     background-color: #ddd;
-  }
-
-  .search input[type=text] {
-    width: 25%;
-    padding: 10px;
-    font-weight: bold;
   }
 
   .addbtn a{

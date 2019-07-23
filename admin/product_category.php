@@ -29,7 +29,9 @@ include 'require/nav.php';
 
 <div class="container">
     <br>
-<h1>Category</h1>
+<h1>Product Category</h1>
+
+<p><?php echo strtoupper('Instructions');?> : CLICK only if you want to DELETE.</p>
 
     <div class="search">
       <form method="GET">

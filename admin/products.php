@@ -12,16 +12,20 @@ include '../config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_css/main.css" />
     <script src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <?php 
 include 'require/nav.php';
+
+$res = $viewUser->get_data("tbl_stack");
+    $count = $res->num_rows;
 ?>
 
 <div class="container">
     <br>
-<h1><a style="color:#000;text-decoration:none;" href="products.php">Products</a></h1>
+<h1><a style="color:#000;text-decoration:none;" href="products.php">Products (<?php echo $count; ?> Items)</a></h1>
 
 <?php
     include("require/notif.php");
@@ -33,7 +37,8 @@ include 'require/nav.php';
         <button type="submit" name="searchbtn"><i class="fa fa-search"></i></button>
       </form>
     </div><br><br>
-    <div class="addbtn"><a style="" href="product_create.php">Add Item<i class="fa fa-plus"></i></a></div>
+    <div class="addbtn">
+    <a style="" href="product_create.php"><i class="fa fa-plus"></i> Add Item</a></div>
     
     <div class="content">
         <div class="row">

@@ -2,6 +2,7 @@
 
 include '../config.php';
 
+include 'ajax/create.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,9 +100,6 @@ include 'require/nav.php';
     
 </div>
 
-<?php 
-    include 'ajax/create.php';
-?>
 
 <script>
 

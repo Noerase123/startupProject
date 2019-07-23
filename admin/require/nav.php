@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<nav>
+<nav class="navi">
     <ul>
         <li><a href="<?php echo ADMIN_URL;?>">Home</a></li>
 
