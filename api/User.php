@@ -53,6 +53,7 @@ class User extends dbh {
       }  
 
 
+
     // delete single row function in mysqli
     public function delete($table_name, $id) {
 
@@ -69,20 +70,13 @@ class User extends dbh {
     }
 
     // DELETE ALL DATA IN DATABASE
-    public function delete_all($table_name) {
+    public function delete_where($query)  
+      {   
+        $result = mysqli_query($this->conn, $query);  
 
-        $query = "DELETE FROM $table_name";
-
-        $res = mysqli_query($this->conn,$query);
-
-        if ($res) {
-
-            return true;
-        }
-        else {
-            echo mysqli_error($this->conn);
-        }
-    }
+        return $result;
+           
+      }
 
     public function escapeString($post) {
 

@@ -31,7 +31,9 @@ include 'require/nav.php';
     <br>
 <h1>Product Category</h1>
 
-<p><?php echo strtoupper('Instructions');?> : CLICK only if you want to DELETE.</p>
+<?php
+include 'require/notif.php';
+?>
 
     <div class="search">
       <form method="GET">
@@ -39,7 +41,7 @@ include 'require/nav.php';
         <button type="submit" name="searchbtn"><i class="fa fa-search"></i></button>
       </form>
     </div><br><br>
-    <div class="addbtn"><a href="">Add Item<i class="fa fa-plus"></i></a></div>
+    <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div>
     
 
 
@@ -52,7 +54,7 @@ include 'require/nav.php';
                 
             $term = $_GET['query'];
             $table = "tbl_categories";
-            $search = "title or title_desc or category";
+            $search = "cat_name";
             $result = $viewUser->search($term,$table,$search);
       
             $num_result = $result->num_rows;
@@ -94,11 +96,11 @@ include 'require/nav.php';
                 $id = $row['id'];
         ?>
             <div class="column">
-                <a href="product_details.php?id=<?php echo $id;?>">
+            <a href="product_cat_details.php?id=<?php echo $id;?>">
                     <div class="card">
                         <h3><?php echo $title; ?></h3>
                     </div>
-                </a>
+                    </a>
             </div>
         <?php 
         }

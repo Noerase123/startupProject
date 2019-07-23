@@ -49,7 +49,7 @@ $res = $viewUser->get_data("tbl_stack");
                 
             $term = $_GET['query'];
             $table = "tbl_stack";
-            $search = "title";
+            $search = "category";
             $result = $viewUser->search($term,$table,$search);
       
             $num_result = $result->num_rows;
