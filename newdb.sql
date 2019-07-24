@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2019 at 03:50 AM
+-- Generation Time: Jul 24, 2019 at 08:02 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -29,6 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_about` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `image1` varchar(255) NOT NULL,
+  `image2` varchar(255) NOT NULL,
+  `image3` varchar(255) NOT NULL,
   `some_text` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `date_posted` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -39,8 +42,8 @@ CREATE TABLE `tbl_about` (
 -- Dumping data for table `tbl_about`
 --
 
-INSERT INTO `tbl_about` (`id`, `name`, `some_text`, `description`, `date_posted`, `date_created`) VALUES
-(1, 'Hello World!', 'why this website?', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.', '2019-07-16 22:11:13', '2019-07-16 22:11:13');
+INSERT INTO `tbl_about` (`id`, `name`, `image1`, `image2`, `image3`, `some_text`, `description`, `date_posted`, `date_created`) VALUES
+(1, 'Hello World!', 'uploads/162150414992b948dc39fca75ad781c4carousel-1.jpg', 'uploads/162150414992b948dc39fca75ad781c4carousel-2.jpg', 'uploads/162150414992b948dc39fca75ad781c4carousel-3.jpg', 'why this website?', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.', '2019-07-16 22:11:13', '2019-07-16 22:11:13');
 
 -- --------------------------------------------------------
 
@@ -88,7 +91,7 @@ CREATE TABLE `tbl_contact_info` (
 --
 
 INSERT INTO `tbl_contact_info` (`id`, `address`, `tel_no`, `fax_no`, `mobile_no`, `email`) VALUES
-(1, 'Calamba City, Laguna, Philippines', '(02) 8085874', '(02) 8975992', '09062220546 / 09188378094', 'noerase12@gmail.com');
+(1, 'Calamba City, Laguna, Philippiness', '(02) 8085874', '(02) 8975992', '09062220546 / 09188378094', 'noerase12@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,6 @@ INSERT INTO `tbl_menus` (`id`, `menu_name`, `menu_link`, `date_created`) VALUES
 (5, 'reviews', 'reviews', '2019-07-21 16:22:09'),
 (6, 'about', 'about', '2019-07-21 16:22:09'),
 (7, 'contact us', 'contact_us', '2019-07-21 16:22:09'),
-(8, 'navigation menus', 'nav_menu', '2019-07-22 20:39:48'),
 (11, 'header Settings', 'header', '2019-07-22 20:42:59'),
 (13, 'footer settings', 'footer', '2019-07-22 20:45:51'),
 (14, 'activity log', 'activity_log', '2019-07-23 16:16:46');
@@ -208,7 +210,7 @@ INSERT INTO `tbl_stack` (`id`, `title`, `category`, `price`, `quantity`, `title_
 (108, 'fantastic bes', 'Fantasy', 0, 0, 'Fantasy', 'uploads/a42ce638fcc640931cb036689e553435image_14.jpg', 'dadawdawd', 'awdadadadawdawd', '2019-07-11 22:16:05'),
 (112, 'facebook', 'Thriller', 0, 0, 'mark zuckerberg', 'uploads/3bbaa3bb25674cb5592af38d69a78fabimage_07.png', 'adawdawd', 'adadawd', '2019-07-12 09:21:22'),
 (114, 'IT', 'Science-Fiction', 0, 0, 'Stephen Kings', 'uploads/3de35b93244fd30d1c65749dbef6b788image_01.png', '#horror', 'awdadwd', '2019-07-12 12:21:06'),
-(117, 'Baby ko! <3', 'Romance', 0, 0, 'john isaac', 'uploads/056915c9a599a1d11ae203c7aadc63aaLADP9261.JPEG', '#cute #cutie', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', '2019-07-17 16:03:37'),
+(117, 'Baby ko! <3', 'Romance', 50000, 1, 'john isaac', 'uploads/056915c9a599a1d11ae203c7aadc63aaLADP9261.JPEG', '#cute #cutie', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', '2019-07-17 16:03:37'),
 (118, 'Detective Conan', 'Mystery', 0, 0, 'E.L. James', 'uploads/75da47551f203f4f358a84d9fbc85a733.JPG', '#detective', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ', '2019-07-17 17:03:23'),
 (119, 'Ironman', 'Science-Fiction', 0, 0, 'james bond', 'uploads/67ca297f417197bd5a75be20f43fd366dorm2.jpg', '#ironman', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ', '2019-07-17 17:27:40'),
 (120, 'ironman 2', 'Science-Fiction', 2000, 523, 'james bond', 'uploads/c5fde883a595dc1526f209180a9e543cdorm3.jpg', '#ironman2 #ironman', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.', '2019-07-17 17:28:46'),
@@ -256,8 +258,10 @@ CREATE TABLE `tbl_web_content` (
   `nav_menu4` varchar(50) NOT NULL,
   `nav_logo` varchar(255) NOT NULL,
   `home_logo` varchar(255) NOT NULL,
-  `why_desc` varchar(255) NOT NULL,
+  `why_desc` text NOT NULL,
   `footer_text` varchar(255) NOT NULL,
+  `footer_image` varchar(255) NOT NULL,
+  `text_display` varchar(255) NOT NULL,
   `activated` int(11) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -266,8 +270,8 @@ CREATE TABLE `tbl_web_content` (
 -- Dumping data for table `tbl_web_content`
 --
 
-INSERT INTO `tbl_web_content` (`id`, `nav_menu1`, `nav_menu2`, `nav_menu3`, `nav_menu4`, `nav_logo`, `home_logo`, `why_desc`, `footer_text`, `activated`, `date_created`) VALUES
-(1, 'Products', 'Reviews', 'Contact Us', 'About', 'uploads/e3dde516d88b8ed76878e926eaf0f9e1', 'uploads/e3dde516d88b8ed76878e926eaf0f9e1', 'test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ', 'Copyright Â©2019 Test Website Name - All Rights Reserved', 0, '2019-07-10 21:42:14');
+INSERT INTO `tbl_web_content` (`id`, `nav_menu1`, `nav_menu2`, `nav_menu3`, `nav_menu4`, `nav_logo`, `home_logo`, `why_desc`, `footer_text`, `footer_image`, `text_display`, `activated`, `date_created`) VALUES
+(1, 'Productss', 'Reviews', 'Contact Us', 'About', 'uploads/f0820a33d6205bb05f917843ecea7d53vitalis-preloader.png', 'uploads/f0820a33d6205bb05f917843ecea7d53vitalis-preloader.png', 'Image where it live.', 'Copyright Â©2019 Test Website Name - All Rights Reserved', 'uploads/7930edfffa629d55146caf33e2a44cef', 'Image where it live.', 0, '2019-07-10 21:42:14');
 
 --
 -- Indexes for dumped tables
