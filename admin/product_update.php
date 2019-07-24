@@ -109,7 +109,7 @@ include 'require/nav.php';
 
       <div class="addbtns">
         <input class="submit" type="submit" name="update" id="addbtn" value="Update">
-        <a href="<?php echo ADMIN_URL; ?>products.php" style="text-decoration:none;" name="cancel">Cancel</a>
+        <a href="<?php echo ADMIN_URL; ?>product_details.php?id=<?php echo $id_id; ?>" style="text-decoration:none;" name="cancel">Cancel</a>
       </div>
     </form>
       </div>

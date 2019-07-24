@@ -7,7 +7,7 @@ include '../config.php';
     $res = $viewUser->get_data($table);
 
     foreach ($res as $row) {
-        $home_logo = $row['home_logo'];
+        $footer_logo = $row['footer_image'];
         $text_display = $row['text_display'];
         $footer = $row['footer_text'];
         $pid = $row['id'];
@@ -57,10 +57,9 @@ include 'require/nav.php';
                 <!-- <h4>Navigation bar :</h4>
                     <p style="width:100%;background-color:#f1f1f1;padding:20px;"><?php echo $nav1.' | '.$nav2.' | '.$nav3.' | '.$nav4; ?></p> -->
                 
-                <h4>Logos :</h4>
+                <h4>Home Logo :</h4>
 
-                        <p>Home Logo</p>
-                        <img src="../<?php echo $home_logo;?>" style="height:100px; width:200px;">
+                        <img src="../<?php echo $footer_logo;?>" style="height:100px; width:200px;">
                 
                 <h4>Text Display :</h4>
                     <p><?php echo $text_display; ?></p>

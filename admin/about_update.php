@@ -14,6 +14,9 @@ foreach ($res as $data) {
 
     $title = $data['name'];
     $some_text = $data['some_text'];
+    $img1 = $data['image1'];
+    $img2 = $data['image2'];
+    $img3 = $data['image3'];
     $desc = $data['description'];
 }
 
@@ -48,6 +51,17 @@ include 'require/nav.php';
             <div class="form">
             <span style="font-weight:bold;font-size:20px;color:green;" class="response"></span>
             <form action="" method="post" enctype="multipart/form-data" id="form">
+
+
+      <h4>Images :</h4><small style="color:red;" id="title_error"></small>
+      <div>
+      <span><img src="../<?php echo $img1?>" style="height:100px; width:100px;margin-left:50px;" alt=""></span>
+      <span><img src="../<?php echo $img1?>" style="height:100px; width:100px;margin-left:150px;" alt=""></span>
+      <span><img src="../<?php echo $img1?>" style="height:100px; width:100px;margin-left:150px;" alt=""></span>
+      </div>
+      <input type="file" name="image1" id="image1">
+      <input type="file" name="image2" id="image2">
+      <input type="file" name="image3" id="image3">
 
       <h4>Title :</h4><small style="color:red;" id="title_error"></small>
       <h4><input type="text" value="<?php echo $title; ?>" name="name" id="name" ></h4>

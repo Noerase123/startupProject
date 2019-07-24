@@ -10,6 +10,9 @@ include '../config.php';
         $name = $data['name'];
         $some = $data['some_text'];
         $abouts = $data['description'];
+        $img1 = $data['image1'];
+        $img2 = $data['image2'];
+        $img3 = $data['image3'];
         $pid = $data['id'];
     }
 ?>
@@ -54,6 +57,10 @@ include 'require/nav.php';
             <div style="padding: 20px;">
                 
                 <div style="padding:10px;width:100%;background-color:#ddd;">
+                <h4>Organization :</h4>
+                <span><img src="../<?php echo $img1; ?>" style="height:100px;width:100px;" alt=""></span>
+                <span><img src="../<?php echo $img2; ?>" style="height:100px;width:100px;" alt=""></span>
+                <span><img src="../<?php echo $img3; ?>" style="height:100px;width:100px;" alt=""></span>
                 
                 <h4>Title :</h4>
                     <p><?php echo $name; ?></p>

@@ -12,7 +12,7 @@ $res = $viewUser->select_where($table, $id);
 
 foreach ($res as $row) {
     $text_display = $row['text_display'];
-    $home_logo = $row['home_logo'];
+    $footer_logo = $row['footer_image'];
     $footer = $row['footer_text'];
     $pid = $row['id'];
 }
@@ -50,8 +50,8 @@ include 'require/nav.php';
             <form action="" method="post" enctype="multipart/form-data" id="form">
 
       <h4 style="padding:10px; width:100%; background-color:#ddd">Footer Logo :</h4><small style="color:red;" id="title_desc_error"></small>
-        <img src="../<?php echo $home_logo; ?>" style="height:50px; width:200px;"><br>
-        <input type="file" name="home_image" id="">
+        <img src="../<?php echo $footer_logo; ?>" style="height:70px; width:120px;"><br>
+        <input type="file" name="footer_image" id="">
 
       <h4 style="padding:10px; width:100%; background-color:#ddd">Text Display :</h4><small style="color:red;" id="desc_error"></small>
       <input type="text" value="<?php echo $text_display; ?>" name="text_display" id="text_display">

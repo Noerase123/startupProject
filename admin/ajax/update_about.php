@@ -10,9 +10,11 @@ $tbl = "tbl_about";
 
   if (isset($_POST['update_about']))
   {
-        $fnm=$_FILES["image"]["name"];
+        $fnm=$_FILES["image1"]["name"];
+        $fnm2=$_FILES["image2"]["name"];
+        $fnm3=$_FILES["image3"]["name"];
         
-        if ($fnm == "") {
+        if ($fnm == "" || $fnm2 == "" || $fnm3 == "") {
 
           $update_array2 = array(
             'name'         => $sqlUser->escapeString($_POST['name']),
@@ -38,18 +40,28 @@ $tbl = "tbl_about";
         // $fnm = $_FILES["image"]["name"];
         $dst = "../uploads/".$v3.$fnm;
         $image_upload = "uploads/".$v3.$fnm;
-        move_uploaded_file($_FILES["image"]["tmp_name"],$dst);
+        move_uploaded_file($_FILES["image1"]["tmp_name"],$dst);
+        
+        $dst = "../uploads/".$v3.$fnm2;
+        $image_upload2 = "uploads/".$v3.$fnm2;
+        move_uploaded_file($_FILES["image2"]["tmp_name"],$dst);
+        
+        $dst = "../uploads/".$v3.$fnm3;
+        $image_upload3 = "uploads/".$v3.$fnm3;
+        move_uploaded_file($_FILES["image3"]["tmp_name"],$dst);
 
     $update_array = array(
         'name'         => $sqlUser->escapeString($_POST['name']),
         'some_text'     => $sqlUser->escapeString($_POST['some_text']),
-        'description'   => $sqlUser->escapeString($_POST['desc'])
+        'description'   => $sqlUser->escapeString($_POST['desc']),
+        'image1'   => $sqlUser->escapeString($image_upload),
+        'image2'   => $sqlUser->escapeString($image_upload2),
+        'image3'   => $sqlUser->escapeString($image_upload3),
     );
 
     if ($sqlUser->update($tbl, $update_array, $update_id))
     {
-      $get_id = $_GET['id'];
-      header("location:".ADMIN_URL."about.php?about_updated=$get_id");
+      header("location:".ADMIN_URL."about.php?about_updated");
     }
         }
   

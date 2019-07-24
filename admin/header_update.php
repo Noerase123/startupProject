@@ -58,10 +58,10 @@ include 'require/nav.php';
       <h4 style="padding:10px; width:100%; background-color:#ddd">Logos :</h4><small style="color:red;" id="title_desc_error"></small>
       <div style="">
         <p>Nav logo</p>
-        <img src="../<?php echo $nav_logo; ?>" style="height:50px; width:200px;"><br>
+        <img src="../<?php echo $nav_logo; ?>" style="height:50px; width:100px;"><br>
         <input type="file" name="nav_image" id="">
         <p>Home logo</p>
-        <img src="../<?php echo $home_logo; ?>" style="height:50px; width:200px;"><br>
+        <img src="../<?php echo $home_logo; ?>" style="height:100px; width:200px;"><br>
         <input type="file" name="home_image" id="">
       </div>
 

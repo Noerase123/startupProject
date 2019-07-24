@@ -35,6 +35,10 @@
         $message = "Header Updated";
         echo '<h5 class="response notif">'.$message.'</h5>';
     }
+    else if (isset($_GET['footer_updated'])) {
+        $message = "Footer Updated";
+        echo '<h5 class="response notif">'.$message.'</h5>';
+    }
     else {
         $message = '';
     }

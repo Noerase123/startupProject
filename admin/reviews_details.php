@@ -45,7 +45,7 @@ include 'require/nav.php';
             
             
             <div class="options">
-                <!-- <a class="update" href="<?php echo ADMIN_URL.'product_update.php?id='.$pid;?>">Update</a> -->
+                <a class="update" href="<?php echo ADMIN_URL.'product_update.php?id='.$pid;?>">Accept</a>
                 <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/delete_review.php?id='.$pid;?>">Delete</a>
             </div>
 

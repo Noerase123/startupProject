@@ -22,6 +22,8 @@ include '../config.php';
         $quantity = $data['quantity'];
         $pid = $data['id'];
 
+        $date = $viewUser->datetime($datee);
+
         $money = number_format($price,2);
         $qty = number_format($quantity);
     }
@@ -69,6 +71,8 @@ include '../config.php';
 <div class="container">
     <br>
 <h1><?php echo $ptitle; ?></h1>
+<!-- <h5>Date Updated : <?php echo $date; ?></h5> -->
+<h5>Date Created : <?php echo $date; ?></h5>
 
 <div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'products.php';?>">Products</a> > <?php echo $ptitle; ?></h4></div>
 
@@ -104,13 +108,8 @@ include '../config.php';
 
                 </div>
                 
-                
-                
-                
-
             </div>
             
-        
     </div>
     </div>
 
