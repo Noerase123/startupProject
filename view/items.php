@@ -3,6 +3,14 @@ include '../config.php';
 
 $res = $viewUser->get_data("tbl_stack");
 $rows = $res->num_rows;
+
+$res2 = $viewUser->get_data("tbl_parallax");
+foreach($res2 as $row) {
+
+  $img1 = $row['image'];
+  $img2 = $row['image2'];
+  $img3 = $row['image3'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +43,7 @@ include '../require/header.php';
 
 <!-- </div> -->
 
-<div class="parallax" style="background-image: url('../image/carousel-3.jpg');">
+<div class="parallax" style="background-image: url('../<?php echo $img2; ?>');">
 
 
 <!-- PARALLAX END============================================= -->

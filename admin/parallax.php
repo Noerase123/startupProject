@@ -2,21 +2,15 @@
 
 include '../config.php';
 
-    $table = "tbl_web_content";
+    $table = "tbl_parallax";
     
     $res = $viewUser->get_data($table);
 
     foreach ($res as $row) {
-        $nav1 = $row['nav_menu1'];
-        $nav2 = $row['nav_menu2'];
-        $nav3 = $row['nav_menu3'];
-        $nav4 = $row['nav_menu4'];
-        $nav_logo = $row['nav_logo'];
-        $home_logo = $row['home_logo'];
-        $why = $row['why_desc'];
-        $head_image = $row['header_image'];
-        // $footer = $row['footer_text'];
-        $pid = $row['id'];
+        $image1 = $row['image'];
+        $image2 = $row['image2'];
+        $image3 = $row['image3'];
+        $id = $row['id'];
     }
 ?>
 <!DOCTYPE html>
@@ -38,12 +32,12 @@ include 'require/nav.php';
 
 <div class="container">
     <br>
-<h1>Header Settings</h1>
+<h1>Parallax Settings</h1>
 
 <?php
     include 'require/notif.php';
 ?>
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Dashboard > Header Settings</h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Dashboard > Parallax Settings</h4></div>
 
 
 
@@ -52,7 +46,7 @@ include 'require/nav.php';
             
             
             <div class="options">
-                <a class="update" href="<?php echo ADMIN_URL.'header_update.php?id='.$pid;?>">Update</a>
+                <a class="update" href="<?php echo ADMIN_URL.'parallax_update.php?id='.$id; ?>">Update</a>
                 <!-- <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/delete_cat.php?id='.$pid;?>">Delete</a> -->
             </div>
 
@@ -60,14 +54,14 @@ include 'require/nav.php';
                 
                 <div style="padding:10px;width:100%;background-color:#ddd;">
                 
-                <h4>Header Image</h4>
-                <img src="../<?php echo $head_image;?>" style="height:500px; width:100%;">
+                <h4>Parallax1</h4>
+                <img src="../<?php echo $image1;?>" style="height:500px; width:100%;">
                 
-                <h4>Header Image</h4>
-                <img src="../<?php echo $head_image;?>" style="height:500px; width:100%;">
+                <h4>Parallax2</h4>
+                <img src="../<?php echo $image2;?>" style="height:500px; width:100%;">
                 
-                <h4>Header Image</h4>
-                <img src="../<?php echo $head_image;?>" style="height:500px; width:100%;">
+                <h4>Parallax3</h4>
+                <img src="../<?php echo $image3;?>" style="height:500px; width:100%;">
 
                 
                 </div>

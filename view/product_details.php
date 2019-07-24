@@ -27,7 +27,16 @@ foreach ($res2 as $row) {
     $date = $viewUser->datetime($date_);
 }
 
+$table = "tbl_parallax";
+    
+    $res = $viewUser->get_data($table);
 
+    foreach ($res as $row) {
+        $image1 = $row['image'];
+        $image2 = $row['image2'];
+        $image3 = $row['image3'];
+        $id = $row['id'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +68,7 @@ include '../require/header.php';
 include '../require/home_navbar.php';
 ?>
 
-<div class="parallax" style="background-image: url('../image/carousel-2.jpg');">
+<div class="parallax" style="background-image: url('../<?php echo $image3; ?>');">
 
 
 <?php 

@@ -1,5 +1,17 @@
 <?php
 include 'config.php';
+
+    $table = "tbl_parallax";
+    
+    $res = $viewUser->get_data($table);
+
+    foreach ($res as $row) {
+        $image1 = $row['image'];
+        $image2 = $row['image2'];
+        $image3 = $row['image3'];
+        $id = $row['id'];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +35,7 @@ include 'config.php';
 
 
 <div class="parallax" style="
-  background-image: url('image/carousel-2.jpg');">
+  background-image: url('<?php echo $image1;?>');">
 
   <div class="header" id="header">
     <h1 style="margin:15px 0px 15px 0px;"><a href="<?php echo BASE_URL; ?>index.php"><img src="image/vitalis-preloader.png" style="max-height:70px; max-width:300px;"></a></h1>
@@ -58,7 +70,7 @@ include 'config.php';
 
 </div>
 
-<div class="parallax" style="background-image: url('image/carousel-3.jpg');">
+<div class="parallax" style="background-image: url('<?php echo $image2?>');">
 
 
 <!-- PARALLAX END============================================= -->
@@ -264,7 +276,7 @@ window.onclick = function(event) {
 
 
   <!-- ====================================================================================================== -->
-<div class="parallax" style="background-image: url('../image/carousel-1.jpg');">
+<div class="parallax" style="background-image: url('<?php echo $image3; ?>');">
 
 <div class="notch">
 <style>

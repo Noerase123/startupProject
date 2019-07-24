@@ -9,6 +9,17 @@ while ( $row = $res->fetch_assoc()) {
   $footer = $row['footer_text'];
 }
 
+$table = "tbl_parallax";
+    
+    $res2 = $viewUser->get_data($table);
+
+    foreach ($res2 as $row) {
+        $image1 = $row['image'];
+        $image2 = $row['image2'];
+        $image3 = $row['image3'];
+        $id = $row['id'];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +45,7 @@ while ( $row = $res->fetch_assoc()) {
 include '../require/header.php';
 ?>
 
-<div class="parallax" style="background-image: url('../image/carousel-3.jpg');">
+<div class="parallax" style="background-image: url('../<?php echo $image2; ?>');">
 
 <?php
 include '../require/home_navbar.php';
