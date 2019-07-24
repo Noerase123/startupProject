@@ -36,6 +36,7 @@ body {
 
 /* Style the topnav links */
 .topnav a {
+  display: block;
   float: left;
   display: block;
   color: #f2f2f2;
@@ -66,6 +67,18 @@ body {
   float: left;
   width: 50%;
   overflow: auto;
+}
+
+.column-content2 {
+  float: left;
+  width: 85%;
+  overflow: auto;
+}
+
+.column-content2 .card {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .column-details {
@@ -143,6 +156,10 @@ body {
   clear: both;
 }
 
+.row2 {
+  padding: 0px 100px;
+}
+
 /* Footer */
 .footer {
   padding: 20px 10px;
@@ -162,59 +179,6 @@ body {
 .nav {
   display: block;
 }
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-  .centercolumn, .rightcolumn, .leftcolumn, .column-content, .column-details, .column-details .card  {
-    width: 100%;
-    padding: 0;
-    float:none;
-  }
-
-  .nav {
-    display: none;
-  }
-  .topnav button.btnmenu {
-    display: block;
-  }
-
-  .topnav a, .topnav .search {
-    float: none;
-    width: 100%;
-  }
-  /* .topnav .search {
-    width: 100%;
-  } */
-  .nav .login {
-    text-align: center;
-  }
-
-  .picolumn img {
-  
-    height:250px;
-    width: 100%;
-  }
-
-  .column-content .contact {
-    width: 100%;
-  }
-  
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
-  .topnav .search {
-    width: 100%;
-  }
-  .nav .login {
-    text-align: center;
-  }
-}
-
 
 .submenu {
   display: block;
@@ -453,4 +417,75 @@ body {
   color: #fff;
   cursor: pointer;
   margin-bottom: 0px;
+}
+
+@media screen and (max-width:1000px) {
+  .row2 {
+    padding: 0px 20px;
+  }
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .centercolumn, .rightcolumn, .leftcolumn, .column-content, .column-details, .column-content2, .column-details .card  {
+    width: 100%;
+    padding: 0;
+    float:none;
+  }
+  
+  .row2 {
+    padding: 0px 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+  .topnav button.btnmenu {
+    display: block;
+  }
+  .topnav a img {
+    display: block;
+    float:left;
+  }
+
+  .topnav a, .topnav .search {
+    float: none;
+    width: 100%;
+  }
+  
+  .topnav .nav .search{
+    width: 100%;
+  }
+  .nav .login {
+    text-align: center;
+  }
+
+  .picolumn img {
+  
+    height:250px;
+    width: 100%;
+  }
+
+  .column-content .contact {
+    width: 100%;
+  }
+  
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 406px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+  .topnav .search {
+    width: 100%;
+  }
+  .nav .login {
+    text-align: center;
+  }
+
+  .bg-dark .cart, .bg-dark .order {
+    width: 100%;
+  }
 }

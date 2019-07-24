@@ -46,7 +46,7 @@ include '../require/home_navbar.php';
 
 <!-- modal end -->
 
-<div class="row">
+<div class="row row2">
 
 <div class="leftcolumn">
     <div class="card">

@@ -1,6 +1,11 @@
 * {
     box-sizing: border-box;
   }
+
+html {
+
+  scroll-behavior: smooth;
+}
   
   body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -20,12 +25,17 @@
     /* margin-top: 400px; */
   }
   
+  .row2 {
+    padding: 0px 100px;
+  }
+
   .header h1 {
     font-size: 50px;
   }
   
   /* Style the top navigation bar */
   .topnav {
+    position: relative;
     overflow: hidden;
     background-color: #333;
     position: -webkit-sticky; /* Safari */
@@ -63,7 +73,7 @@
 
   .center2column {   
     float: left;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     width: 50%;
     overflow: auto;
   }
@@ -155,6 +165,23 @@
     text-align: center;
     margin-bottom: 40px;
     margin-left: 25%;
+  }
+
+  .card3 {
+    position: relative;
+    text-align: center;
+    border-radius: 15px;
+    color:white;
+    position: sticky;
+    top: 67px;
+  }
+
+  .card3 .centered{
+    position: absolute;
+    top: -10%;
+    left: 39%;
+    border-radius: 10px;
+    /* transform: translate(-50%,-50%); */
   }
   
   
@@ -383,9 +410,10 @@
     background-size: cover;
   }
 
-  .joinus button {
+  .joinus a {
     background-color: rgb(155, 170, 236);
     border: none;
+    text-decoration: none;
     color: #fff;
     border-radius: 10px;
     padding: 15px 30px;
@@ -395,7 +423,7 @@
     -webkit-transition: 0.3s;
   }
   
-  .joinus button:hover {
+  .joinus a:hover {
     background-color: rgb(124, 138, 202);
     border-radius: 1px;
   }

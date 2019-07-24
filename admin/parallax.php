@@ -61,23 +61,15 @@ include 'require/nav.php';
                 <div style="padding:10px;width:100%;background-color:#ddd;">
                 
                 <h4>Header Image</h4>
-                <img src="../<?php echo $head_image;?>" style="height:250px; width:100%;">
-
-                <h4>Navigation bar :</h4>
-                    <p style="width:100%;background-color:#f1f1f1;padding:20px;"><?php echo $nav1.' | '.$nav2.' | '.$nav3.' | '.$nav4; ?></p>
+                <img src="../<?php echo $head_image;?>" style="height:500px; width:100%;">
                 
-                <h4>Logos :</h4>
-
-                        <p>Nav-Header Logo</p>
-                        <img src="../<?php echo $nav_logo;?>" style="height:50px; width:100px;">
-                        <p>Home Logo</p>
-                        <img src="../<?php echo $home_logo;?>" style="height:100px; width:200px;">
+                <h4>Header Image</h4>
+                <img src="../<?php echo $head_image;?>" style="height:500px; width:100%;">
                 
-                <h4>Description (why) :</h4>
-                    <p><?php echo $why; ?></p>
+                <h4>Header Image</h4>
+                <img src="../<?php echo $head_image;?>" style="height:500px; width:100%;">
 
-                <!-- <h4>Footer (Copyrights) :</h4>
-                    <p><?php echo $footer; ?></p> -->
+                
                 </div>
                 
             </div>

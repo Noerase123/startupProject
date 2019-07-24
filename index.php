@@ -158,9 +158,11 @@ window.onclick = function(event) {
 }
 
 </script>
+<div class="row2">
 <!-- modal end -->
-  <div class="card2">
-        <h2>Best Sellers in the Store</h2>
+  <div class="card3">
+        <img src="image/einstein remake.jpg" style="width:100%;height:50px;border:none; border-bottom-left-radius:15px;border-bottom-right-radius:15px;" alt="">
+        <h2 class="centered">Best Sellers in the Store</h2>
     </div>
 
 <div class="row">
@@ -257,6 +259,7 @@ window.onclick = function(event) {
   </div>
 
   </div>
+  </div>
   <!-- row -->
 
 
@@ -268,14 +271,13 @@ window.onclick = function(event) {
   .notch {
     background-color: #f1f1f1;
     margin-top: 100px;
-    margin-bottom: 100px;
     padding:10px;
   }
 </style>
 </div>
 
 
-<div class="row">
+<div class="row row2">
 
 
 <div class="center2column">
@@ -284,11 +286,11 @@ window.onclick = function(event) {
       <p><?php echo $why_desc; ?>.</p>
   </div>
 
-  <div class="card">
+  <div class="card" style="margin-bottom:25px;">
       <h1>Join Us</h1>
       <div class="joinus">
-        <button onclick="document.getElementById('id01').style.display='block'" href="#" style="font-size:16px;"><i class="fa fa-lock"></i> Login</button>
-        <button onclick="document.getElementById('id01').style.display='block'" href="#" style="font-size:16px;"><i class="fa fa-info-circle"></i> Register</button>
+        <a href="#header" style="font-size:16px;"><i class="fa fa-lock"></i> Login</a>
+        <a href="#" style="font-size:16px;"><i class="fa fa-info-circle"></i> Register</a>
       </div>
   </div>
 </div>

@@ -19,10 +19,9 @@ while ($row = $res->fetch_assoc()) {
 <div class="topnav">
   <a style="margin:-10px 0px -10px 0px;" href="<?php echo BASE_URL; ?>index.php"><img src="../image/vitalis-preloader.png" style="height:100%; width:100px;"></a>
     <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
+    <button onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
   <div class="nav" id="nav">
-  <button class="login" onclick="document.getElementById('id01').style.display='block'" href="#" style="font-size:16px;"><i class="fa fa-lock"></i> Login</button>
   
-
   <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
   <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
 

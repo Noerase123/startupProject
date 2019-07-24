@@ -19,6 +19,7 @@ foreach ($res as $row) {
     $nav_logo = $row['nav_logo'];
     $home_logo = $row['home_logo'];
     $why = $row['why_desc'];
+    $head_image = $row['header_image'];
     // $footer = $row['footer_text'];
     $pid = $row['id'];
 }
@@ -54,6 +55,10 @@ include 'require/nav.php';
             <div class="form">
             <span style="font-weight:bold;font-size:20px;color:green;" class="response"></span>
             <form action="" method="post" enctype="multipart/form-data" id="form">
+
+        <h4 style="padding:10px; width:100%; background-color:#ddd">Header Image</h4>
+            <img src="../<?php echo $head_image;?>" style="height:70px; width:100%;">
+            <input type="file" name="header_image" id="header_image">
 
       <h4 style="padding:10px; width:100%; background-color:#ddd">Logos :</h4><small style="color:red;" id="title_desc_error"></small>
       <div style="">

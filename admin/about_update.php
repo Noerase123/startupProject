@@ -56,8 +56,8 @@ include 'require/nav.php';
       <h4>Images :</h4><small style="color:red;" id="title_error"></small>
       <div>
       <span><img src="../<?php echo $img1?>" style="height:100px; width:100px;margin-left:50px;" alt=""></span>
-      <span><img src="../<?php echo $img1?>" style="height:100px; width:100px;margin-left:150px;" alt=""></span>
-      <span><img src="../<?php echo $img1?>" style="height:100px; width:100px;margin-left:150px;" alt=""></span>
+      <span><img src="../<?php echo $img2?>" style="height:100px; width:100px;margin-left:150px;" alt=""></span>
+      <span><img src="../<?php echo $img3?>" style="height:100px; width:100px;margin-left:150px;" alt=""></span>
       </div>
       <input type="file" name="image1" id="image1">
       <input type="file" name="image2" id="image2">

@@ -68,7 +68,7 @@ include '../require/home_navbar.php';
     }
   ?>
 
-  <div class="column-content" style="width:85%;">
+  <div class="column-content2">
     
     <div class="card">
       <h2><?php echo $name; ?></h2>
