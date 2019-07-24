@@ -92,7 +92,7 @@ while ($row = $res->fetch_assoc()) {
   <button onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;font-size:16px;display:none;"><i class="fa fa-lock"></i> Login</button>
 
 
-  <a style="float:right;" href="#"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+  <a style="float:right;" href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
   <a style="float:right;" href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo $nav3; ?></a>
 
   <form class="search" method="GET">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2019 at 10:46 AM
+-- Generation Time: Jul 24, 2019 at 03:50 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -65,8 +65,8 @@ INSERT INTO `tbl_categories` (`id`, `cat_name`, `activated`, `date_created`) VAL
 (34, 'Romance ', 1, '2019-07-11 21:11:38'),
 (35, 'Thriller', 1, '2019-07-11 21:11:50'),
 (37, 'Comedy', 1, '2019-07-11 21:12:12'),
-(38, 'Education', 1, '2019-07-11 21:12:29'),
-(39, 'Mystery', 1, '2019-07-17 17:02:31');
+(41, 'Mystery', 0, '2019-07-23 18:52:04'),
+(42, 'Education', 0, '2019-07-23 18:53:12');
 
 -- --------------------------------------------------------
 
@@ -165,13 +165,18 @@ INSERT INTO `tbl_products` (`id`, `item_name`, `item_price`, `item_desc`, `date_
 
 CREATE TABLE `tbl_reviews` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `title_desc` varchar(255) NOT NULL,
-  `some_text` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_reviews`
+--
+
+INSERT INTO `tbl_reviews` (`id`, `name`, `image`, `description`, `date_created`) VALUES
+(2, 'Dean Wewet Fabian', '', 'Loreland Farm Resort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly say its a haven !!!', '2019-07-24 09:22:37');
 
 -- --------------------------------------------------------
 
@@ -213,7 +218,8 @@ INSERT INTO `tbl_stack` (`id`, `title`, `category`, `price`, `quantity`, `title_
 (125, 'testing new', 'Fantasy', 4, 12000, 'John Isaac', 'uploads/d74e61addc4de8ceb7fae459b0152723Baluarte.jpg', '#baluarte', 'wdawdafawefcawefaw', '2019-07-18 15:00:45'),
 (126, 'testinggggg', 'Fantasy', 123123123, 2147483647, 'awdawdwdaw', 'uploads/d43e98ee2379442ed828d23ba51c1749font awesome.png', 'wdawdawawdawd', 'awdadwdadawd', '2019-07-23 16:22:18'),
 (127, 'twitter', 'Fantasy', 1000000, 2222, 'twitter', 'uploads/81b44297c50af1151464369e5fd3958cLADP9261.JPEG', 'twitter', 'twittereererererer', '2019-07-23 16:24:18'),
-(128, 'twitter', 'Fantasy', 1000000, 2222, 'twitter', 'uploads/004951c2853d9cc591f4b2a948079a6bLADP9261.JPEG', 'twitter', 'twittereererererer', '2019-07-23 16:25:01');
+(128, 'twitter', 'Science-Fiction', 1000000, 2222, 'twitter', 'uploads/004951c2853d9cc591f4b2a948079a6bLADP9261.JPEG', 'twitter', 'twittereererererer', '2019-07-23 16:25:01'),
+(129, 'facebook', 'Fantasy', 500000, 2, 'test', 'uploads/6c72d14b021d63d264d4e86d7f1971f9font awesome.png', '#tags', 'awdwadafawefawe', '2019-07-23 16:55:01');
 
 -- --------------------------------------------------------
 
@@ -340,7 +346,7 @@ ALTER TABLE `tbl_about`
 -- AUTO_INCREMENT for table `tbl_categories`
 --
 ALTER TABLE `tbl_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `tbl_contact_info`
 --
@@ -365,12 +371,12 @@ ALTER TABLE `tbl_products`
 -- AUTO_INCREMENT for table `tbl_reviews`
 --
 ALTER TABLE `tbl_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_stack`
 --
 ALTER TABLE `tbl_stack`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --

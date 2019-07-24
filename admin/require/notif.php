@@ -19,6 +19,18 @@
         $message = "Category Created";
         echo '<h5 class="response notif">'.$message.'</h5>';
     }
+    else if (isset($_GET['review_deleted'])) {
+        $message = "Review Deleted";
+        echo '<h5 class="response notif">'.$message.'</h5>';
+    }
+    else if (isset($_GET['about_updated'])) {
+        $message = "About Updated";
+        echo '<h5 class="response notif">'.$message.'</h5>';
+    }
+    else if (isset($_GET['contact_info_updated'])) {
+        $message = "Contact Info Updated";
+        echo '<h5 class="response notif">'.$message.'</h5>';
+    }
     else {
         $message = '';
     }

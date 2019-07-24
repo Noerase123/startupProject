@@ -17,13 +17,11 @@ include '../config.php';
 
 <?php 
 include 'require/nav.php';
-$res = $viewUser->get_data("tbl_categories");
-    $count = $res->num_rows;
 ?>
 
 <div class="container">
     <br>
-<h1>Product Category (<?php echo $count; ?> Items)</h1>
+<h1>Reviews</h1>
 
 <?php
 include 'require/notif.php';
@@ -34,10 +32,11 @@ include 'require/notif.php';
         <input style="margin-top:20px;" type="text" placeholder="Search..." name="query">
         <button type="submit" name="searchbtn"><i class="fa fa-search"></i></button>
       </form>
-    </div><br><br>
-    <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div>
+    </div>
+    <!-- <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div> -->
     
 
+<h4>Note : Anything here is a request</h4>
 
     <div class="content">
         <div class="row">
@@ -47,8 +46,8 @@ include 'require/notif.php';
         if (isset($_GET['query']) && isset($_GET['searchbtn'])) {
                 
             $term = $_GET['query'];
-            $table = "tbl_categories";
-            $search = "cat_name";
+            $table = "tbl_reviews";
+            $search = "name";
             $result = $viewUser->search($term,$table,$search);
       
             $num_result = $result->num_rows;
@@ -64,13 +63,13 @@ include 'require/notif.php';
                     echo '<h3 style="color:green;">Results: "'.$term.'" ('.$num_result.' '.$item.')</h3>';
 
                 while($row = $result->fetch_assoc()) {
-                    $title = $row['cat_name'];
+                    $title = $row['name'];
                     $id = $row['id'];
                     ?>
                     <div class="column">
-                        <a href="product_cat_details.php?id=<?php echo $id;?>">
+                        <a href="reviews_details.php?id=<?php echo $id;?>">
                             <div class="card">
-                                <h3><?php echo $title; ?></h3>
+                            <h3><small>Message From :</small> <br><?php echo $title; ?></h3>
                             </div>
                         </a>
                     </div>
@@ -81,18 +80,18 @@ include 'require/notif.php';
 
         
         else {
-            $table = "tbl_categories";
+            $table = "tbl_reviews";
 
             $res = $viewUser->get_data($table);
 
             while ($row = $res->fetch_assoc()) {
-                $title = $row['cat_name'];
+                $title = $row['name'];
                 $id = $row['id'];
         ?>
             <div class="column">
-            <a href="product_cat_details.php?id=<?php echo $id;?>">
+            <a href="reviews_details.php?id=<?php echo $id;?>">
                     <div class="card">
-                        <h3><?php echo $title; ?></h3>
+                        <h3><small>Message From :</small> <br><?php echo $title; ?></h3>
                     </div>
                     </a>
             </div>

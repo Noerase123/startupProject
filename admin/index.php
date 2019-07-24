@@ -21,7 +21,8 @@ include 'require/nav.php';
 
 
 <div class="container">
-
+<br>
+<h1>Dashboard</h1>
     <div class="content">
         <div class="row">
 
