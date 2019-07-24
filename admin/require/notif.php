@@ -31,6 +31,10 @@
         $message = "Contact Info Updated";
         echo '<h5 class="response notif">'.$message.'</h5>';
     }
+    else if (isset($_GET['header_updated'])) {
+        $message = "Header Updated";
+        echo '<h5 class="response notif">'.$message.'</h5>';
+    }
     else {
         $message = '';
     }

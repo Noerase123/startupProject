@@ -36,11 +36,12 @@ include 'require/nav.php';
     <br>
 <h1>Contact Us</h1>
 
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Dashboard > Contact Us</h4></div>
-
 <?php
     include 'require/notif.php';
 ?>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Dashboard > Contact Us</h4></div>
+
+
 
     <div class="content">
         <div class="row">

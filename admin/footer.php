@@ -2,15 +2,15 @@
 
 include '../config.php';
 
-    $table = "tbl_about";
+    $table = "tbl_web_content";
     
     $res = $viewUser->get_data($table);
 
-    foreach ($res as $data) {
-        $name = $data['name'];
-        $some = $data['some_text'];
-        $abouts = $data['description'];
-        $pid = $data['id'];
+    foreach ($res as $row) {
+        $home_logo = $row['home_logo'];
+        $text_display = $row['text_display'];
+        $footer = $row['footer_text'];
+        $pid = $row['id'];
     }
 ?>
 <!DOCTYPE html>
@@ -32,13 +32,12 @@ include 'require/nav.php';
 
 <div class="container">
     <br>
-<h1>About Us</h1>
+<h1>Footer Settings</h1>
 
 <?php
     include 'require/notif.php';
 ?>
-
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Dashboard > About Us</h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Dashboard > Footer Settings</h4></div>
 
 
 
@@ -47,7 +46,7 @@ include 'require/nav.php';
             
             
             <div class="options">
-                <a class="update" href="<?php echo ADMIN_URL.'about_update.php?id='.$pid;?>">Update</a>
+                <a class="update" href="<?php echo ADMIN_URL.'footer_update.php?id='.$pid;?>">Update</a>
                 <!-- <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/delete_cat.php?id='.$pid;?>">Delete</a> -->
             </div>
 
@@ -55,12 +54,19 @@ include 'require/nav.php';
                 
                 <div style="padding:10px;width:100%;background-color:#ddd;">
                 
-                <h4>Title :</h4>
-                    <p><?php echo $name; ?></p>
-                <h4>Some Text :</h4>
-                    <p><?php echo $some; ?></p>
-                <h4>Abouts :</h4>
-                    <p><?php echo $abouts; ?></p>
+                <!-- <h4>Navigation bar :</h4>
+                    <p style="width:100%;background-color:#f1f1f1;padding:20px;"><?php echo $nav1.' | '.$nav2.' | '.$nav3.' | '.$nav4; ?></p> -->
+                
+                <h4>Logos :</h4>
+
+                        <p>Home Logo</p>
+                        <img src="../<?php echo $home_logo;?>" style="height:100px; width:200px;">
+                
+                <h4>Text Display :</h4>
+                    <p><?php echo $text_display; ?></p>
+
+                <h4>Copyrights :</h4>
+                    <p><?php echo $footer; ?></p>
                 </div>
                 
             </div>
