@@ -1,6 +1,10 @@
 <?php
 include '../config.php';
 
+if (isset($_GET['add_review_success'])) {
+  $success = "Message Request Sent";
+}
+
 $tbl = 'tbl_web_content';
 
 $res = $viewUser->get_data($tbl);
@@ -20,6 +24,26 @@ $table = "tbl_parallax";
         $id = $row['id'];
     }
 
+
+    if (isset($_POST['submit'])) {
+
+        $create_review = array(
+          'name' => $sqlUser->escapeString($_POST['name']),
+          'description' => $sqlUser->escapeString($_POST['desc'])
+        );
+
+        if ($sqlUser->create("tbl_pending_reviews", $create_review)) {
+
+          ?>
+          <script type="text/javascript">
+              alert("message request sent");
+          </script>
+          <?php
+
+          header("location:" .BASE_URL. "view/community.php?add_review_success");
+          
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -51,9 +75,10 @@ include '../require/header.php';
 
 <?php
 include '../require/home_navbar.php';
-?>
 
-<?php 
+
+
+
   if (isset($_GET['query']) && isset($_GET['searchbtn'])) {
     header("location:".BASE_URL."index.php?query=".$_GET['query']."&searchbtn=");
   }
@@ -68,37 +93,48 @@ include '../require/home_navbar.php';
 
   <div class="column-content">
     
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      
-      <h5>Title description, Sep 2, 2017</h5>
-      <img src="../image/carousel-3.jpg" style="height:300px;width:100%;">
-      
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-      Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-      Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-      Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-      Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-      </p>
+<?php 
+$tblbl = "tbl_reviews";
+
+$res = $viewUser->get_data($tblbl);
+foreach($res as $row) {
+  
+  $title = $row['name'];
+  $desc = $row['description'];
+  $datee = $row['date_created'];
+
+  $date = $viewUser->datetime($datee);
+?>
     
+    <div class="card">
+
+      <img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
+      <h2><?php echo $title; ?></h2>
+
+      <h5>Date Posted : <?php echo $date; ?></h5>
+
+      <!-- <p>Some text..</p> -->
+      <p><?php echo $desc; ?></p>
+
     </div>
 
+<?php } ?>
+
+    <form action="" method="post">
+    
     <div class="card">
-<h2>TITLE HEADING</h2>
+      <h2><input type="text" name="name" placeholder="Write your title..." id=""></h2>
 
-<h5>Title description, Sep 2, 2017</h5>
-<img src="../image/carousel-3.jpg" style="height:300px;width:100%;">
+      <!-- <p><input type="text" name="some_text" placeholder="Write your subject..." id=""></p> -->
 
-<p>Some text..</p>
-<p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-</p>
+      <p><textarea name="desc" id="" cols="30" placeholder="Tell us about your thoughts..." rows="10"></textarea></p>
 
-</div>
+      <input style="width:100%;padding:10px;border: 1px solid #000;background-color:#ddd" type="submit" name="submit" value="Send Message">
+
+    </div>
+    
+    </form>
+    
   
   </div>
 
@@ -132,6 +168,7 @@ function showSlides() {
   setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 </script>
+
 
 </div>
 

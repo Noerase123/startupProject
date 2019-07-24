@@ -2,6 +2,8 @@
 
 include '../config.php';
 
+$res = $viewUser->get_data("tbl_pending_reviews");
+$num_row = $res->num_rows;
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,14 +23,14 @@ include 'require/nav.php';
 
 <div class="container">
     <br>
-<h1>Reviews</h1>
+<h1>Review - Pending</h1>
 
 <?php
 include 'require/notif.php';
-
-$res = $viewUser->get_data("tbl_pending_reviews");
-$num_row = $res->num_rows;
 ?>
+
+
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'reviews.php';?>">Reviews</a> > Pending</h4></div>
 
     <div class="search">
       <form method="GET">
@@ -39,19 +41,18 @@ $num_row = $res->num_rows;
     <!-- <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div> -->
     
 
-<h4>Note : Anything here is a request</h4>
-
-<a href="review_pending.php">(<?php echo $num_row;?>) Pending Reviews</a>
 
     <div class="content">
         <div class="row">
 
 <!-- ================================SEARCH SECTION======================================== -->
         <?php 
+        if ($num_row > 0){
+
         if (isset($_GET['query']) && isset($_GET['searchbtn'])) {
                 
             $term = $_GET['query'];
-            $table = "tbl_reviews";
+            $table = "tbl_pending_reviews";
             $search = "name";
             $result = $viewUser->search($term,$table,$search);
       
@@ -72,7 +73,7 @@ $num_row = $res->num_rows;
                     $id = $row['id'];
                     ?>
                     <div class="column">
-                        <a href="reviews_accept.php?id=<?php echo $id;?>">
+                        <a href="reviews_details.php?id=<?php echo $id;?>">
                             <div class="card">
                             <h3><small>Message From :</small> <br><?php echo $title; ?></h3>
                             </div>
@@ -85,7 +86,7 @@ $num_row = $res->num_rows;
 
         // =========================================================================================        
         else {
-            $table = "tbl_reviews";
+            $table = "tbl_pending_reviews";
 
             $res = $viewUser->get_data($table);
 
@@ -94,7 +95,7 @@ $num_row = $res->num_rows;
                 $id = $row['id'];
         ?>
             <div class="column">
-            <a href="reviews_accept.php?id=<?php echo $id;?>">
+            <a href="reviews_details.php?id=<?php echo $id;?>">
                     <div class="card">
                         <h3><small>Message From :</small> <br><?php echo $title; ?></h3>
                     </div>
@@ -102,6 +103,9 @@ $num_row = $res->num_rows;
             </div>
         <?php 
         }
+        }
+        } else {
+            echo '<h3>No Review Request..</h3>';
         }
         ?>
             

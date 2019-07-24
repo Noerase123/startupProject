@@ -2,7 +2,7 @@
 
 include '../config.php';
 
-    $table = "tbl_pending_reviews";
+    $table = "tbl_reviews";
 
     $id = array(
         'id' => $_GET['id']
@@ -45,8 +45,8 @@ include 'require/nav.php';
             
             
             <div class="options">
-                <a class="update" href="<?php echo ADMIN_URL.'ajax/review_accepted.php?id='.$pid;?>">Accept</a>
-                <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/reviews_accepted.php?id='.$pid;?>">Reject</a>
+                <!-- <a class="update" href="<?php echo ADMIN_URL.'ajax/review_accepted.php?id='.$pid;?>">Accept</a> -->
+                <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/delete_review.php?id='.$pid;?>">Delete</a>
             </div>
 
             <div style="padding: 20px;float:left;">

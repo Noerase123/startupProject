@@ -25,7 +25,7 @@ include 'require/nav.php';
     <br>
 <h1>Add Item</h1>
 
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Products > Add Items</h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'products.php';?>">Products</a> > Add Items</h4></div>
 
     <div class="content">
         <div class="row">

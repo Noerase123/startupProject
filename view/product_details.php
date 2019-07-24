@@ -150,7 +150,7 @@ include '../require/home_navbar.php';
 
   </div>
 
-<div class="parallax" style="background-image: url('../image/carousel-3.jpg');">
+<div class="parallax" style="background-image: url('../<?php echo $image2;?>');">
 
 <div class="row">
   <div class="centercolumn">

@@ -10,6 +10,8 @@ while($row = $res->fetch_assoc()) {
     $nav2 = $row['nav_menu2'];
     $nav3 = $row['nav_menu3'];
     $nav4 = $row['nav_menu4'];
+    $footer_image = $row['footer_image'];
+    $text_display = $row['text_display'];
 
     $footer = $row['footer_text'];
 }
@@ -18,9 +20,9 @@ while($row = $res->fetch_assoc()) {
 <div class="footer">
     <div style="float:left;width:25%;">
     <a href="<?php echo BASE_URL; ?>">
-    <img src="../image/vitalis-preloader.png" style="height:50px; width:130px;">
+    <img src="../<?php echo $footer_image; ?>" style="height:50px; width:130px;">
     </a>
-    <p>Image where it live.</p>
+    <p><?php echo ucfirst($text_display);?>.</p>
     </div>
 
     <div style="float:left;width:50%;">

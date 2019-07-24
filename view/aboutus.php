@@ -11,6 +11,20 @@ $table = "tbl_parallax";
         $image3 = $row['image3'];
         $id = $row['id'];
     }
+
+    $table2 = "tbl_about";
+    
+    $res2 = $viewUser->get_data($table2);
+
+    foreach ($res2 as $data) {
+        $name = $data['name'];
+        $some = $data['some_text'];
+        $abouts = $data['description'];
+        $img1 = $data['image1'];
+        $img2 = $data['image2'];
+        $img3 = $data['image3'];
+        $pid = $data['id'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +71,9 @@ include '../require/home_navbar.php';
 <div class="row">
 
     <div class="picolumn">
-    <img src="../image/carousel-1.jpg">
-    <img src="../image/carousel-1.jpg">
-    <img src="../image/carousel-1.jpg">
+    <img src="../<?php echo $img1; ?>">
+    <img src="../<?php echo $img2; ?>">
+    <img src="../<?php echo $img3; ?>">
     </div>
 
 </div>

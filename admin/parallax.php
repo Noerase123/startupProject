@@ -37,7 +37,7 @@ include 'require/nav.php';
 <?php
     include 'require/notif.php';
 ?>
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp Dashboard > Parallax Settings</h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL; ?>">Dashboard</a> > Parallax Settings</h4></div>
 
 
 

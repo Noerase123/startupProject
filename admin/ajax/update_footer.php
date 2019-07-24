@@ -16,7 +16,7 @@ $tbl = "tbl_web_content";
 
           $update_array2 = array(
             'footer_text'  => $sqlUser->escapeString($_POST['footer']),
-            'why_desc'     => $sqlUser->escapeString($_POST['text_display'])
+            'text_display'     => $sqlUser->escapeString($_POST['text_display'])
           );
 
           
@@ -33,13 +33,13 @@ $tbl = "tbl_web_content";
         $v3 = $v1.$v2;
         $v3 = md5($v3);
         // $fnm = $_FILES["image"]["name"];
-        $dst = "../uploads/".$v3.$fnm2;
-        $image_upload = "uploads/".$v3.$fnm2;
+        $dst = "../uploads/".$v3.$fnm;
+        $image_upload = "uploads/".$v3.$fnm;
         move_uploaded_file($_FILES["footer_image"]["tmp_name"],$dst);
 
         $update_array = array(
             'footer_text'  => $sqlUser->escapeString($_POST['footer']),
-            'why_desc'     => $sqlUser->escapeString($_POST['text_display']),
+            'text_display'     => $sqlUser->escapeString($_POST['text_display']),
             'footer_image'     => $sqlUser->escapeString($image_upload)
           );
 
