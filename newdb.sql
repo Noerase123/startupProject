@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2019 at 08:02 AM
+-- Generation Time: Jul 25, 2019 at 03:38 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -136,7 +136,51 @@ INSERT INTO `tbl_menus` (`id`, `menu_name`, `menu_link`, `date_created`) VALUES
 (7, 'contact us', 'contact_us', '2019-07-21 16:22:09'),
 (11, 'header Settings', 'header', '2019-07-22 20:42:59'),
 (13, 'footer settings', 'footer', '2019-07-22 20:45:51'),
-(14, 'activity log', 'activity_log', '2019-07-23 16:16:46');
+(14, 'parallax settings', 'parallax', '2019-07-23 16:16:46'),
+(15, 'activity log', 'activity_log', '2019-07-24 16:25:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_parallax`
+--
+
+CREATE TABLE `tbl_parallax` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `image2` varchar(255) NOT NULL,
+  `image3` varchar(255) NOT NULL,
+  `activated` int(11) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_parallax`
+--
+
+INSERT INTO `tbl_parallax` (`id`, `image`, `image2`, `image3`, `activated`, `date_created`) VALUES
+(1, 'uploads/532168bd6e989437dd39569bb947179fcarousel-2.jpg', 'uploads/532168bd6e989437dd39569bb947179fLuneta.jpg', 'uploads/532168bd6e989437dd39569bb947179fcarousel-1.jpg', 1, '2019-07-24 17:34:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pending_reviews`
+--
+
+CREATE TABLE `tbl_pending_reviews` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_pending_reviews`
+--
+
+INSERT INTO `tbl_pending_reviews` (`id`, `name`, `description`, `date_created`) VALUES
+(2, 'Johnny English', 'Loreland Farm Resort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly say its a haven !!!', 0),
+(3, 'Hello World', 'Loreland Farm Resort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly say its a haven !!!', 0);
 
 -- --------------------------------------------------------
 
@@ -178,7 +222,8 @@ CREATE TABLE `tbl_reviews` (
 --
 
 INSERT INTO `tbl_reviews` (`id`, `name`, `image`, `description`, `date_created`) VALUES
-(2, 'Dean Wewet Fabian', '', 'Loreland Farm Resort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly say its a haven !!!', '2019-07-24 09:22:37');
+(2, 'Dean Wewet Fabian', '', 'Loreland Farm Resort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly say its a haven !!!', '2019-07-24 09:22:37'),
+(4, 'John Doe', '', 'sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly s', '2019-07-24 20:53:48');
 
 -- --------------------------------------------------------
 
@@ -260,6 +305,7 @@ CREATE TABLE `tbl_web_content` (
   `home_logo` varchar(255) NOT NULL,
   `why_desc` text NOT NULL,
   `footer_text` varchar(255) NOT NULL,
+  `header_image` varchar(255) NOT NULL,
   `footer_image` varchar(255) NOT NULL,
   `text_display` varchar(255) NOT NULL,
   `activated` int(11) NOT NULL,
@@ -270,8 +316,8 @@ CREATE TABLE `tbl_web_content` (
 -- Dumping data for table `tbl_web_content`
 --
 
-INSERT INTO `tbl_web_content` (`id`, `nav_menu1`, `nav_menu2`, `nav_menu3`, `nav_menu4`, `nav_logo`, `home_logo`, `why_desc`, `footer_text`, `footer_image`, `text_display`, `activated`, `date_created`) VALUES
-(1, 'Productss', 'Reviews', 'Contact Us', 'About', 'uploads/f0820a33d6205bb05f917843ecea7d53vitalis-preloader.png', 'uploads/f0820a33d6205bb05f917843ecea7d53vitalis-preloader.png', 'Image where it live.', 'Copyright Â©2019 Test Website Name - All Rights Reserved', 'uploads/7930edfffa629d55146caf33e2a44cef', 'Image where it live.', 0, '2019-07-10 21:42:14');
+INSERT INTO `tbl_web_content` (`id`, `nav_menu1`, `nav_menu2`, `nav_menu3`, `nav_menu4`, `nav_logo`, `home_logo`, `why_desc`, `footer_text`, `header_image`, `footer_image`, `text_display`, `activated`, `date_created`) VALUES
+(1, 'Products', 'Reviews', 'Contact Us', 'About', 'uploads/b9cb5236474c82fc4d55eef92fcc42f1vitalis-preloader.png', 'uploads/b9cb5236474c82fc4d55eef92fcc42f1vitalis-preloader.png', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum ', 'Copyright Â©2019 Test Website Name - All Rights Reserved', 'uploads/b9cb5236474c82fc4d55eef92fcc42f1Luneta.jpg', 'uploads/318abfdcdd18d34edb75e669583b3273vitalis-preloader.png', 'image where it live', 0, '2019-07-10 21:42:14');
 
 --
 -- Indexes for dumped tables
@@ -305,6 +351,18 @@ ALTER TABLE `tbl_ecommerce_config`
 -- Indexes for table `tbl_menus`
 --
 ALTER TABLE `tbl_menus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_parallax`
+--
+ALTER TABLE `tbl_parallax`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_pending_reviews`
+--
+ALTER TABLE `tbl_pending_reviews`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -365,7 +423,17 @@ ALTER TABLE `tbl_ecommerce_config`
 -- AUTO_INCREMENT for table `tbl_menus`
 --
 ALTER TABLE `tbl_menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `tbl_parallax`
+--
+ALTER TABLE `tbl_parallax`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tbl_pending_reviews`
+--
+ALTER TABLE `tbl_pending_reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_products`
 --
@@ -375,7 +443,7 @@ ALTER TABLE `tbl_products`
 -- AUTO_INCREMENT for table `tbl_reviews`
 --
 ALTER TABLE `tbl_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_stack`
 --
