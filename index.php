@@ -12,6 +12,12 @@ include 'config.php';
         $id = $row['id'];
     }
 
+    $tbl = "tbl_web_content";
+
+    $ress = $viewUser->get_data($tbl);
+    foreach($ress as $row) {
+      $hlogo = $row['home_logo'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +44,7 @@ include 'config.php';
   background-image: url('<?php echo $image1;?>');">
 
   <div class="header" id="header">
-    <h1 style="margin:15px 0px 15px 0px;"><a href="<?php echo BASE_URL; ?>index.php"><img src="image/vitalis-preloader.png" style="max-height:70px; max-width:300px;"></a></h1>
+    <h1 style="margin:15px 0px 15px 0px;"><a href="<?php echo BASE_URL; ?>index.php"><img src="<?php echo $hlogo; ?>" style="max-height:70px; max-width:300px;"></a></h1>
   </div>
 
   <div class="logincard">
@@ -89,12 +95,11 @@ while ($row = $res->fetch_assoc()) {
     $nav4 = $row['nav_menu4'];
     $why_desc = $row['why_desc'];
     $nav_logo = $row['nav_logo'];
-    $home_logo = $row['home_logo'];
 
 ?>
 <div style="margin-bottom:100px;" class="topnav">
     <div class="toggle">
-      <a style="margin:-10px 0px -10px 0px;" href="<?php echo BASE_URL; ?>view/index.php"><img src="image/vitalis-preloader.png" style="height:50px; width:130px;"></a>
+      <a style="margin:-10px 0px -10px 0px;" href="<?php echo BASE_URL; ?>view/index.php"><img src="<?php echo $nav_logo; ?>" style="height:50px; width:130px;"></a>
       <div class="menu">
         <i class="fa fa-bars" aria-hidden="true"></i>
       </div>
@@ -173,8 +178,7 @@ window.onclick = function(event) {
 <div class="row2">
 <!-- modal end -->
   <div class="card3">
-        <img src="image/einstein remake.jpg" style="width:100%;height:50px;border:none; border-bottom-left-radius:15px;border-bottom-right-radius:15px;" alt="">
-        <h2 class="centered">Best Sellers in the Store</h2>
+        <h2 style="background-image: url('<?php echo $image2?>');  width:100%;height:50px">Best Sellers in the Store</h2>
     </div>
 
 <div class="row">
