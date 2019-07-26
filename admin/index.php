@@ -12,11 +12,8 @@
   </head>
   <body>
 
-<div class="parallax" style="
-  background-image: url('../image/carousel-1.jpg');">
-
-    <div class="login">
-  <!-- <div class="login-triangle"></div> -->
+    <div class="login" style="box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);">
+  <div class="login-triangle"></div>
   
   <h2 class="login-header">Log in</h2>
 
@@ -35,7 +32,7 @@
         $username = $_POST['username'];
         $password = $_POST['pw'];
 
-        $query = "SELECT firstname FROM tbl_user WHERE username = '$username'";
+        $query = "SELECT firstname FROM tbl_user WHERE username = '$username' AND password = '$password'";
 
         $res = $viewUser->get_query($query);
         foreach($res as $row){
@@ -61,7 +58,6 @@
       }
     ?>
 
-  </div>
 
   </body>
 </html>
