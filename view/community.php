@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../config.php';
 
 if (isset($_GET['add_review_success'])) {
@@ -118,12 +119,16 @@ foreach($res as $row) {
 
     </div>
 
-<?php } ?>
+<?php } 
+
+      if ($_SESSION['user'] == "John Isaac")
+      {
+    ?>
 
     <form action="" method="post">
     
     <div class="card">
-      <h2><input type="text" name="name" placeholder="Write your title..." id=""></h2>
+      <h2><input type="text" name="name" placeholder="Write your name..." id=""></h2>
 
       <!-- <p><input type="text" name="some_text" placeholder="Write your subject..." id=""></p> -->
 
@@ -134,6 +139,8 @@ foreach($res as $row) {
     </div>
     
     </form>
+
+      <?php } ?>
     
   
   </div>

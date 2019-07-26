@@ -1,59 +1,67 @@
-<?php
-
-include '../config.php';
-
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Test Website - Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="admin_css/main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-
 <?php 
-include 'require/nav.php';
+  session_start();
+  include '../config.php';
 ?>
 
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Welcome to Admin</title>
+        <link rel="stylesheet" href="admin_css/login.css/style.css">    
+  </head>
+  <body>
 
-<div class="container">
-<br>
-<h1>Dashboard</h1>
-    <div class="content">
-        <div class="row">
+<div class="parallax" style="
+  background-image: url('../image/carousel-1.jpg');">
 
-        <?php 
-        $tbl = "SELECT * FROM tbl_menus";
-        $res = $viewUser->get_query($tbl);
-        while($row = $res->fetch_assoc()) {
+    <div class="login">
+  <!-- <div class="login-triangle"></div> -->
+  
+  <h2 class="login-header">Log in</h2>
 
-            $menu = $row['menu_name'];
-            $link = $row['menu_link'];
-    ?>
-
-            <div class="column" id="con">
-                <a href="<?php echo ADMIN_URL.$link.'.php'; ?>">
-                <div class="card">
-                <h3><?php echo strtoupper($menu); ?></h3>
-                <!-- <p><a href="#link">See more</a></p> -->
-                </div>
-                </a>
-            </div>
+  <form action="" class="login-container" name="form1" method="post">
+    <p><input type="text" placeholder="Email" name="username"></p>
+    <p><input type="password" placeholder="Password" name="pw"></p>
+    <p><input type="submit" name="submit1" value="Log in"></p>
+  </form>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <?php
+
+      if (isset($_POST["submit1"]))
+      {
+        $username = $_POST['username'];
+        $password = $_POST['pw'];
+
+        $query = "SELECT firstname FROM tbl_user WHERE username = '$username'";
+
+        $res = $viewUser->get_query($query);
+        foreach($res as $row){
+          $name = $row['firstname'];
+          $_SESSION['admin'] = $name;
+        }
+
+
+        if (isset($_SESSION['admin'])) {
+          if ($loginUser->login($username,$password)) {
+  
+            header("location:home.php?signedin");
+          }
+          else {
+            echo '<h4 style="color:red;">Incorrect username or password</h4>';
+          }
+        }
+        else {
+          echo '<h4 style="color:red;">User not found</h4>';
         }
         
+        
+      }
     ?>
-            
-    </div>
-    </div>
 
-    
-</div>
-    
-</body>
+  </div>
+
+  </body>
 </html>

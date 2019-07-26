@@ -69,7 +69,7 @@ include 'require/nav.php';
       
       <div class="addbtns">
         <input class="submit" type="submit" name="update_contact" id="addbtn" value="Update">
-        <a href="<?php echo ADMIN_URL; ?>about.php" style="text-decoration:none;" name="cancel">Cancel</a>
+        <a href="<?php echo ADMIN_URL; ?>contact_us.php" style="text-decoration:none;" name="cancel">Cancel</a>
       </div>
     </form>
       </div>

@@ -1,14 +1,22 @@
+<?php
+session_start();
+if($_SESSION["admin"]=="")
+{
+    header("location:".ADMIN_URL);
+}
+?>
+
 <div class="header">
-    <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL;?>">Welcome to Admin</a></p>
+    <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL.'home.php';?>">Welcome to Admin</a></p>
     <div class="head-content">
-        <p>admin</p>
-        <p>settings</p>
+        <p><?php echo $_SESSION["admin"]; ?></p>
+        <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL.'logout.php';?>">Logout</a></p>
     </div>
 </div>
 
 <nav class="navi">
     <ul>
-        <li><a href="<?php echo ADMIN_URL;?>">Home</a></li>
+        <li><a href="<?php echo ADMIN_URL.'home.php';?>">Home</a></li>
 
     <?php 
         $tbl = "SELECT * FROM tbl_menus";

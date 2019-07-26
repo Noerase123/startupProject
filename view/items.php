@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../config.php';
 
 $res = $viewUser->get_data("tbl_stack");

@@ -23,9 +23,11 @@ define('API','api/');
 include API.'dbh.php';
 include API.'User.php';
 include API.'viewUser.php';
+include API.'loginUser.php';
 
 $sql = new dbh;
 $sqlUser = new User;
 $viewUser = new ViewUser;
+$loginUser = new loginUser;
 
 ?>

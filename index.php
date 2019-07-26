@@ -47,6 +47,19 @@ include 'config.php';
     <h1 style="margin:15px 0px 15px 0px;"><a href="<?php echo BASE_URL; ?>index.php"><img src="<?php echo $hlogo; ?>" style="max-height:70px; max-width:300px;"></a></h1>
   </div>
 
+  <?php
+
+    if (isset($_POST['login'])) {
+      $username = $_POST['uname'];
+      $password =  $_POST['pass'];
+
+      if ($loginUser->login($username,$password)) {
+        echo 'successfully login!';
+      }
+    }
+
+  ?>
+
   <div class="logincard">
     <div class="loginform">
     <form action="" method="post" id="form">
@@ -62,15 +75,6 @@ include 'config.php';
       
     </form>
 
-    <?php
-    if (isset($_POST['login'])) {
-      header("location:".BASE_URL."view/items.php");
-    }
-
-    if (isset($_POST['register'])) {
-      header("location:".BASE_URL."view/community.php");
-    }
-    ?>
     </div>
   </div>
 

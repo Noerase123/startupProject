@@ -1,4 +1,5 @@
 <?php
+// session_start();
 
 $tbl_name = "tbl_web_content";
 
@@ -19,8 +20,9 @@ while ($row = $res->fetch_assoc()) {
 <div class="topnav">
   <a style="margin:-10px 0px -10px 0px;" href="<?php echo BASE_URL; ?>index.php"><img src="../image/vitalis-preloader.png" style="height:100%; width:100px;"></a>
     <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
-    <button onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
-  <div class="nav" id="nav">
+    <button onclick="document.getElementById('id01').style.display='block'" id="login" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
+    <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user" style="color:#fff;float:right;display:none;"><?php echo $_SESSION['user'] ; ?></a>
+    <div class="nav" id="nav">
   
   <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
   <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
@@ -38,7 +40,37 @@ while ($row = $res->fetch_assoc()) {
 </div>
 <!-- end of topnav -->
 
-<?php } ?>
+<?php }
+
+    if (isset($_POST['login'])) {
+      $uname = $_POST['uname']; 
+      $pass = $_POST['psw'];
+
+      $query = "SELECT firstname FROM tbl_user WHERE username='$uname'";
+      $res = $viewUser->get_query($query);
+      foreach($res as $row){
+        $user = $row['firstname'];
+        $_SESSION['user'] = $user;
+      }
+
+      $res = $loginUser->login($uname,$pass);
+
+      if ($res) {
+        ?>
+        <script>
+          var login = document.getElementById("login");
+          var user = document.getElementById("user");
+          login.style.display = "none";
+          console.log("login button none");
+          user.style.display = "block";
+          console.log("user button none");
+        </script>
+        <?php
+
+      }
+    }
+
+?>
 
 <!-- modal -->
 <div id="id01" class="modal">
@@ -60,7 +92,8 @@ while ($row = $res->fetch_assoc()) {
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
       <br><br>
-      <button class="login" onclick="return login()"> Login </button>
+      <input type="submit" value="Login" name="login">
+      <!-- <button class="login" type="submit" onclick="return login()"> Login </button> -->
     </div>
 
     <div class="container">

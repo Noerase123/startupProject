@@ -41,7 +41,7 @@ $num_row = $res->num_rows;
 
 <h4>Note : Anything here is a request</h4>
 
-<a href="review_pending.php">(<?php echo $num_row;?>) Pending Reviews</a>
+<h4 class="response notif"><a style="color:#000;text-decoration:none;" href="review_pending.php">(<?php echo $num_row;?>) Pending Reviews</a></h4>
 
     <div class="content">
         <div class="row">
