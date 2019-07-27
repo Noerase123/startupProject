@@ -58,6 +58,7 @@ include '../require/home_navbar.php';
 <div class="row row2">
 
 <div class="leftcolumn category">
+
     <div class="card">
       <!-- <h2>Categories</h2> -->
       <p id="btn1" class="Menu">>Categories (<?php echo $rows; ?>)</p>
@@ -198,64 +199,8 @@ if ($num > 0) {
     </div>
   </div>
 
-  <script>
-    var btn1 = document.getElementById('btn1');
-    var btn2 = document.getElementById('btn2');
-    var btn3 = document.getElementById('btn3');
-    var btn4 = document.getElementById('btn4');
-    var submenu = document.getElementById('submenu');
-    var submenu2 = document.getElementById('submenu2');
-    var submenu3 = document.getElementById('submenu3');
-    var submenu4 = document.getElementById('submenu4');
-    
 
-    btn1.onclick = function() {
-      
-      if (submenu.style.display === "none"){
-        submenu.style.display = "block";
-        submenu2.style.display = "none";
-        submenu3.style.display = "none";
-        submenu4.style.display = "none";        
-      } else {
-        submenu.style.display = "none";
-      }
-    }
-    btn2.onclick = function() {
-      if (submenu2.style.display === "none"){
-        submenu.style.display = "none";
-        submenu2.style.display = "block";
-        submenu3.style.display = "none";
-        submenu4.style.display = "none";        
-      } else {
-        submenu2.style.display = "none";
-      }
-    }
-    btn3.onclick = function() {
-      if (submenu3.style.display === "none"){
-        submenu.style.display = "none";
-        submenu2.style.display = "none";
-        submenu3.style.display = "block";
-        submenu4.style.display = "none";        
-      } else {
-        submenu3.style.display = "none";
-      }
-    }
-    btn4.onclick = function() {
-      if (submenu4.style.display === "none"){
-        submenu.style.display = "none";
-        submenu2.style.display = "none";
-        submenu3.style.display = "none";
-        submenu4.style.display = "block";        
-      } else {
-        submenu4.style.display = "none";
-      }
-    }
-  </script>
-  
-
-
-  <div class="centercolumn">
-
+  <div class="centercolumn rows">
   <?php
   
   if (isset($_GET['searchbtn']) || isset($_GET['query']))
@@ -277,7 +222,7 @@ if ($num > 0) {
         $item = "item";
       }
 
-      echo '<h3>Results: '.$num_result.' '.$item.' "'.$term.'"</h3>';
+      echo '<h3 style="color:#fff;text-shadow: 0 5px rgba(0, 0, 0, 0.2);">Results: '.$num_result.' '.$item.' "'.$term.'"</h3>';
         while($row =$result->fetch_assoc()){               
             
             $dataArray[]=$row;
@@ -300,10 +245,13 @@ if ($num > 0) {
       
             $get_date = $viewUser->datetime($date);
 
+            if (strlen($title) > 18) {
+              $title = substr($title, 0, 18).'...';
+            }
+
             ?>
+    <div class="columns">
     <div class="card">
-      <h2><a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
-      <h5 style="color:rgb(94, 92, 92)">by: <?php echo $title_desc; ?>,<?php echo $quantity ? ' (stock items : '.$quantity.' pieces)' : '' ; ?></h5>
       <a href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">
       <?php 
         if ($image == "") {
@@ -313,54 +261,20 @@ if ($num > 0) {
           echo '<div><img style="width:100%;height:250px;" src="../'.$image.'"></div>';
         }
       ?>
-      </a><br>
-      <a href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
+      </a>
+      <h2><a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
+      <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
       <p style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
       <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
     </div>
+  </div>
     
     <?php
-    $query = "SELECT * FROM tbl_ecommerce_config WHERE activated = '1'";
-    $true = $viewUser->rows($query);
-
-    if ($true) {
-    ?>
-
-  <div id="comm-content">
-    <div class="bg-dark">
-      <button class="order" id='btnbuy<?php echo $id; ?>'>Order now</button>
-      <button class="cart" id='btncart<?php echo $id; ?>'>Add to Cart</button>
-    </div>
-  </div>
-
-    <?php } ?>
-
-  <script>
-    var content = {
-      buy: document.getElementById('btnbuy<?php echo $id; ?>'),
-      cart: document.getElementById('btncart<?php echo $id; ?>')
-    };
-
-    content.cart.onclick = function() {
-      var alrt = 'Product ' +<?php echo $id; ?> +' has been added to cart!';
-      console.log(alrt);
-      alert(alrt);
-    }
-
-    content.buy.onclick = function() {
-      var alrt = 'New product sold! <?php echo $id;?>';
-      console.log(alrt);
-      alert(alrt);
-    }
-  </script>
-              
-            <?php
 
         }
     } 
     else {
-        echo '<h3 style="color:green;">No Records Found </h3> &nbsp';   
-        echo '<a href="'.BASE_URL.'index.php"> Go Back </a>'; 
+        echo '<h3 style="color:orange;text-shadow: 0 5px rgba(0, 0, 0, 0.2);">No Records Found </h3> &nbsp';
     }
   }
   // ================================================================================================
@@ -378,7 +292,7 @@ if ($num > 0) {
 
 if ($num_row > 0){
 
-  echo '<h3>"'.ucfirst($categ).'"  ('.$num_row.' Items)</h3>';
+  echo '<h3 style="color:#fff;text-shadow: 0 5px rgba(0, 0, 0, 0.2);">"'.ucfirst($categ).'"  ('.$num_row.' Items)</h3>';
 
   while ($row = $res->fetch_assoc())
   {
@@ -400,14 +314,12 @@ if ($num_row > 0){
       
     $get_date = $viewUser->datetime($date);
 
-    if (strlen($description) > 73) {
-      $description = substr($description, 0, 73).'...';
+    if (strlen($title) > 18) {
+      $title = substr($title, 0, 18).'...';
     }
   ?>
-
+  <div class="columns">
     <div class="card">
-      <h2><a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
-      <h5 style="color:rgb(94, 92, 92)">by: <?php echo $title_desc; ?>,<?php echo $quantity ? ' (stock items : '.$quantity.' pieces)' : '' ; ?></h5>
       <a href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">
       <?php 
         if ($image == "") {
@@ -417,46 +329,13 @@ if ($num_row > 0){
           echo '<div><img style="width:100%;height:250px;" src="../'.$image.'"></div>';
         }
       ?>
-      </a><br>
-      <a href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
+      </a>
+      <h2><a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
+      <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
       <p style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
       <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
     </div>
-
-    <?php
-    $query = "SELECT * FROM tbl_ecommerce_config WHERE activated = '1'";
-    $true = $viewUser->rows($query);
-
-    if ($true) {
-    ?>
-
-  <div id="comm-content">
-    <div class="bg-dark">
-      <button class="order" id='btnbuy<?php echo $id; ?>'>Order now</button>
-      <button class="cart" id='btncart<?php echo $id; ?>'>Add to Cart</button>
-    </div>
   </div>
-
-  <?php } ?>
-
-  <script>
-    var content = {
-      buy: document.getElementById('btnbuy<?php echo $id; ?>'),
-      cart: document.getElementById('btncart<?php echo $id; ?>')
-    };
-
-    content.cart.onclick = function() {
-      var alrt = 'Product ' +<?php echo $id; ?> +' has been added to cart!';
-      console.log(alrt);
-      alert(alrt);
-    }
-
-    content.buy.onclick = function() {
-      var alrt = 'New product sold! <?php echo $id;?>';
-      console.log(alrt);
-      alert(alrt);
-    }
-  </script>
 
   <!-- <div class="fakeimg" style="height:200px;"></div> -->
   <?php
@@ -488,80 +367,33 @@ if ($num_row > 0){
       
     $get_date = $viewUser->datetime($date);
 
-    if (strlen($description) > 73) {
-      $description = substr($description, 0, 73).'...';
+    if (strlen($title) > 18) {
+      $title = substr($title, 0, 18).'...';
     }
   ?>
-
+  <div class="columns">
     <div class="card">
-      <h2><a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
-      <h5 style="color:rgb(94, 92, 92)">by: <?php echo $title_desc; ?>,<?php echo $quantity ? ' (stock items : '.$quantity.' pieces)' : '' ; ?></h5>
       <a href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">
       <?php 
         if ($image == "") {
           echo '<div class="fakeimg" style="height:300px;"></div>';
         }
         else {
-          echo '<div><img style="width:100%;height:250px;" src="../'.$image.'"></div>';
+          echo '<div><img class="img" src="../'.$image.'"></div>';
         }
       ?>
-      </a><br>
-      <a href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
-      <p style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
-      <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
-    </div>
-
-    <?php
-    $query = "SELECT * FROM tbl_ecommerce_config WHERE activated = '1'";
-    $true = $viewUser->rows($query);
-
-    if ($true) {
-    ?>
-  
-  <div id="comm-content">
-    <div class="bg-dark">
-      <button class="order" id='btnbuy<?php echo $id; ?>'>Order now</button>
-      <button class="cart" id='btncart<?php echo $id; ?>'>Add to Cart</button>
+      </a>
+      <h2><a class="name" style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
+      <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
+      <p class="name" style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
+      <a class="seemore name" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
     </div>
   </div>
-  
-    <?php
-    }
-    ?>
-
-  <script>
-    var content = {
-      buy: document.getElementById('btnbuy<?php echo $id; ?>'),
-      cart: document.getElementById('btncart<?php echo $id; ?>')
-    };
-
-    content.cart.onclick = function() {
-      var alrt = 'Product ' +<?php echo $id; ?> +' has been added to cart!';
-      console.log(alrt);
-      alert(alrt);
-    }
-
-    content.buy.onclick = function() {
-      var alrt = 'New product sold! <?php echo $id;?>';
-      console.log(alrt);
-      alert(alrt);
-    }
-  </script>
-
-  <!-- <div class="fakeimg" style="height:200px;"></div> -->
   <?php
   }
+
   }
   ?>
-
-    <!-- modal image -->
-    <!-- <div id="Modal<?php echo $id; ?>">
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-      <div id="caption"></div>
-    </div>
-    </div> -->
 
 <script>
 // Get the modal
@@ -588,8 +420,33 @@ span.onclick = function() {
   
   </div>
   
-  <div class="rightcolumn">
-  
+  <div class="leftcolumn" id="rightcollapse">
+
+<div class="card">
+      <h3>Popular Post</h3>
+
+  <?php 
+    $query = "SELECT * FROM tbl_stack ORDER BY rand() LIMIT 3";
+    $res = $viewUser->get_query($query);
+    while ($row = $res->fetch_assoc()) {
+      $img = $row['image'];
+      $title = $row['title'];
+      $id = $row['id'];
+
+      if (strlen($title) > 10) {
+        $title = substr($title, 0, 10).'...';
+      }
+
+  ?>
+  <div class="popular">
+    <img src="../<?php echo $img; ?>"><br>
+    <span class="tooltip"><a href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more about <?php echo $title; ?></a></span>
+    </div>
+  <?php
+    }
+  ?>
+    </div>
+
   <?php 
     $query = "SELECT * FROM tbl_about";
     $res = $viewUser->get_query($query);
@@ -606,26 +463,7 @@ span.onclick = function() {
 
     </div>
 
-    <div class="card">
-      <h3>Popular Post</h3>
-
-  <?php 
-    $query = "SELECT * FROM tbl_stack ORDER BY rand() LIMIT 3";
-    $res = $viewUser->get_query($query);
-    while ($row = $res->fetch_assoc()) {
-      $img = $row['image'];
-      $title = $row['title'];
-      $id = $row['id'];
-
-  ?>
-  <div class="popular">
-    <img src="../<?php echo $img; ?>"><br>
-    <span class="tooltip"><a href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more about <?php echo $title; ?></a></span>
-    </div>
-  <?php
-    }
-  ?>
-    </div>
+    
     <div class="card">
       <h3>Follow Us</h3>
       <div class="icons">
@@ -637,6 +475,7 @@ span.onclick = function() {
       </div>
     </div>
   </div>
+  
 </div>
 
 

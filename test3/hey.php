@@ -10,6 +10,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+
+    <style>
+    .time-frame {
+    background-color: #000000;
+    color: #ffffff;
+    width: 300px;
+    font-family: Arial;
+}
+
+.time-frame > div {
+    width: 100%;
+    text-align: center;
+}
+
+#date-part {
+    font-size: 1.2em;
+}
+#time-part {
+    font-size: 2em;
+}
+    </style>
 </head>
 <body>
 
@@ -19,6 +40,8 @@
     <textarea id="m" name="" cols="30" rows="10" required></textarea>
     <p><input id="mybtn" type="submit" name="Submit"> <span id="status"></span></p>
 </form>
+
+
 
     <!-- <script>
 

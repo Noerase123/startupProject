@@ -88,7 +88,7 @@ include '../require/home_navbar.php';
 <div class="column-details">
     
     <div class="card" style="background-color: rgba(255, 255, 255, 0.8);border-radius:10px;">
-      <center><img src="../<?php echo $image; ?>" style="height:300px;"></center>
+      <center><img src="../<?php echo $image; ?>" style="width:100%;height:300px;"></center>
       
     </div>
     

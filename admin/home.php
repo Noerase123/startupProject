@@ -11,7 +11,30 @@ include '../config.php';
     <title>Test Website - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="main.js"></script>
+
+<style>
+.time-frame {
+    background-color: #000000;
+    color: #ffffff;
+    width: 300px;
+    font-family: Arial;
+}
+
+.time-frame > div {
+    width: 100%;
+    text-align: center;
+}
+
+#date-part {
+    font-size: 1.2em;
+}
+#time-part {
+    font-size: 2em;
+}
+</style>
+
 </head>
 <body>
 
@@ -22,7 +45,14 @@ include 'require/nav.php';
 
 <div class="container">
 <br>
+
+<div>
+<p style="float:left;margin-right:10px;font-size:20px;" id="date"></p>
+<p style="float:left;font-size:20px;" id="time"></p>
+</div><br><br><br>
+
 <h1>Dashboard</h1>
+
     <div class="content">
         <div class="row">
 
@@ -54,6 +84,45 @@ include 'require/nav.php';
 
     
 </div>
+
+<script>
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+if(dd<10) {
+  dd='0'+dd
+} 
+
+if(mm<10) {
+  mm='0'+mm
+} 
+
+today = mm+'/'+dd+'/'+yyyy;
+document.getElementById("date").innerHTML = today;
+var myVar=setInterval(function(){myTimer()},1000);
+
+function myTimer() {
+    var d = new Date();
+    document.getElementById("time").innerHTML = d.toLocaleTimeString();
+}
+</script>
+
+<!-- <script>
+    $(document).ready(function() {
+    var interval = setInterval(function() {
+        var momentNow = moment();
+        $('#date-part').html(momentNow.format('YYYY MMMM DD') + ' '
+                            + momentNow.format('dddd')
+                             .substring(0,3).toUpperCase());
+        $('#time-part').html(momentNow.format('A hh:mm:ss'));
+    }, 100);
+    
+    $('#stop-interval').on('click', function() {
+        clearInterval(interval);
+    });
+});
+</script> -->
     
 </body>
 </html>
