@@ -153,14 +153,61 @@ include '../require/home_navbar.php';
 <div class="parallax" style="background-image: url('../<?php echo $image2;?>');">
 
 <div class="row">
-  <div class="centercolumn">
-    <div class="card" style="background-color:rgb(255,255,255,0.6);">
-      <h1>More like this</h1>
-    </div>
+  <div class="centercolumn" style="background-color:rgb(255,255,255,0.6);width:100%;">
+    <h2>Product Ratings</h2>  
   </div>
+</div>
+
+<div class="row" style="margin-top:10px;overflow:auto;height:500px;">
+
+<div class="leftcolumn">
+  <p></p>
+</div>
+
+<div class="centercolumn">
+
+<div class="card">
+<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
+<h2>name <span>star star star star star </span></h2>
+<h5>Date Posted : june 2,2019</h5>
+<!-- <p>Some text..</p> -->
+<p>sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say ,
+   clean and nice amenities especially the pools i love their pools, its very clean. Most of all they 
+   allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly s
+</p>
+</div>
+<div class="card">
+<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
+<h2>name <span>star star star star star </span></h2>
+<h5>Date Posted : june 2,2019</h5>
+<!-- <p>Some text..</p> -->
+<p>sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say ,
+   clean and nice amenities especially the pools i love their pools, its very clean. Most of all they 
+   allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly s
+</p>
+</div>
+<div class="card">
+<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
+<h2>name <span>star star star star star </span></h2>
+<h5>Date Posted : june 2,2019</h5>
+<!-- <p>Some text..</p> -->
+<p>sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say ,
+   clean and nice amenities especially the pools i love their pools, its very clean. Most of all they 
+   allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly s
+</p>
+</div>
+
+
+
+  </div>
+  </div>
+  <div class="row">
+
+  <div class="centercolumn" style="background-color:rgb(255,255,255,0.6);width:100%;">
+      <h2>More like this</h2>
   </div>
 
-  <div style="overflow:hidden" class="row">
+  <div class="row">
     
     <?php
       $qry = "SELECT * FROM tbl_stack WHERE category = '$category' ORDER BY rand() LIMIT 4";
@@ -173,7 +220,7 @@ include '../require/home_navbar.php';
         $id = $row['id'];
       
     ?>
-    <div class="leftcolumn">
+    <div class="leftcolumn morelike">
       <div class="card" style="border-radius:10px;">
         <h2><?php echo $title; ?></h2>
         <h5>by: <?php echo $author; ?></h5>

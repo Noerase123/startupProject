@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include '../config.php';
 
 if (isset($_GET['add_review_success'])) {
@@ -121,7 +121,7 @@ foreach($res as $row) {
 
 <?php } 
 
-      if ($_SESSION['user'] == "John Isaac")
+      if (isset($_SESSION['user']))
       {
     ?>
 

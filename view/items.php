@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include '../config.php';
 
 $res = $viewUser->get_data("tbl_stack");
@@ -57,7 +57,7 @@ include '../require/home_navbar.php';
 
 <div class="row row2">
 
-<div class="leftcolumn">
+<div class="leftcolumn category">
     <div class="card">
       <!-- <h2>Categories</h2> -->
       <p id="btn1" class="Menu">>Categories (<?php echo $rows; ?>)</p>

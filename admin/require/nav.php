@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if($_SESSION["admin"]=="")
 {
     header("location:".ADMIN_URL);

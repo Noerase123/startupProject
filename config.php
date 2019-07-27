@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 // DOMAIN NAME OF THE WEBSITE----------
 define('BASE_URL','http://localhost/phpApi/startup/');

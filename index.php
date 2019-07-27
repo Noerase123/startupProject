@@ -39,12 +39,11 @@ include 'config.php';
 </head>
 <body>
 
-
-<div class="parallax" style="
+<div class="parallax" id="home" style="
   background-image: url('<?php echo $image1;?>');">
 
   <div class="header" id="header">
-    <h1 style="margin:15px 0px 15px 0px;"><a href="<?php echo BASE_URL; ?>index.php"><img src="<?php echo $hlogo; ?>" style="max-height:70px; max-width:300px;"></a></h1>
+    <h1 style="margin:15px 0px 15px 0px;"><img src="<?php echo $hlogo; ?>" style="max-height:70px; max-width:300px;"></h1>
   </div>
 
   <?php
@@ -52,13 +51,23 @@ include 'config.php';
     if (isset($_POST['login'])) {
       $username = $_POST['uname'];
       $password =  $_POST['pass'];
+      
+      $query = "SELECT firstname FROM tbl_user WHERE username='$username'";
+      $res = $viewUser->get_query($query);
+      foreach($res as $row){
+        $user = $row['firstname'];
+        $_SESSION['user'] = $user;
+      }
 
-      if ($loginUser->login($username,$password)) {
-        echo 'successfully login!';
+      $logged = $loginUser->login($username,$password);
+
+      if ($logged) {
+        header("location:".BASE_URL."view/items.php");
       }
     }
+      
 
-  ?>
+?>
 
   <div class="logincard">
     <div class="loginform">
@@ -77,6 +86,7 @@ include 'config.php';
 
     </div>
   </div>
+
 
 </div>
 
@@ -101,87 +111,29 @@ while ($row = $res->fetch_assoc()) {
     $nav_logo = $row['nav_logo'];
 
 ?>
-<div style="margin-bottom:100px;" class="topnav">
-    <div class="toggle">
-      <a style="margin:-10px 0px -10px 0px;" href="<?php echo BASE_URL; ?>view/index.php"><img src="<?php echo $nav_logo; ?>" style="height:50px; width:130px;"></a>
-      <div class="menu">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-      </div>
-    </div>
-    <div class="navmenu">
-    <a style="margin:-10px 0px -10px 0px;" href="<?php echo BASE_URL; ?>index.php"><img src="image/vitalis-preloader.png" style="height:50px; width:130px;"></a>
-  <button onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;font-size:16px;display:none;"><i class="fa fa-lock"></i> Login</button>
-
-
-  <a style="float:right;" href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
-  <a style="float:right;" href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo $nav3; ?></a>
-
-  <form class="search" method="GET">
-        <input type="text" placeholder="Search..." name="query">
-        <button type="submit" name="searchbtn" style="display:none;"><i class="fa fa-search"></i></button>
-  </form>
-
-  <?php 
-    if (isset($_GET['query']) || isset($_GET['searchbtn'])) {
-
-      header("location:".BASE_URL."view/items.php?query=".$_GET['query']."&searchbtn=");
-    }
-  ?>
+<div class="topnav">
+  <a style="margin:-10px 0px -10px 0px;" href="#home"><img src="<?php echo $nav_logo;?>" style="height:100%; width:100px;"></a>
+    <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
+    <div class="nav" id="nav">
+      
+  <a href="#items"><i class="fa fa-cart-plus"></i> <?php echo ucfirst($nav1); ?></a>
   
-  <a style="float:right;" href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo $nav2; ?></a>
-  <a style="float:right;" href="<?php echo BASE_URL; ?>view/items.php"><i class="fa fa-users"></i> <?php echo $nav1; ?></a>
-</div>
+  <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
+  <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+
+
+  <!-- <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user'] ; ?></a> -->
+
+  </div>
+
 </div>
 <!-- end of topnav -->
 
 <?php } ?>
 
-
-<!-- modal -->
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="" method="post">
-    <div class="imgcontainer">
-      <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
-      <h2>Login your account</h2>
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="password" required>
-        
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-      <br><br>
-      <button class="login" onclick="return login()"> Login </button>
-    </div>
-
-    <div class="container">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw"><a href="#">Forgot password?</a></span>
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-</script>
 <div class="row2">
 <!-- modal end -->
-  <div class="card3">
+  <div class="card3" id="items">
         <h2 style="background-image: url('<?php echo $image2?>');  width:100%;height:50px">Best Sellers in the Store</h2>
     </div>
 
@@ -211,7 +163,7 @@ window.onclick = function(event) {
 
     <div class="card">
         <h2><?php echo $title; ?></h2>
-        <a href="<?php echo BASE_URL.'view/product_details.php?id='.$id; ?>"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
+        <a href="#home"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
         <p>by : <?php echo $title_desc; ?></p>
     </div>
 
@@ -239,7 +191,7 @@ window.onclick = function(event) {
 
     <div class="card">
         <h2><?php echo $title; ?></h2>
-        <a href="<?php echo BASE_URL.'view/product_details.php?id='.$id; ?>"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
+        <a href="#home"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
         <p>by : <?php echo $title_desc; ?></p>
     </div>
 
@@ -270,7 +222,7 @@ window.onclick = function(event) {
 
     <div class="card">
         <h2><?php echo $title; ?></h2>
-        <a href="<?php echo BASE_URL.'view/product_details.php?id='.$id; ?>"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
+        <a href="#home"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
         <p>by : <?php echo $title_desc; ?></p>
     </div>
 
@@ -373,25 +325,17 @@ while($row = $res->fetch_assoc()) {
 
 
 <script>
-var slideIndex = 0;
-showSlides();
+var btn = document.getElementById('btn-nav');
+var nav = document.getElementById('nav');
 
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 5000); // Change image every 2 seconds
+btn.onclick = function() {
+    if (nav.style.display === "none"){
+        nav.style.display = "block";
+    } else {
+        nav.style.display = "none";
+    }
 }
+
 </script>
 
 

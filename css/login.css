@@ -11,6 +11,15 @@
     box-sizing: border-box;
   }
   
+input[type=submit] {
+  background-color: #888;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+}
+
   /* Extra styles for the cancel button */
   .cancelbtn {
     float: right;
@@ -96,6 +105,18 @@
   @keyframes animatezoom {
     from {transform: scale(0)} 
     to {transform: scale(1)}
+  }
+
+  @media screen and (max-width: 768px) {
+    .modal-content {
+      width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .modal-content {
+      width: 100%;
+    }
   }
   
   /* Change styles for span and cancel button on extra small screens */

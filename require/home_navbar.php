@@ -15,32 +15,48 @@ while ($row = $res->fetch_assoc()) {
     $nav_logo = $row['nav_logo'];
     $home_logo = $row['home_logo'];
 
+}
+
 ?>
 
 <div class="topnav">
-  <a style="margin:-10px 0px -10px 0px;" href="<?php echo BASE_URL; ?>index.php"><img src="../image/vitalis-preloader.png" style="height:100%; width:100px;"></a>
-    <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
-    <button onclick="document.getElementById('id01').style.display='block'" id="login" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
-    <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user" style="color:#fff;float:right;display:none;"><?php echo $_SESSION['user'] ; ?></a>
-    <div class="nav" id="nav">
+  <a style="margin:-10px 0px -10px 0px;" href="#header"><img src="../<?php echo $nav_logo;?>" style="height:100%; width:100px;"></a>
   
-  <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
-  <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+  <button class="btncat" id="btn-cat">Cat</button>
+    <?php
+      if (isset($_SESSION['user'])) {
+    ?>
+      <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
+      <?php } ?>
 
-  <form class="search" method="GET">
+    <button onclick="document.getElementById('id01').style.display='block'" id="login" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
+      
+    <form class="search" style="" method="GET">
         <input type="text" placeholder="Search..." name="query">
         <button type="submit" name="searchbtn" style="display:none;"><i class="fa fa-search"></i></button>
-  </form>
-  
-  <a href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
+    </form>
+
+
+    <div class="nav" id="nav">
+      
   <a href="<?php echo BASE_URL; ?>view/items.php"><i class="fa fa-cart-plus"></i> <?php echo ucfirst($nav1); ?></a>
+  <a href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
   
+  <?php if (isset($_SESSION['user'])) {?>
+  <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-cart-o"></i> View Cart </a>
+  <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> Checkout </a>
+  <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user'] ; ?></a>
+  <?php } else { ?>
+  <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
+  <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+  <?php } ?>
+
   </div>
 
 </div>
 <!-- end of topnav -->
 
-<?php }
+<?php 
 
     if (isset($_POST['login'])) {
       $uname = $_POST['uname']; 
@@ -58,12 +74,8 @@ while ($row = $res->fetch_assoc()) {
       if ($res) {
         ?>
         <script>
-          var login = document.getElementById("login");
-          var user = document.getElementById("user");
-          login.style.display = "none";
-          console.log("login button none");
-          user.style.display = "block";
-          console.log("user button none");
+          alert("you are logged in");
+          console.log("you are logged in");
         </script>
         <?php
 
