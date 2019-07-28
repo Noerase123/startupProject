@@ -22,20 +22,21 @@ while ($row = $res->fetch_assoc()) {
 <div class="topnav">
   <a style="margin:-10px 0px -10px 0px;" href="#header"><img src="../<?php echo $nav_logo;?>" style="height:100%; width:100px;"></a>
   
+  <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
   <button class="btncat" id="btn-cat">Cat</button>
     <?php
       if (isset($_SESSION['user'])) {
     ?>
-      <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
+  <a class="login-user" href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;float:right;">@<?php echo $_SESSION['user'] ; ?></a>
+      <?php } else {?>
+
+    <button class="nav-login" onclick="document.getElementById('id01').style.display='block'" id="login" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
       <?php } ?>
 
-    <button onclick="document.getElementById('id01').style.display='block'" id="login" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
-      
     <form class="search" style="" method="GET">
         <input type="text" placeholder="Search..." name="query">
         <button type="submit" name="searchbtn" style="display:none;"><i class="fa fa-search"></i></button>
     </form>
-
 
     <div class="nav" id="nav">
       
@@ -43,12 +44,13 @@ while ($row = $res->fetch_assoc()) {
   <a href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
   
   <?php if (isset($_SESSION['user'])) {?>
-  <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-cart-o"></i> View Cart </a>
-  <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> Checkout </a>
+  <a href="<?php echo BASE_URL; ?>view/cart.php"><i class="fa fa-cart-o"></i> View Cart </a>
+  <a href="<?php echo BASE_URL; ?>view/checkout.php"><i class="fa fa-heart"></i> Checkout </a>
   <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user'] ; ?></a>
   <?php } else { ?>
   <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
   <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+  <button class="res-nav-login" onclick="document.getElementById('id01').style.display='block'" id="login" href="#"A><i class="fa fa-lock"></i> Login</button>
   <?php } ?>
 
   </div>
@@ -72,13 +74,8 @@ while ($row = $res->fetch_assoc()) {
       $res = $loginUser->login($uname,$pass);
 
       if ($res) {
-        ?>
-        <script>
-          alert("you are logged in");
-          console.log("you are logged in");
-        </script>
-        <?php
-
+        header("location:".BASE_URL."view/community.php");
+        exit;
       }
     }
 

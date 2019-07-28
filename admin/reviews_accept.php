@@ -51,7 +51,7 @@ include 'require/nav.php';
 
             <div style="padding: 20px;float:left;">
                 
-                <div style="padding:10px;width:50%;background-color:#ddd;">
+                <div style="padding:10px;width:1000px;background-color:#ddd;">
                 <h4>Message : </h4> <?php echo $review; ?>
                 </div>
                 

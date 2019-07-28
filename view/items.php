@@ -420,7 +420,7 @@ span.onclick = function() {
   
   </div>
   
-  <div class="leftcolumn" id="rightcollapse">
+  <div class="leftcolumn category">
 
 <div class="card">
       <h3>Popular Post</h3>

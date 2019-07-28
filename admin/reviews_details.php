@@ -38,7 +38,7 @@ include 'require/nav.php';
     <br>
 <h1><?php echo $name; ?></h1>
 
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'reviews.php';?>">Reviews</a> > <?php echo $name; ?></h4></div>
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'review_pending.php';?>">Reviews Pending</a> > <?php echo $name; ?></h4></div>
 
     <div class="content">
         <div class="row">
@@ -51,8 +51,8 @@ include 'require/nav.php';
 
             <div style="padding: 20px;float:left;">
                 
-                <div style="padding:10px;width:50%;background-color:#ddd;">
-                <h4>Message : </h4> <?php echo $review; ?>
+                <div style="padding:10px;width:1000px;background-color:#ddd;">
+                <h4>Message : </h4> <p><?php echo $review; ?></p>
                 </div>
                 
             </div>

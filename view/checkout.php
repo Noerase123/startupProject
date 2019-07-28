@@ -128,11 +128,11 @@ foreach($res as $row) {
     <form action="" method="post">
     
     <div class="card">
-      <h2><input type="text" name="name" placeholder="Write your Subject..." id=""></h2>
+      <h2><input type="text" name="name" placeholder="Write your name..." id=""></h2>
 
       <!-- <p><input type="text" name="some_text" placeholder="Write your subject..." id=""></p> -->
 
-      <p><textarea name="desc" id="" cols="30" placeholder="Tell us about your Thoughts..." rows="10"></textarea></p>
+      <p><textarea name="desc" id="" cols="30" placeholder="Tell us about your thoughts..." rows="10"></textarea></p>
 
       <input style="width:100%;padding:10px;border: 1px solid #000;background-color:#ddd" type="submit" name="submit" value="Send Message">
 

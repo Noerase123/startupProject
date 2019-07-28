@@ -1,10 +1,10 @@
 <?php
 
-session_abort();
+include '../config.php';
 session_destroy();
 
-?>
+header("location:".BASE_URL."view/items.php");
 
-<script>
-    window.location = "http://localhost/phpApi/startup/";
-</script>
+// header("refresh:1");
+exit;
+?>
