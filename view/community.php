@@ -134,7 +134,7 @@ foreach($res as $row) {
 
       <p><textarea name="desc" id="" cols="30" placeholder="Tell us about your Thoughts..." rows="10"></textarea></p>
 
-      <input style="width:100%;padding:10px;border: 1px solid #000;background-color:#ddd" type="submit" name="submit" value="Send Message">
+      <input style="width:100%;padding:10px;border: 1px solid #000;background-color:#ddd;color:#000;" type="submit" name="submit" value="Send Message">
 
     </div>
     

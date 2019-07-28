@@ -88,96 +88,55 @@ include '../require/home_navbar.php';
 
 <div class="row">
 
-  <div class="leftcolumn">
+  <div class="leftcolumn" style="width:100%;">
+   <div class="card" style="background-color:rgba(255,255,255,0.8);">
+    <h1>View Cart</h1>
+   </div>
+  </div>
+
+  <div class="leftcolumn" style="width:15%;">
   <p></p>
   </div>
 
-  <div class="column-content">
-    
-<?php 
-$tblbl = "tbl_reviews";
-
-$res = $viewUser->get_data($tblbl);
-foreach($res as $row) {
-  
-  $title = $row['name'];
-  $desc = $row['description'];
-  $datee = $row['date_created'];
-
-  $date = $viewUser->datetime($datee);
-?>
+  <div class="column-content" style="width:70%;">
     
     <div class="card">
-
-      <img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
-      <h2><?php echo $title; ?></h2>
-
-      <h5>Date Posted : <?php echo $date; ?></h5>
-
-      <!-- <p>Some text..</p> -->
-      <p><?php echo $desc; ?></p>
-
+    <img src="../image/carousel-3.jpg" style="float:left;height:130px;width:140px;margin-right:10px;" alt="">
+      <h3>Title <small>by: George Bush</small></h3>
+      <p>Price: P500</p>
+      <p>Quantity: 1 piece</p>
     </div>
 
-<?php } 
-
-      if (isset($_SESSION['user']))
-      {
-    ?>
-
-    <form action="" method="post">
+    <div class="card" style="height:170px;">
     
-    <div class="card">
-      <h2><input type="text" name="name" placeholder="Write your name..." id=""></h2>
-
-      <!-- <p><input type="text" name="some_text" placeholder="Write your subject..." id=""></p> -->
-
-      <p><textarea name="desc" id="" cols="30" placeholder="Tell us about your thoughts..." rows="10"></textarea></p>
-
-      <input style="width:100%;padding:10px;border: 1px solid #000;background-color:#ddd" type="submit" name="submit" value="Send Message">
+    <div style="float:left;">
+      <h4>Amount :</h4>
+      <h4>Services charge :</h4>
+      <h4 style="background-color:orange; width:740%;">Total Amount:</h4>
+    </div>
+    <div style="float:right;">
+      <h4>P500.00</h4>
+      <h4>P150.00</h4>
+      <h4>P650.00</h4>
+    </div>
 
     </div>
-    
-    </form>
+    <div class="checkout">
+    <a href="<?php echo BASE_URL.'view/checkout.php';?>">Checkout</a>
+    </div>
 
-      <?php } ?>
-    
-  
   </div>
 
   </div>
 
+<div style="height:200px;"></div>
 
 
 <?php 
 include '../require/footer.php';
 ?>
 
-
-<script>
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 5000); // Change image every 2 seconds
-}
-</script>
-
-
-</div>
+</div><!-- parallax here -->
 
 </body>
 </html>

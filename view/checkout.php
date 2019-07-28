@@ -88,64 +88,35 @@ include '../require/home_navbar.php';
 
 <div class="row">
 
-  <div class="leftcolumn">
-  <p></p>
+  <div class="leftcolumn" style="width:100%;">
+  <div class="card" style="background-color:rgba(255,255,255,0.8)">
+  <h2>Checkout</h2>
+  </div>
   </div>
 
-  <div class="column-content">
-    
-<?php 
-$tblbl = "tbl_reviews";
-
-$res = $viewUser->get_data($tblbl);
-foreach($res as $row) {
-  
-  $title = $row['name'];
-  $desc = $row['description'];
-  $datee = $row['date_created'];
-
-  $date = $viewUser->datetime($datee);
-?>
-    
-    <div class="card">
-
-      <img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
-      <h2><?php echo $title; ?></h2>
-
-      <h5>Date Posted : <?php echo $date; ?></h5>
-
-      <!-- <p>Some text..</p> -->
-      <p><?php echo $desc; ?></p>
-
+  <div class="column-content" style="width:48%;">
+    <div class="card" style="background-color:rgba(255,255,255,0.8)">
+      <h3>Payment</h3>
+      <div class="card">
+        <h4>Total: P650.00</h4>
+      </div>
     </div>
+  </div>
 
-<?php } 
-
-      if (isset($_SESSION['user']))
-      {
-    ?>
-
-    <form action="" method="post">
-    
+  <div class="column-content" style="width:48%;float:right;">
     <div class="card">
-      <h2><input type="text" name="name" placeholder="Write your name..." id=""></h2>
-
-      <!-- <p><input type="text" name="some_text" placeholder="Write your subject..." id=""></p> -->
-
-      <p><textarea name="desc" id="" cols="30" placeholder="Tell us about your thoughts..." rows="10"></textarea></p>
-
-      <input style="width:100%;padding:10px;border: 1px solid #000;background-color:#ddd" type="submit" name="submit" value="Send Message">
-
-    </div>
-    
-    </form>
-
-      <?php } ?>
-    
-  
+      <h3>Methods of Payments</h3>
+      <div class="card">
+      <h4>Cash on Delivery</h4>
+      </div>
+      <div class="card">
+      <h4>Credit/Debit Card</h4>
+      </div>
+    </div> 
   </div>
 
-  </div>
+
+</div>
 
 
 
@@ -154,27 +125,6 @@ include '../require/footer.php';
 ?>
 
 
-<script>
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 5000); // Change image every 2 seconds
-}
-</script>
 
 
 </div>
