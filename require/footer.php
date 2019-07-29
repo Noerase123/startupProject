@@ -128,3 +128,17 @@ btn.onclick = function() {
       }
     }
   </script>
+
+  <script>
+    var qty = document.getElementById("qty<?php echo $qty_id; ?>");
+    var plusbtn = document.getElementById("plusbtn<?php echo $qty_id; ?>");
+    var minusbtn = document.getElementById("minusbtn<?php echo $qty_id; ?>");
+
+    plusbtn.onclick = function() {
+      qty.value++;
+    }
+    minusbtn.onclick = function() {
+      qty.value--;
+    }
+    
+  </script>

@@ -45,6 +45,7 @@ $table = "tbl_parallax";
           
         }
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -94,11 +95,43 @@ include '../require/home_navbar.php';
   </div>
   </div>
 
+  <?php
+    $res = $viewUser->get_data("tbl_cart");
+    $charge = 50;
+    $count = $res->num_rows;
+    $totcharge_ = $charge * $count;
+    $totcharges = number_format($totcharge_,2);
+    
+    $query2 = "SELECT sum(price) FROM tbl_cart";
+    $res = $viewUser->get_query($query2);
+    $row = $res->fetch_assoc();
+    $price_ = $row['sum(price)'];
+    $total = number_format($price_,2);
+
+    $total_price_ = $price_ + $totcharge_;
+    $ptotal = number_format($total_price_, 2);
+    ?>
+
   <div class="column-content" style="width:48%;">
     <div class="card" style="background-color:rgba(255,255,255,0.8)">
       <h3>Payment</h3>
       <div class="card">
-        <h4>Total: P650.00</h4>
+        <h3>(<?php echo $count > 0 ? $count : '0' ;?> item(s))</h3>
+        <h4>Total: P<?php
+        if (isset($_GET['id'])) {
+          $get_prod = $_GET['id'];
+          $get_id = array('id' => $get_prod);
+          $res = $viewUser->select_where("tbl_stack",$get_id);
+          foreach($res as $row) {
+            $main = $row['price'];
+            $price__ = $main + $charge;
+            $res_tot = number_format($price__,2);
+            echo $res_tot;
+          }
+        } else {
+        echo $ptotal; 
+        }
+        ?></h4>
       </div>
     </div>
   </div>
@@ -111,6 +144,9 @@ include '../require/home_navbar.php';
       </div>
       <div class="card">
       <h4>Credit/Debit Card</h4>
+      </div>
+      <div class="card">
+      <h4>Paymaya</h4>
       </div>
     </div> 
   </div>

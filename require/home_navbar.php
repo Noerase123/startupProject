@@ -17,6 +17,10 @@ while ($row = $res->fetch_assoc()) {
 
 }
 
+$cart = $viewUser->get_data("tbl_cart");
+
+$num = $cart->num_rows;
+
 ?>
 
 <div class="topnav">
@@ -44,7 +48,7 @@ while ($row = $res->fetch_assoc()) {
   <a href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
   
   <?php if (isset($_SESSION['user'])) {?>
-  <a href="<?php echo BASE_URL; ?>view/cart.php"><i class="fa fa-cart-o"></i> View Cart </a>
+  <a href="<?php echo BASE_URL; ?>view/cart.php"><i class="fa fa-cart-o"></i> Cart(<?php echo $num;?>) </a>
   <a href="<?php echo BASE_URL; ?>view/checkout.php"><i class="fa fa-heart"></i> Checkout </a>
   <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user'] ; ?></a>
   <?php } else { ?>

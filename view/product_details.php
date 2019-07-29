@@ -114,36 +114,19 @@ include '../require/home_navbar.php';
     ?>
     
     <div class="bg-dark">
-      <button class="order" id='btnbuy<?php echo $id; ?>'>Order now</button>
-      <button class="cart" id='btncart<?php echo $id; ?>'>Add to Cart</button>
+      <form action="" method="post">
+        <input class="order" id="btnbuy" type="submit" name="buy" value="Buy now">
+        <input class="cart" id="btncart" type="submit" name="cart" value="Add to Cart">
+      </form>
     </div>
 
     <?php
     }
+    include '../require/ajax/cart_add.php';
     ?>
     
   </div>
     
-  <script>
-    var content = {
-      buy: document.getElementById('btnbuy<?php echo $id; ?>'),
-      cart: document.getElementById('btncart<?php echo $id; ?>')
-    };
-
-    content.cart.onclick = function() {
-      var alrt = 'Product ' +<?php echo $id; ?> +' has been added to cart!';
-      console.log(alrt);
-      alert(alrt);
-    }
-
-    content.buy.onclick = function() {
-      var alrt = 'New product sold! <?php echo $id;?>';
-      console.log(alrt);
-      alert(alrt);
-    }
-  </script>
-
-
   </div>
 
   <br><br>
@@ -158,49 +141,51 @@ include '../require/home_navbar.php';
   </div>
 </div>
 
-<div class="row" style="margin-top:10px;overflow:auto;height:500px;">
+<div class="row">
 
-<div class="leftcolumn">
-  <p></p>
+<div class="leftcolumn" style="width:50%;margin-top:10px;overflow:auto;height:500px;">
+
+<?php
+  $tbl = "tbl_prod_review";
+  $res = $viewUser->get_data($tbl);
+  foreach($res as $row) {
+    $name = $row['name'];
+    $title = $row['title'];
+    $message = $row['description'];
+
+?>
+
+<div class="card">
+<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
+<h2><?php echo $name;?> <span>(* * * * *) </span></h2>
+<h5>Date Posted : hours ago</h5>
+<!-- <p>Some text..</p> -->
+<p><?php echo $message; ?></p>
+</div>
+
+  <?php } ?>
+
 </div>
 
 <div class="centercolumn">
 
-<div class="card">
-<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
-<h2>name <span>star star star star star </span></h2>
-<h5>Date Posted : june 2,2019</h5>
-<!-- <p>Some text..</p> -->
-<p>sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say ,
-   clean and nice amenities especially the pools i love their pools, its very clean. Most of all they 
-   allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly s
-</p>
-</div>
-<div class="card">
-<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
-<h2>name <span>star star star star star </span></h2>
-<h5>Date Posted : june 2,2019</h5>
-<!-- <p>Some text..</p> -->
-<p>sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say ,
-   clean and nice amenities especially the pools i love their pools, its very clean. Most of all they 
-   allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly s
-</p>
-</div>
-<div class="card">
-<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
-<h2>name <span>star star star star star </span></h2>
-<h5>Date Posted : june 2,2019</h5>
-<!-- <p>Some text..</p> -->
-<p>sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say ,
-   clean and nice amenities especially the pools i love their pools, its very clean. Most of all they 
-   allow my Fur Babies to come .... they have fun and enjoyed the place too and for that i can truly s
-</p>
-</div>
+    <div class="card rate" style="background-color:rgba(255,255,255,0.8);height:490px;">
+    <h3>Rate the product</h3>
+      <form action="" method="post">
+        <input type="text" name="title" placeholder="Write your Subject" id=""><br>
+        <textarea name="description" id="desc" cols="30" rows="10" placeholder="Message here..."></textarea>
+        <input type="submit" value="Submit" name="submit_msg">
+      </form>
 
+      <?php
+      include '../require/ajax/prod_review.php';
+      ?>
 
+    </div>
+  </div>
 
   </div>
-  </div>
+  
   <div class="row">
 
   <div class="centercolumn" style="background-color:rgb(255,255,255,0.6);width:100%;">

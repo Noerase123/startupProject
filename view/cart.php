@@ -90,7 +90,7 @@ include '../require/home_navbar.php';
 
   <div class="leftcolumn" style="width:100%;">
    <div class="card" style="background-color:rgba(255,255,255,0.8);">
-    <h1>View Cart</h1>
+    <h1><i class="fa fa-cart-plus"></i>Cart</h1>
    </div>
   </div>
 
@@ -99,26 +99,92 @@ include '../require/home_navbar.php';
   </div>
 
   <div class="column-content" style="width:70%;">
+
+    <div class="card">
+
+      <div>
+        <h3>Item Details <span style="margin-right:35%;"></span> 
+            Price <span style="margin-right:13%;"></span>
+            Quantity <span style="margin-right:12%;"></span>
+            Total</h3>
+      </div>
+
+    </div>
     
     <div class="card">
-    <img src="../image/carousel-3.jpg" style="float:left;height:130px;width:140px;margin-right:10px;" alt="">
-      <h3>Title <small>by: George Bush</small></h3>
-      <p>Price: P500</p>
-      <p>Quantity: 1 piece</p>
+
+    <?php
+      $query = "SELECT * FROM tbl_cart ORDER BY id DESC";
+
+      $res = $viewUser->get_query($query);
+
+      $exist = $res->num_rows;
+
+      if ($exist > 0) {
+
+      foreach($res as $row) {
+        $title = $row['title'];
+        $author = $row['title_desc'];
+        $price = $row['price'];
+        $qty_id = $row['id'];
+
+        $pricee = number_format($price,2);
+
+    ?>
+    
+    <div class="cart-gap">
+      <img src="../image/carousel-3.jpg" style="float:left;height:130px;width:140px;margin-right:10px;" alt="">
+
+      <table>
+        
+        <tr>
+          <th style="width:35%;height:130px;"><h3><?php echo $title.'<br><small>by: '.$author.'</small>'; ?></h3></th>
+          <th><h3><?php echo 'P'.$pricee; ?></h3></th>
+          <th><button style="font-size:25px;font-weight:bold;padding:5px;width:50px;" id="minusbtn<?php echo $qty_id; ?>">-</button> 
+                    <input type="number" name="qty" id="qty<?php echo $qty_id; ?>" value="1" style="width:20%;padding:1px;font-size:25px;"> 
+                   <button style="font-size:25px;font-weight:bold;padding:5px;width:50px;" id="plusbtn<?php echo $qty_id; ?>">+</button></th>
+          <th><h3><?php echo 'P'.$pricee; ?></h3></th>
+          <th><a style="padding:10px;" href="<?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?>">Delete</a></th>
+        </tr>
+
+      </table>
+
+      <hr>
+    </div>
+
+    <?php } } else { echo '<h2>No Item purchase.</h2>' ;} ?>
+  
     </div>
 
     <div class="card" style="height:170px;">
     
+    <?php
+    $charge = 50;
+    $count = $res->num_rows;
+    $totcharge_ = $charge * $count;
+    $totcharges = number_format($totcharge_,2);
+    
+    $query2 = "SELECT sum(price) FROM tbl_cart";
+    $res = $viewUser->get_query($query2);
+    $row = $res->fetch_assoc();
+    $price_ = $row['sum(price)'];
+    $total = number_format($price_,2);
+
+    $total_price_ = $price_ + $totcharge_;
+    $ptotal = number_format($total_price_, 2);
+    ?>
+
     <div style="float:left;">
-      <h4>Amount :</h4>
+      <h4>Sub Amount :</h4>
       <h4>Services charge :</h4>
       <h4 style="background-color:orange; width:740%;">Total Amount:</h4>
     </div>
     <div style="float:right;">
-      <h4>P500.00</h4>
-      <h4>P150.00</h4>
-      <h4>P650.00</h4>
+      <h4>P<?php echo $total; ?></h4>
+      <h4>P<?php echo $totcharges; ?></h4>
+      <h4>P<?php echo $ptotal;?></h4>
     </div>
+
 
     </div>
     <div class="checkout">
