@@ -58,7 +58,7 @@ include 'require/nav.php';
       <h4><input type="text" name="title" id="title" ></h4>
       
       <h4>Author(s) :</h4><small style="color:red;" id="title_desc_error"></small>
-      <h4><input type="text" name="titledesc" id="title_desc" ></h4>
+      <h4><input type="text" name="title_desc" id="title_desc" ></h4>
       
       <?php
     $query = "SELECT * FROM tbl_ecommerce_config WHERE activated = '1'";
@@ -89,6 +89,8 @@ include 'require/nav.php';
         <input class="submit" type="submit" name="create" id="addbtn" value="Create">
         <a href="<?php echo ADMIN_URL; ?>products.php" style="text-decoration:none;" name="cancel">Cancel</a>
       </div>
+
+      <div class="response"></div>
     </form>
       </div>
         
@@ -103,29 +105,40 @@ include 'require/nav.php';
 
 <script>
 
-    var form = $('#form');
-    
-    $('#addbtn').on('click', () => {
-
-        form.submit(function(e)) {
-        $(this).attr("disabled","disabled");
-        e.preventDefault();
-            
-                $.ajax({
-                    type: 'POST',
-                    url: "ajax/create.php",
-                    data: form.serialize(),
-                    success: function(data) {
-            
-                    $(".response").text(data.content);
-                    },
-                    error: function(data) {
-
-                    $(".response").text("An error occurred");
-                    }
-                });
-        });
-    });
+$(document).ready(function(){
+  $("#addbtn").click(function(){
+    var title = $("#title").val();
+    var title_desc = $("#title_desc").val();
+    var cat = $("#cat").val();
+    var price = $("#price").val();
+    var quantity = $("#quantity").val();
+    var image = $("#image").val();
+    var sometext = $("#sometext").val();
+    var desc = $("#desc").val();
+// Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'title='+ title + '&title_desc='+ title_desc + '&cat='+ cat + '&price='+ price + '&quantity='+ quantity
+    + '&image='+ image + '&sometext='+ sometext + '&desc='+ desc;
+    console.log(dataString);
+    if(title==''||title_desc==''||cat==''||price==''||quantity==''||sometext==''||desc=='');
+    {
+        $(".response").text("Please input remaining data");
+    }
+    else
+    {
+// AJAX Code To Submit Form.
+        $.ajax({
+        type: "POST",
+        url: "<?php echo ADMIN_URL; ?>ajax/create.php",
+        data: dataString,
+        cache: false,
+        success: function(result){
+            $(".response").text(result);
+    }
+});
+}
+return false;
+});
+});
 
 </script>
     

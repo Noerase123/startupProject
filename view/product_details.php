@@ -50,11 +50,11 @@ $table = "tbl_parallax";
     <link rel="stylesheet" type="text/css" media="screen" href="../css/carousel.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../css/login.css" />
     <script src="main.js"></script>
-    <script src="jquery-3.4.0.min.js"></script>
+    <!-- <script src="jquery-3.4.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    
 </head>
 <body>
 
@@ -114,15 +114,16 @@ include '../require/home_navbar.php';
     ?>
     
     <div class="bg-dark">
-      <form action="" method="post">
+      <form action="" method="post" id="bc_form">
         <input class="order" id="btnbuy" type="submit" name="buy" value="Buy now">
         <input class="cart" id="btncart" type="submit" name="cart" value="Add to Cart">
+        <span class=".response"></span>
       </form>
     </div>
 
     <?php
     }
-    include '../require/ajax/cart_add.php';
+    // include '../require/ajax/cart_add.php';
     ?>
     
   </div>
@@ -170,12 +171,10 @@ if ($_SESSION['user'] == $name) {
 <img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
 <h2><?php echo $name;?> 
 <span>( <?php 
-for($i=0;$i<$star_;$i++) {
-  if ($star_ < 5){
-    for ($i=0; $i < $star_; $i++) { 
-      echo '<img src="../image/Star.png" alt="" style="height:20px;width:30px;">'; # code...
+if ($star_ >= 5){
+    for($i=0;$i<5;$i++) { 
+      echo '<img src="../image/Star.png" alt="" style="height:20px;width:30px;">';
     }
-  }
 } ?> <small>ratings )</small> </span></h2>
 <h5>Date Posted : hours ago</h5>
 <p><?php echo $title;?></p>

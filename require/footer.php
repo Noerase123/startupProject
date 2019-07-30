@@ -46,6 +46,17 @@ while($row = $res->fetch_assoc()) {
 </div>
 
 
+    <script src="<?php echo BASE_URL;?>js/jquery.code.js"></script>
+    <script src="<?php echo BASE_URL;?>js/jquery-1.11.1.js"></script>
+    <script src="<?php echo BASE_URL;?>js/jquery-1.12.3.js"></script>
+    <script src="<?php echo BASE_URL;?>js/jquery.min.js"></script>
+    <script src="<?php echo BASE_URL;?>js/jquery.js"></script>
+    
+    <script src="<?php echo BASE_URL; ?>js/jquery.validate.min.js"></script>
+
+    <link href="<?php echo BASE_URL; ?>css/font-awesome.css" rel="stylesheet" type="text/css" /> 
+
+
 
 <script>
 // Get the modal
@@ -60,6 +71,69 @@ window.onclick = function(event) {
 
 </script>
 <!-- modal end -->
+
+<script>
+
+$(document).ready(function(){
+  $("#submit").click(function(){
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var contact = $("#contact").val();
+// Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'name1='+ name + '&email1='+ email + '&password1='+ password + '&contact1='+ contact;
+    console.log(dataString);
+    if(name==''||email==''||password==''||contact=='')
+    {
+        $(".response").text("Please input remaining data");
+    }
+    else
+    {
+// AJAX Code To Submit Form.
+        $.ajax({
+        type: "POST",
+        url: "hi.php",
+        data: dataString,
+        cache: false,
+        success: function(result){
+            $(".response").text(result);
+    }
+});
+}
+return false;
+});
+});
+
+</script>
+
+<script>
+
+var form = $('#bc_form');
+
+$('#btncart').on('click', () => {
+    form.submit(function(e)) {
+    $(this).attr("disabled","disabled");
+    e.preventDefault();
+        
+            $.ajax({
+                type: 'POST',
+                url: "<?php echo BASE_URL;?>require/ajax/cart_add.php",
+                data: form.serialize(),
+                success: function(data) {
+        
+                $(".response").text(data.content);
+                },
+                error: function(data) {
+
+                $(".response").text("An error occurred");
+                }
+            });
+    });
+});
+
+</script>
+
+
 
 <script>
 var btn = document.getElementById('btn-nav');

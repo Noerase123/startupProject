@@ -18,7 +18,7 @@
 
     $insert_array = array(
       'title'         => $sqlUser->escapeString($_POST['title']),
-      'title_desc'    => $sqlUser->escapeString($_POST['titledesc']),
+      'title_desc'    => $sqlUser->escapeString($_POST['title_desc']),
       'image'         => $sqlUser->escapeString($image),
       'some_text'     => $sqlUser->escapeString($_POST['sometext']),
       'description'   => $sqlUser->escapeString($_POST['desc']),
@@ -30,6 +30,7 @@
     if ($sqlUser->create("tbl_stack", $insert_array))
     {
       header("location:".ADMIN_URL."products.php?created=1");
+      // echo "Product added successfully!";
     }
     else {
         echo "sorry please try again.";

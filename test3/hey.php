@@ -1,88 +1,67 @@
+<?php 
+    include '../config.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+<title>Submit Form Using AJAX and jQuery</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- <script src="jquery-1.9.1.slim.js"></script> -->
 
-    <style>
-    .time-frame {
-    background-color: #000000;
-    color: #ffffff;
-    width: 300px;
-    font-family: Arial;
-}
-
-.time-frame > div {
-    width: 100%;
-    text-align: center;
-}
-
-#date-part {
-    font-size: 1.2em;
-}
-#time-part {
-    font-size: 2em;
-}
-    </style>
 </head>
 <body>
+<div id="mainform">
+    <h2>Submit Form Using AJAX and jQuery</h2> <!-- Required div Starts Here -->
+    <div id="form">
+    <h3>Fill Your Information !</h3>
+        <div>
+            <label>Name :</label>
+                <input id="name" type="text">
+            <label>Email :</label>
+                <input id="email" type="text">
+            <label>Password :</label>
+                <input id="password" type="password">
+            <label>Contact No :</label>
+                <input id="contact" type="text">
+            <input id="submit" type="button" value="Submit"><br>
+            <span class="response"></span>
+        </div>
+    </div>
+</div>
 
-<form id="my_form" onsubmit="submitForm(); return false;" action="">
-    <p><input id="n" type="text" placeholder="Name..." required></p>
-    <p><input id="e" type="email" placeholder="Email..." required></p>
-    <textarea id="m" name="" cols="30" rows="10" required></textarea>
-    <p><input id="mybtn" type="submit" name="Submit"> <span id="status"></span></p>
-</form>
+<script>
 
+$(document).ready(function(){
+  $("#submit").click(function(){
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var contact = $("#contact").val();
+// Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'name1='+ name + '&email1='+ email + '&password1='+ password + '&contact1='+ contact;
+    console.log(dataString);
+    if(name==''||email==''||password==''||contact=='')
+    {
+        $(".response").text("Please input remaining data");
+    }
+    else
+    {
+// AJAX Code To Submit Form.
+        $.ajax({
+        type: "POST",
+        url: "hi.php",
+        data: dataString,
+        cache: false,
+        success: function(result){
+            $(".response").text(result);
+    }
+});
+}
+return false;
+});
+});
 
-
-    <!-- <script>
-
-        const form = {
-            username: document.getElementById('uname'),
-            password: document.getElementById('pw'),
-            submit: document.getElementById('btn_send'),
-            response: document.getElementById('response')
-        };
-
-        form.submit.addEventListener('click', () => {
-            const request = new XMLHttpRequest();
-
-            request.onload = () => {
-                let responseObject = null;
-
-                try {
-                    responseObject = JSON.parse(request.responseText);
-                }
-                catch(e) {
-                    console.error("could not pass JSON");
-                }
-
-                if (responseObject){
-                    handleResponse(responseObject);
-                }
-            };
-
-            const requestData = 'username=${form.username.value}&password=${form.password.value}';
-            console.log(requestData);
-
-            request.open('post','hi.php');
-            request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            request.send(requestData);
-        });
-
-        function handleResponse(responseObject) {
-            console.log(responseObject);
-        }
-
-    </script>  -->
+</script>
 
 </body>
 </html>

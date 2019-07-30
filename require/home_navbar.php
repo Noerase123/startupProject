@@ -34,7 +34,7 @@ $num = $cart->num_rows;
   <a class="login-user" href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;float:right;">@<?php echo $_SESSION['user'] ; ?></a>
       <?php } else {?>
 
-    <button class="nav-login" onclick="document.getElementById('id01').style.display='block'" id="login" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
+    <button class="nav-login" onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
       <?php } ?>
 
     <form class="search" style="" method="GET">
@@ -62,28 +62,7 @@ $num = $cart->num_rows;
 </div>
 <!-- end of topnav -->
 
-<?php 
 
-    if (isset($_POST['login'])) {
-      $uname = $_POST['uname']; 
-      $pass = $_POST['psw'];
-
-      $query = "SELECT firstname FROM tbl_user WHERE username='$uname'";
-      $res = $viewUser->get_query($query);
-      foreach($res as $row){
-        $user = $row['firstname'];
-        $_SESSION['user'] = $user;
-      }
-
-      $res = $loginUser->login($uname,$pass);
-
-      if ($res) {
-        header("location:".BASE_URL."view/items.php");
-        exit;
-      }
-    }
-
-?>
 
 <!-- modal -->
 <div id="id01" class="modal">
@@ -105,7 +84,7 @@ $num = $cart->num_rows;
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
       <br><br>
-      <input type="submit" value="Login" name="login"><br><br>
+      <input type="submit" value="Login" id="login" name="login"><br><br>
       <input type="submit" value="Sign Up" name="register">
       <!-- <button class="login" type="submit" onclick="return login()"> Login </button> -->
     </div>
