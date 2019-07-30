@@ -146,33 +146,55 @@ include '../require/home_navbar.php';
 <div class="leftcolumn" style="width:50%;margin-top:10px;overflow:auto;height:500px;">
 
 <?php
-  $tbl = "tbl_prod_review";
-  $res = $viewUser->get_data($tbl);
-  foreach($res as $row) {
-    $name = $row['name'];
-    $title = $row['title'];
-    $message = $row['description'];
+    // $view = $viewUser->select_where("tbl_prod_review", $get_id);
 
+  $tbl = "SELECT * FROM tbl_prod_review WHERE ref_id = $get_id ORDER BY id DESC";
+  $res = $viewUser->get_query($tbl);
+  $num = $res->num_rows;
+  if ($num > 0) {
+  foreach($res as $row) {
+    $name = $row['rev_name'];
+    $title = $row['rev_title'];
+    $message = $row['message'];
+    $star_ = $row['rev_star'];
 ?>
 
 <div class="card">
+<?php
+if (isset($_SESSION['user'])) {
+if ($_SESSION['user'] == $name) {
+?>
+<a href="">Edit</a>
+<a href="../require/ajax/prev_delete.php?=<?php echo $get_id; ?>">Delete </a>
+<?php } } ?>
 <img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
-<h2><?php echo $name;?> <span>(* * * * *) </span></h2>
+<h2><?php echo $name;?> 
+<span>( <?php 
+for($i=0;$i<$star_;$i++) {
+  if ($star_ < 5){
+    for ($i=0; $i < $star_; $i++) { 
+      echo '<img src="../image/Star.png" alt="" style="height:20px;width:30px;">'; # code...
+    }
+  }
+} ?> <small>ratings )</small> </span></h2>
 <h5>Date Posted : hours ago</h5>
-<!-- <p>Some text..</p> -->
+<p><?php echo $title;?></p>
 <p><?php echo $message; ?></p>
 </div>
 
-  <?php } ?>
+  <?php } } else { echo '<h2 style="color:#fff;">No Product review at the moment... </h2>';} ?>
 
 </div>
-
+<?php
+if (isset($_SESSION['user'])) {
+?>
 <div class="centercolumn">
 
     <div class="card rate" style="background-color:rgba(255,255,255,0.8);height:490px;">
     <h3>Rate the product</h3>
       <form action="" method="post">
         <input type="text" name="title" placeholder="Write your Subject" id=""><br>
+        <label>How many star you like to give? </label><input style="width:10%;padding:10px;" type="number" name="star" id="star"><br><br>
         <textarea name="description" id="desc" cols="30" rows="10" placeholder="Message here..."></textarea>
         <input type="submit" value="Submit" name="submit_msg">
       </form>
@@ -183,6 +205,7 @@ include '../require/home_navbar.php';
 
     </div>
   </div>
+<?php } ?>
 
   </div>
   

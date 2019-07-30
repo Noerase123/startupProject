@@ -29,7 +29,8 @@ $table = "tbl_parallax";
     if (isset($_POST['submit'])) {
 
         $create_review = array(
-          'name' => $sqlUser->escapeString($_POST['name']),
+          'name' => $sqlUser->escapeString($_SESSION['user']),
+          'title' => $sqlUser->escapeString($_POST['name']),
           'description' => $sqlUser->escapeString($_POST['desc'])
         );
 

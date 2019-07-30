@@ -36,7 +36,7 @@
         $username = $_POST['username'];
         $password = $_POST['pw'];
 
-        $query = "SELECT firstname FROM tbl_user WHERE username = '$username' AND password = '$password'";
+        $query = "SELECT firstname FROM tbl_admin WHERE username = '$username' AND password = '$password'";
 
         $res = $viewUser->get_query($query);
         foreach($res as $row){

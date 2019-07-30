@@ -87,21 +87,19 @@ include 'require/notif.php';
         // =========================================================================================        
         else {
             $table1 = "tbl_pending_reviews";
-            $table2 = "tbl_user";
 
-            $query = "SELECT * FROM $table1 t1 INNER JOIN $table2 t2 ON t1.id = t2.id";
-
-            $res = $viewUser->get_query($query);
+            $res = $viewUser->get_data($table1);
 
             while ($row = $res->fetch_assoc()) {
-                $title = $row['name'];
+                $name = $row['name'];
+                $title = $row['title'];
                 $id = $row['id'];
-                $name = $row['firstname'];
         ?>
             <div class="column">
             <a href="reviews_details.php?id=<?php echo $id;?>">
                     <div class="card">
                         <h3><small>Message From :</small> <br><?php echo $name; ?></h3>
+                        <p><?php echo $title; ?></p>
                     </div>
                     </a>
             </div>

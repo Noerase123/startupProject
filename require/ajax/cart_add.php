@@ -1,4 +1,7 @@
 <?php 
+
+// include '../../config.php';
+
  $qty_add = 1;
  if (isset($_POST['cart'])) {
 

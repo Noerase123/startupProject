@@ -7,15 +7,23 @@ if (isset($_POST['submit_msg'])) {
 
     $add_review = array(
         'ref_id' => $sqlUser->escapeString($get_id),
-        'name' => $sqlUser->escapeString($_SESSION['user']),
-        'title' => $sqlUser->escapeString($subject),
-        'description' => $sqlUser->escapeString($message_rev)
+        'rev_name' => $sqlUser->escapeString($_SESSION['user']),
+        'rev_star' => $sqlUser->escapeString($_POST['star']),
+        'rev_title' => $sqlUser->escapeString($subject),
+        'message' => $sqlUser->escapeString($message_rev)
     );
 
     if ($sqlUser->create("tbl_prod_review", $add_review)) {
         ?>
         <script>
-            window.location="<?php echo BASE_URL.'view/product_details.php?id='.$get_id;?>";
+            window.location="<?php echo BASE_URL.'view/product_details.php?id='.$get_id; ?>";
+        </script>
+        <?php
+    }
+    else {
+        ?>
+        <script>
+        alert("something is not working");
         </script>
         <?php
     }

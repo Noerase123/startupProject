@@ -21,7 +21,7 @@ include 'require/nav.php';
 
 <div class="container">
     <br>
-<h1>Reviews</h1>
+<h1>Product Reviews</h1>
 
 <?php
 include 'require/notif.php';
@@ -51,8 +51,8 @@ $num_row = $res->num_rows;
         if (isset($_GET['query']) && isset($_GET['searchbtn'])) {
                 
             $term = $_GET['query'];
-            $table = "tbl_reviews";
-            $search = "name";
+            $table = "tbl_stack";
+            $search = "title";
             $result = $viewUser->search($term,$table,$search);
       
             $num_result = $result->num_rows;
@@ -67,17 +67,21 @@ $num_row = $res->num_rows;
                     }
                     echo '<h3 style="color:green;">Results: "'.$term.'" ('.$num_result.' '.$item.')</h3>';
 
-                while($row = $result->fetch_assoc()) {
-                    $title = $row['name'];
-                    $id = $row['id'];
+                    while ($row = $result->fetch_assoc()) {
+                        $title = $row['title'];
+                        $id = $row['id'];
+                        
+                    $table2 = "SELECT * FROM tbl_prod_review WHERE ref_id = '$id'";
+                    $res2 = $viewUser->get_query($table2);
+                    $num = $res2->num_rows;
                     ?>
                     <div class="column">
-                        <a href="reviews_accept.php?id=<?php echo $id;?>">
+                        <a href="prev_details.php?id=<?php echo $id;?>">
                             <div class="card">
-                            <h3><small>Message From :</small> <br><?php echo $title; ?></h3>
+                                <h3><small><?php echo $title;?> :</small> <br><?php echo $num; ?> Reviews</h3>
                             </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
                     <?php
                 }
             }
@@ -85,24 +89,22 @@ $num_row = $res->num_rows;
 
         // =========================================================================================        
         else {
-            $table = "tbl_prod_review";
-            $table2 = "tbl_stack";
-
+            $table = "tbl_stack";
             $res = $viewUser->get_data($table);
-            $res2 = $viewUser->get_data($table2);
 
             while ($row = $res->fetch_assoc()) {
                 $title = $row['title'];
                 $id = $row['id'];
+                
+            $table2 = "SELECT * FROM tbl_prod_review WHERE ref_id = '$id'";
+            $res2 = $viewUser->get_query($table2);
+            $num = $res2->num_rows;
 
-                foreach($res2 as $row2) {
-                    $prod = $row2['title'];
-                }
         ?>
             <div class="column">
-            <a href="reviews_accept.php?id=<?php echo $id;?>">
+            <a href="prev_details.php?id=<?php echo $id;?>">
                     <div class="card">
-                        <h3><small><?php echo $prod;?> :</small> <br><?php echo $title; ?></h3>
+                        <h3><small><?php echo $title;?> :</small> <br><?php echo $num; ?> Reviews</h3>
                     </div>
                     </a>
             </div>

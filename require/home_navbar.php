@@ -78,7 +78,7 @@ $num = $cart->num_rows;
       $res = $loginUser->login($uname,$pass);
 
       if ($res) {
-        header("location:".BASE_URL."view/community.php");
+        header("location:".BASE_URL."view/items.php");
         exit;
       }
     }
@@ -105,7 +105,8 @@ $num = $cart->num_rows;
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
       <br><br>
-      <input type="submit" value="Login" name="login">
+      <input type="submit" value="Login" name="login"><br><br>
+      <input type="submit" value="Sign Up" name="register">
       <!-- <button class="login" type="submit" onclick="return login()"> Login </button> -->
     </div>
 

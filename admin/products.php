@@ -44,9 +44,9 @@ $res = $viewUser->get_data("tbl_stack");
         <div class="row">
 
 <!-- ================================SEARCH SECTION======================================== -->
-        <?php 
+        <?php
         if (isset($_GET['query'])) {
-                
+
             $term = $_GET['query'];
             $table = "tbl_stack";
             $search = "title";
@@ -90,7 +90,6 @@ $res = $viewUser->get_data("tbl_stack");
             $table = "tbl_stack";
 
             $res = $viewUser->get_data($table);
-
             while ($row = $res->fetch_assoc()) {
                 $title = $row['title'];
                 $author = $row['title_desc'];
