@@ -67,15 +67,16 @@ $num = $cart->num_rows;
 <!-- modal -->
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="" method="post">
+  <form class="modal-content animate" id="form_login" action="" method="post">
     <div class="imgcontainer">
       <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
-      <h2>Login your account</h2>
+      <h2 class="response">Login your account</h2>
+      <!-- <span class="response"></span> -->
     </div>
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input class="input" type="text" placeholder="Enter Username" name="uname" id="uname" required>
+      <input class="input" type="text" placeholder="Enter Username" name="uname" id="username" required>
 
       <label for="psw"><b>Password</b></label>
       <input class="input" type="password" placeholder="Enter Password" name="psw" id="password" required>

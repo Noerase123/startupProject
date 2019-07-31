@@ -12,7 +12,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Welcome to Admin</title>
-        <link rel="stylesheet" href="admin_css/login.css/style.css">    
+        <link rel="stylesheet" href="admin_css/login.css/style.css">
+    <script src="../js/jquery-3.3.1.js"></script>
   </head>
   <body>
 
@@ -21,46 +22,35 @@
   
   <h2 class="login-header">Log in</h2>
 
-  <form action="" class="login-container" name="form1" method="post">
-    <p><input type="text" placeholder="Email" name="username"></p>
-    <p><input type="password" placeholder="Password" name="pw"></p>
-    <p><input type="submit" name="submit1" value="Log in"></p>
+  <form action="" class="login-container" id="form" method="post">
+    <p><input type="text" placeholder="Email" name="username" id="uname"></p>
+    <p><input type="password" placeholder="Password" name="password" id="pw"></p>
+    <p><input type="submit" value="Log in" name="login" id="login"></p>
+    <p class="response"></p>
   </form>
 </div>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-    <?php
-
-      if (isset($_POST["submit1"]))
-      {
-        $username = $_POST['username'];
-        $password = $_POST['pw'];
-
-        $query = "SELECT firstname FROM tbl_admin WHERE username = '$username' AND password = '$password'";
-
-        $res = $viewUser->get_query($query);
-        foreach($res as $row){
-          $name = $row['firstname'];
-          $_SESSION['admin'] = $name;
-        }
 
 
-        if (isset($_SESSION['admin'])) {
-          if ($loginUser->login($username,$password)) {
-  
-            header("location:home.php?signedin");
-          }
-          else {
-            echo '<h4 style="color:red;">Incorrect username or password</h4>';
-          }
-        }
-        else {
-          echo '<h4 style="color:red;">User not found</h4>';
-        }
+    <script>
+    $(document).ready(function(){
+      $("#form").submit(function(event) {
+        event.preventDefault();
+        var username = $("#uname").val();
+        var password = $("#pw").val();
+        var login = $("#login").val();
+        var response = $(".response");
+
+        response.load("ajax/login.php", {
+          username: username,
+          password: password,
+          login: login
+        });
         
+        location.reload();
         
-      }
-    ?>
+      });
+    });
+    </script>
 
 
   </body>

@@ -5,8 +5,9 @@
 <html>
 <head>
 <title>Submit Form Using AJAX and jQuery</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
     <!-- <script src="jquery-1.9.1.slim.js"></script> -->
+    <script src="<?php echo BASE_URL;?>/js/jquery-3.3.1.js"></script>
 
 </head>
 <body>

@@ -1,5 +1,7 @@
 <?php 
 
+    include '../../config.php';
+
     if (isset($_POST['login'])) {
       $uname = $_POST['username']; 
       $pass = $_POST['password'];
@@ -14,8 +16,12 @@
       $res = $loginUser->login($uname,$pass);
 
       if ($res) {
-        header("location:".BASE_URL."view/items.php");
-        exit;
+        // header("location:".BASE_URL."view/items.php");
+        // exit;
+        echo "Welcome ".$user;
+      }
+      else {
+        echo "No user found";
       }
     }
 

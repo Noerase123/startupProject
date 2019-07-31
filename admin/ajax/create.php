@@ -1,10 +1,10 @@
 <?php
 
-// include '../../config.php';
+include '../../config.php';
 
-    $success_message = '';
+    // $success_message = '';
 
-  if (isset($_POST['create']))
+  if (isset($_POST['addbtn']))
   {
         $v1 = rand(1111,9999);
         $v2 = rand(1111,9999);
@@ -29,8 +29,8 @@
 
     if ($sqlUser->create("tbl_stack", $insert_array))
     {
-      header("location:".ADMIN_URL."products.php?created=1");
-      // echo "Product added successfully!";
+      // header("location:".ADMIN_URL."products.php?created=1");
+      echo "Product added successfully!";
     }
     else {
         echo "sorry please try again.";

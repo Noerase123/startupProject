@@ -2,7 +2,7 @@
 
 include '../config.php';
 
-include 'ajax/create.php';
+// include 'ajax/create.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,8 +12,9 @@ include 'ajax/create.php';
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_css/main.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="main.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <!-- <script src="main.js"></script> -->
 </head>
 <body>
 
@@ -21,7 +22,7 @@ include 'ajax/create.php';
 include 'require/nav.php';
 ?>
 
-<div class="container">
+<div id="top" class="container">
     <br>
 <h1>Add Item</h1>
 
@@ -35,7 +36,7 @@ include 'require/nav.php';
             <form action="" method="post" enctype="multipart/form-data" id="form">
       
       <h4>Select your category : <br><br>
-        <select type="text" value="" id="cat" name="cat">
+        <select type="text" value="" id="cat" name="cat" required>
           <option><h5>Select category</h5></option>
             <?php 
                 $query = "SELECT * FROM tbl_categories ORDER BY id ASC";
@@ -55,10 +56,10 @@ include 'require/nav.php';
       </h4>
 
       <h4>Title :</h4><small style="color:red;" id="title_error"></small>
-      <h4><input type="text" name="title" id="title" ></h4>
+      <h4><input type="text" name="title" id="title" required></h4>
       
       <h4>Author(s) :</h4><small style="color:red;" id="title_desc_error"></small>
-      <h4><input type="text" name="title_desc" id="title_desc" ></h4>
+      <h4><input type="text" name="title_desc" id="title_desc" required></h4>
       
       <?php
     $query = "SELECT * FROM tbl_ecommerce_config WHERE activated = '1'";
@@ -68,10 +69,10 @@ include 'require/nav.php';
     ?>
 
       <h4>Price :</h4><small style="color:red;" id="price_error"></small>
-        <h4><input type="number" id="price" name="price" ></h4>
+        <h4><input type="number" id="price" name="price" required></h4>
 
       <h4>Quantity :</h4><small style="color:red;" id="quantity_error"></small>
-        <h4><input type="number" id="quantity" name="quantity" ></h4>
+        <h4><input type="number" id="quantity" name="quantity" required></h4>
 
     <?php } ?>
 
@@ -80,17 +81,18 @@ include 'require/nav.php';
       <input type="file" name="image" id="image">
       
       <h4>Some Tags :</h4><small style="color:red;" id="some_text_error"></small>
-      <input type="text" name="sometext" id="sometext" >
+      <input type="text" name="sometext" id="sometext" required>
       
       <h4>Description :</h4><small style="color:red;" id="desc_error"></small>
-      <textarea style="height:100%; width:50%"  rows="10" cols="60" name="desc" id="desc" ></textarea>
+      <textarea style="height:100%; width:50%"  rows="10" cols="60" name="desc" id="desc" required></textarea>
 
       <div class="addbtns">
+      <!-- <input class="submit" type="submit" name="create" id="addbtn" value="Create"> -->
         <input class="submit" type="submit" name="create" id="addbtn" value="Create">
         <a href="<?php echo ADMIN_URL; ?>products.php" style="text-decoration:none;" name="cancel">Cancel</a>
       </div>
 
-      <div class="response"></div>
+      <!-- <div class="response"></div> -->
     </form>
       </div>
         
@@ -104,6 +106,36 @@ include 'require/nav.php';
 
 
 <script>
+  $(document).ready(function() {
+    $("#form").submit(function(event) {
+    event.preventDefault();
+    var title = $("#title").val();
+    var title_desc = $("#title_desc").val();
+    var cat = $("#cat").val();
+    var price = $("#price").val();
+    var quantity = $("#quantity").val();
+    var image = $("#image").val();
+    var sometext = $("#sometext").val();
+    var desc = $("#desc").val();
+    var addbtn = $("#addbtn").val();
+
+    $(".response").load("ajax/create.php", {
+      title: title,
+      title_desc: title_desc,
+      cat: cat,
+      price: price,
+      quantity: quantity,
+      image: image,
+      sometext: sometext,
+      desc: desc,
+      addbtn: addbtn,
+
+    });
+    });
+  });
+</script>
+
+<!-- <script>
 
 $(document).ready(function(){
   $("#addbtn").click(function(){
@@ -140,7 +172,7 @@ return false;
 });
 });
 
-</script>
+</script> -->
     
 </body>
 </html>
