@@ -17,9 +17,13 @@ while ($row = $res->fetch_assoc()) {
 
 }
 
-$cart = $viewUser->get_data("tbl_cart");
+$name = isset($_SESSION['user']);
 
-$num = $cart->num_rows;
+$query = "SELECT * FROM tbl_cart WHERE `name`='$name' ORDER BY id DESC";
+
+$res = $viewUser->get_query($query);
+
+$num = $res->num_rows;
 
 ?>
 
@@ -48,7 +52,7 @@ $num = $cart->num_rows;
   <a href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
   
   <?php if (isset($_SESSION['user'])) {?>
-  <a href="<?php echo BASE_URL; ?>view/cart.php"><i class="fa fa-cart-o"></i> Cart(<?php echo $num;?>) </a>
+  <a href="<?php echo BASE_URL; ?>view/cart.php"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
   <a href="<?php echo BASE_URL; ?>view/checkout.php"><i class="fa fa-heart"></i> Checkout </a>
   <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user'] ; ?></a>
   <?php } else { ?>

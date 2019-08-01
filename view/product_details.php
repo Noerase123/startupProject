@@ -123,7 +123,7 @@ include '../require/home_navbar.php';
 
     <?php
     }
-    // include '../require/ajax/cart_add.php';
+    include '../require/ajax/cart_add.php';
     ?>
     
   </div>
@@ -158,6 +158,7 @@ include '../require/home_navbar.php';
     $title = $row['rev_title'];
     $message = $row['message'];
     $star_ = $row['rev_star'];
+    $rev_id = $row['id'];
 ?>
 
 <div class="card">
@@ -165,16 +166,21 @@ include '../require/home_navbar.php';
 if (isset($_SESSION['user'])) {
 if ($_SESSION['user'] == $name) {
 ?>
-<a href="">Edit</a>
-<a href="../require/ajax/prev_delete.php?=<?php echo $get_id; ?>">Delete </a>
+<a id="edit_prod_review" href="">Edit</a>
+<a id="delete_prod_review" href="../require/ajax/prev_delete.php?id=<?php echo $get_id; ?>">Delete </a>
 <?php } } ?>
 <img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
 <h2><?php echo $name;?> 
 <span>( <?php 
-if ($star_ >= 5){
+if ($star_ > 5){
     for($i=0;$i<5;$i++) { 
       echo '<img src="../image/Star.png" alt="" style="height:20px;width:30px;">';
     }
+}
+else {
+  for($i=0;$i<$star_;$i++) { 
+    echo '<img src="../image/Star.png" alt="" style="height:20px;width:30px;">';
+  }
 } ?> <small>ratings )</small> </span></h2>
 <h5>Date Posted : hours ago</h5>
 <p><?php echo $title;?></p>
@@ -191,11 +197,21 @@ if (isset($_SESSION['user'])) {
 
     <div class="card rate" style="background-color:rgba(255,255,255,0.8);height:490px;">
     <h3>Rate the product</h3>
-      <form action="" method="post">
-        <input type="text" name="title" placeholder="Write your Subject" id=""><br>
-        <label>How many star you like to give? </label><input style="width:10%;padding:10px;" type="number" name="star" id="star"><br><br>
-        <textarea name="description" id="desc" cols="30" rows="10" placeholder="Message here..."></textarea>
-        <input type="submit" value="Submit" name="submit_msg">
+      <form action="" id="prod_form" method="post">
+        <input type="text" name="title" placeholder="Write your Subject" id="title"><br>
+        <!-- <label>How many star you like to give? </label><input style="width:10%;padding:10px;" type="number" name="star" id="star"><br><br> -->
+        <label for="">How many star you like to give?</label>
+        <select style="font-size:18px;padding:5px;" name="star" id="star">
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+        </select><br><br>
+        
+        <textarea name="desc" id="desc" cols="30" rows="10" placeholder="Message here..."></textarea>
+        <input type="submit" value="Submit" name="submit" id="submit">
+        <p class="response_msg"></p>
       </form>
 
       <?php

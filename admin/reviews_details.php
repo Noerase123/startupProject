@@ -25,7 +25,7 @@ include '../config.php';
     <title>Test Website - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="admin_css/main.css" />
-    <script src="main.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
 </head>
 <body>
 
@@ -46,8 +46,10 @@ include 'require/nav.php';
             
             <div class="options">
                 <a class="update" href="<?php echo ADMIN_URL.'ajax/review_accepted.php?id='.$pid;?>">Accept</a>
-                <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/reviews_accepted.php?id='.$pid;?>">Reject</a>
+                <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/pending_review_delete.php?id='.$pid;?>">Reject</a>
             </div>
+
+            
 
             <div style="padding: 20px;float:left;">
                 
@@ -56,13 +58,12 @@ include 'require/nav.php';
                 </div>
                 
             </div>
-            
         
     </div>
     </div>
 
-    
 </div>
-    
+
+
 </body>
 </html>

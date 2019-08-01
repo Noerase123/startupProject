@@ -8,7 +8,8 @@ $id=$_GET["id"];
 
 if ($sqlUser->delete("tbl_cart", $id)) {
 
-    header("location:".BASE_URL."view/cart.php?deleted=$id");
+    // header("location:".BASE_URL."view/cart.php?deleted=$id");
+    echo 'Item in cart deleted';
 
 }
 ?>

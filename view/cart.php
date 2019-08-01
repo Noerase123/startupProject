@@ -2,10 +2,6 @@
 // session_start();
 include '../config.php';
 
-if (isset($_GET['add_review_success'])) {
-  $success = "Message Request Sent";
-}
-
 $tbl = 'tbl_web_content';
 
 $res = $viewUser->get_data($tbl);
@@ -25,26 +21,10 @@ $table = "tbl_parallax";
         $id = $row['id'];
     }
 
-
-    if (isset($_POST['submit'])) {
-
-        $create_review = array(
-          'name' => $sqlUser->escapeString($_POST['name']),
-          'description' => $sqlUser->escapeString($_POST['desc'])
-        );
-
-        if ($sqlUser->create("tbl_pending_reviews", $create_review)) {
-
-          ?>
-          <script type="text/javascript">
-              alert("message request sent");
-          </script>
-          <?php
-
-          header("location:" .BASE_URL. "view/community.php?add_review_success");
-          
-        }
-    }
+$user = $viewUser->get_data("tbl_cart");
+foreach($user as $row) {
+  $name = $row['name'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -107,6 +87,7 @@ include '../require/home_navbar.php';
             Price <span style="margin-right:13%;"></span>
             Quantity <span style="margin-right:12%;"></span>
             Total</h3>
+            <span style="width:100%;background-color:yellow;" class="deleted"></span>
       </div>
 
     </div>
@@ -114,13 +95,16 @@ include '../require/home_navbar.php';
     <div class="card">
 
     <?php
-      $query = "SELECT * FROM tbl_cart ORDER BY id DESC";
+      $query = "SELECT * FROM tbl_cart WHERE `name`='$name' ORDER BY id DESC";
 
       $res = $viewUser->get_query($query);
 
       $exist = $res->num_rows;
 
+
       if ($exist > 0) {
+        
+      if ($_SESSION['user'] == $name){
 
       foreach($res as $row) {
         $title = $row['title'];
@@ -144,15 +128,17 @@ include '../require/home_navbar.php';
                     <input type="number" name="qty" id="qty<?php echo $qty_id; ?>" value="1" style="width:20%;padding:1px;font-size:25px;"> 
                    <button style="font-size:25px;font-weight:bold;padding:5px;width:50px;" id="plusbtn<?php echo $qty_id; ?>">+</button></th>
           <th><h3><?php echo 'P'.$pricee; ?></h3></th>
-          <th><a style="padding:10px;" href="<?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?>">Delete</a></th>
+          <th><a style="padding:10px;" id="delete_cart" href="">Delete</a></th>
         </tr>
-
+        <!-- <?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?> -->
       </table>
 
       <hr>
     </div>
 
-    <?php } } else { echo '<h2>No Item purchase.</h2>' ;} ?>
+
+
+    <?php } } } else { echo '<h2>No Item purchase.</h2>' ;} ?>
   
     </div>
 

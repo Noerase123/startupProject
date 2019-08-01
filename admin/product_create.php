@@ -2,7 +2,7 @@
 
 include '../config.php';
 
-// include 'ajax/create.php';
+include 'ajax/create.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,6 @@ include 'require/nav.php';
         <div class="row">
             
             <div class="form">
-            <span style="font-weight:bold;font-size:20px;color:green;" class="response"></span>
             <form action="" method="post" enctype="multipart/form-data" id="form">
       
       <h4>Select your category : <br><br>
@@ -85,10 +84,12 @@ include 'require/nav.php';
       
       <h4>Description :</h4><small style="color:red;" id="desc_error"></small>
       <textarea style="height:100%; width:50%"  rows="10" cols="60" name="desc" id="desc" required></textarea>
+      
+      <span style="font-weight:bold;font-size:20px;color:green;" class="response"></span>
 
       <div class="addbtns">
       <!-- <input class="submit" type="submit" name="create" id="addbtn" value="Create"> -->
-        <input class="submit" type="submit" name="create" id="addbtn" value="Create">
+        <input class="submit" type="submit" name="addbtn" id="addbtn" value="Create">
         <a href="<?php echo ADMIN_URL; ?>products.php" style="text-decoration:none;" name="cancel">Cancel</a>
       </div>
 
@@ -105,7 +106,7 @@ include 'require/nav.php';
 </div>
 
 
-<script>
+<!-- <script>
   $(document).ready(function() {
     $("#form").submit(function(event) {
     event.preventDefault();
@@ -114,7 +115,6 @@ include 'require/nav.php';
     var cat = $("#cat").val();
     var price = $("#price").val();
     var quantity = $("#quantity").val();
-    var image = $("#image").val();
     var sometext = $("#sometext").val();
     var desc = $("#desc").val();
     var addbtn = $("#addbtn").val();
@@ -125,15 +125,15 @@ include 'require/nav.php';
       cat: cat,
       price: price,
       quantity: quantity,
-      image: image,
       sometext: sometext,
       desc: desc,
       addbtn: addbtn,
 
+    }
+    );
     });
     });
-  });
-</script>
+</script> -->
 
 <!-- <script>
 

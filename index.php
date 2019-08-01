@@ -1,6 +1,10 @@
 <?php
 include 'config.php';
 
+if (isset($_SESSION['user'])) {
+  header("location:".BASE_URL."view/items.php");
+}
+
     $table = "tbl_parallax";
     
     $res = $viewUser->get_data($table);
@@ -31,10 +35,7 @@ include 'config.php';
     <link rel="stylesheet" type="text/css" media="screen" href="css/carousel.css" />
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" /> -->
     <script src="main.js"></script>
-    <script src="jquery-3.4.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -46,41 +47,32 @@ include 'config.php';
     <h1 style="margin:15px 0px 15px 0px;"><img src="<?php echo $hlogo; ?>" style="max-height:70px; max-width:300px;"></h1>
   </div>
 
-  <?php
-
-    if (isset($_POST['login'])) {
-      $username = $_POST['uname'];
-      $password =  $_POST['pass'];
-      
-      $query = "SELECT firstname FROM tbl_user WHERE username='$username'";
-      $res = $viewUser->get_query($query);
-      foreach($res as $row){
-        $user = $row['firstname'];
-        $_SESSION['user'] = $user;
-      }
-
-      $logged = $loginUser->login($username,$password);
-
-      if ($logged) {
-        header("location:".BASE_URL."view/items.php");
-      }
-    }
-      
-
-?>
-
   <div class="logincard">
     <div class="loginform">
     <form action="" method="post" id="form">
       <h2>Login your account.</h2>
       <p>Username/Email</p>
-      <input type="text" name="uname" placeholder="Enter your email"><br>
+      <input type="text" id="username" placeholder="Enter your email"><br>
       <p>Password</p>
-      <input type="password" name="pass" placeholder="Enter your password"><br><br>
-
-      <input type="submit" name="login" value="Login">
+      <input type="password" id="password" placeholder="Enter your password"><br><br>
+      <center>
+      <input type="submit" id="login" value="Login">
       <label>OR</label>
       <input type="submit" name="register" value="Register">
+      <p style="color:green;font-size:20px;" class="response"></p>
+      </center>
+      
+    </form>
+
+    </div>
+  </div><br><br><br><br><br>
+
+  <div class="logincard" style="float:left;margin-left:20px;width:50%;">
+    <div class="loginform">
+    <form action="" method="post" id="form">
+      <h2>Search Book you're looking for</h2>
+
+      <input type="text" name="uname" placeholder="Search..."><br>
       
     </form>
 
@@ -119,7 +111,8 @@ while ($row = $res->fetch_assoc()) {
   <a href="#items"><i class="fa fa-cart-plus"></i> <?php echo ucfirst($nav1); ?></a>
   
   <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
-  <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+  <a href="#why"><i class="fa fa-user"></i> Why us</a>
+  <!-- <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a> -->
 
 
   <!-- <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user'] ; ?></a> -->
@@ -236,7 +229,7 @@ while ($row = $res->fetch_assoc()) {
 
 
   <!-- ====================================================================================================== -->
-<div class="parallax" style="background-image: url('<?php echo $image3; ?>');">
+<div id="why" class="parallax" style="background-image: url('<?php echo $image3; ?>');">
 
 <div class="notch">
 <style>
@@ -336,6 +329,22 @@ btn.onclick = function() {
     }
 }
 
+</script>
+
+<script>
+  $(document).ready(function() {
+    $("#form").submit(function() {
+      var username = $("#username").val();
+      var password = $("#password").val();
+      var login = $("#login").val();
+
+      $(".response").load("require/ajax/login.php", {
+        username: username,
+        password: password,
+        login: login
+      });
+    });
+  });
 </script>
 
 

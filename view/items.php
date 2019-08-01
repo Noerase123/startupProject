@@ -45,6 +45,7 @@ include '../require/header.php';
 <!-- </div> -->
 
 <div class="parallax" style="background-image: url('../<?php echo $img2; ?>');">
+<!-- <div class="parallax" style="background-color: darkblue;"> -->
 
 
 <!-- PARALLAX END============================================= -->

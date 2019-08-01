@@ -6,7 +6,8 @@
  if (isset($_POST['cart'])) {
 
    $add = array(
-     'id'         => $sqlUser->escapeString($get_id),
+     'ref_id'         => $sqlUser->escapeString($get_id),
+     'name'         => $sqlUser->escapeString($_SESSION['user']),
      'title'      => $sqlUser->escapeString($title),
      'title_desc' => $sqlUser->escapeString($title_desc),
      'price'      => $sqlUser->escapeString($price),

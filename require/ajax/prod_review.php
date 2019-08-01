@@ -1,9 +1,13 @@
 <?php
 
-if (isset($_POST['submit_msg'])) {
+// include '../../config';
+
+// $get_id = $_GET['id'];
+
+if (isset($_POST['submit'])) {
 
     $subject = $_POST['title'];
-    $message_rev = $_POST['description'];
+    $message_rev = $_POST['desc'];
 
     $add_review = array(
         'ref_id' => $sqlUser->escapeString($get_id),
@@ -14,6 +18,8 @@ if (isset($_POST['submit_msg'])) {
     );
 
     if ($sqlUser->create("tbl_prod_review", $add_review)) {
+        
+        // echo 'Review Added';
         ?>
         <script>
             window.location="<?php echo BASE_URL.'view/product_details.php?id='.$get_id; ?>";

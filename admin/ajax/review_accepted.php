@@ -4,13 +4,33 @@ include '../../config.php';
 
 $id = $_GET['id'];
 
+$id_arr = array(
+    'id' => $id
+);
+
+
 $table = "tbl_pending_reviews";
 
-    if ($sqlUser->delete($table, $id)) {
+$res = $viewUser->select_where($table, $id_arr);
 
-        header("location:".ADMIN_URL."reviews.php?accepted");
+    foreach ($res as $data) {
+        $name = $data['name'];
+        $review = $data['description'];
+
+        $add_arr = array(
+            'name' => $name,
+            'description' => $review
+        );
     }
 
-    
+$res2 = $sqlUser->create("tbl_reviews",$add_arr);
+
+    if ($res2) {
+        $res3 = $sqlUser->delete($table, $id);
+
+        if($res3) {
+            header("location:".ADMIN_URL."review_pending.php");
+        }
+    }
 
 ?>
