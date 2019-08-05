@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 
     $add_review = array(
         'ref_id' => $sqlUser->escapeString($get_id),
-        'rev_name' => $sqlUser->escapeString($_SESSION['user']),
+        'rev_name' => $sqlUser->escapeString($_SESSION['user']['name']),
         'rev_star' => $sqlUser->escapeString($_POST['star']),
         'rev_title' => $sqlUser->escapeString($subject),
         'message' => $sqlUser->escapeString($message_rev)

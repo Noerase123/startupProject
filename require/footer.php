@@ -142,8 +142,6 @@ $(document).ready(function() {
 
 </script>
 
-
-
 <script>
 var btn = document.getElementById('btn-nav');
 var nav = document.getElementById('nav');

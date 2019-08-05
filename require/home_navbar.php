@@ -17,13 +17,16 @@ while ($row = $res->fetch_assoc()) {
 
 }
 
-$name = isset($_SESSION['user']);
+if (isset($_SESSION['user']['name'])) {
+  $name = $_SESSION['user']['name'];
 
-$query = "SELECT * FROM tbl_cart WHERE `name`='$name' ORDER BY id DESC";
+$query = "SELECT * FROM tbl_cart WHERE `customer_name`='$name' ORDER BY id DESC";
 
 $res = $viewUser->get_query($query);
 
 $num = $res->num_rows;
+
+}
 
 ?>
 
@@ -32,10 +35,12 @@ $num = $res->num_rows;
   
   <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
   <button class="btncat" id="btn-cat">Cat</button>
+
     <?php
-      if (isset($_SESSION['user'])) {
+      if (isset($_SESSION['user']['name'])) {
     ?>
-  <a class="login-user" href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;float:right;">@<?php echo $_SESSION['user'] ; ?></a>
+    <a class="cart-o" style="float:right;" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
+    <a class="login-user" href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;float:right;">@<?php echo $_SESSION['user']['name'] ; ?></a>
       <?php } else {?>
 
     <button class="nav-login" onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
@@ -50,14 +55,15 @@ $num = $res->num_rows;
       
   <a href="<?php echo BASE_URL; ?>view/items.php"><i class="fa fa-cart-plus"></i> <?php echo ucfirst($nav1); ?></a>
   <a href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
-  
-  <?php if (isset($_SESSION['user'])) {?>
-  <a href="<?php echo BASE_URL; ?>view/cart.php"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
-  <a href="<?php echo BASE_URL; ?>view/checkout.php"><i class="fa fa-heart"></i> Checkout </a>
-  <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user'] ; ?></a>
-  <?php } else { ?>
   <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
   <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+  
+  <?php if (isset($_SESSION['user'])) {?>
+  <!-- <a href="<?php echo BASE_URL; ?>view/checkout.php?id"><i class="fa fa-heart"></i> Checkout </a> -->
+  <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?id='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
+  <a href="<?php echo BASE_URL.'require/logout.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user']['name'] ; ?></a>
+  <?php } else { ?>
+  
   <button class="res-nav-login" onclick="document.getElementById('id01').style.display='block'" id="login" href="#"A><i class="fa fa-lock"></i> Login</button>
   <?php } ?>
 

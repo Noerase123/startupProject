@@ -66,9 +66,9 @@ if ($num > 0) {
 
                     <table border=1>
                         <tr>
-                            <th>Names</th>
-                            <th>Subjects</th>
-                            <th style="width:50%;">Messages</th>
+                            <th style="width:200px;">Names</th>
+                            <th style="width:200px;">Subjects</th>
+                            <th style="width:500px;">Messages</th>
                         </tr>
 
                 <?php

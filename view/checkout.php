@@ -2,11 +2,9 @@
 // session_start();
 include '../config.php';
 
-if (isset($_GET['add_review_success'])) {
-  $success = "Message Request Sent";
-}
-
 $tbl = 'tbl_web_content';
+
+$session = $_GET['session'];
 
 $res = $viewUser->get_data($tbl);
 
@@ -96,13 +94,13 @@ include '../require/home_navbar.php';
   </div>
 
   <?php
-    $res = $viewUser->get_data("tbl_cart");
+    $res_tot = $viewUser->get_query("SELECT * FROM tbl_cart WHERE `customer_name` = '$session'");
     $charge = 50;
-    $count = $res->num_rows;
+    $count = $res_tot->num_rows;
     $totcharge_ = $charge * $count;
     $totcharges = number_format($totcharge_,2);
     
-    $query2 = "SELECT sum(price) FROM tbl_cart";
+    $query2 = "SELECT sum(price) FROM tbl_cart WHERE `customer_name` = '$session'";
     $res = $viewUser->get_query($query2);
     $row = $res->fetch_assoc();
     $price_ = $row['sum(price)'];

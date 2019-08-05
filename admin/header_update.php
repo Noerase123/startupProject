@@ -57,7 +57,7 @@ include 'require/nav.php';
             <form action="" method="post" enctype="multipart/form-data" id="form">
 
         <h4 style="padding:10px; width:100%; background-color:#ddd">Header Image</h4>
-            <img src="../<?php echo $head_image;?>" style="height:70px; width:100%;">
+            <img src="../<?php echo $head_image;?>" style="height:250px; width:100%;">
             <input type="file" name="header_image" id="header_image">
 
       <h4 style="padding:10px; width:100%; background-color:#ddd">Logos :</h4><small style="color:red;" id="title_desc_error"></small>

@@ -163,8 +163,8 @@ include '../require/home_navbar.php';
 
 <div class="card">
 <?php
-if (isset($_SESSION['user'])) {
-if ($_SESSION['user'] == $name) {
+if (isset($_SESSION['user']['name'])) {
+if ($_SESSION['user']['name'] == $name) {
 ?>
 <a id="edit_prod_review" href="">Edit</a>
 <a id="delete_prod_review" href="../require/ajax/prev_delete.php?id=<?php echo $get_id; ?>">Delete </a>
@@ -191,7 +191,7 @@ else {
 
 </div>
 <?php
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['user']['name'])) {
 ?>
 <div class="centercolumn">
 

@@ -29,7 +29,7 @@ $table = "tbl_parallax";
     if (isset($_POST['submit'])) {
 
         $create_review = array(
-          'name' => $sqlUser->escapeString($_SESSION['user']),
+          'name' => $sqlUser->escapeString($_SESSION['user']['name']),
           'title' => $sqlUser->escapeString($_POST['name']),
           'description' => $sqlUser->escapeString($_POST['desc'])
         );
@@ -122,7 +122,7 @@ foreach($res as $row) {
 
 <?php } 
 
-      if (isset($_SESSION['user']))
+      if (isset($_SESSION['user']['name']))
       {
     ?>
 

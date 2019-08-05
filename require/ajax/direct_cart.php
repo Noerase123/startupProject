@@ -1,9 +1,22 @@
 <?php 
 
-// include '../../config.php';
+include '../../config.php';
+
+$get_id = $_GET['id'];
+
+$id = array(
+    'id' => $get_id
+);
+
+$rest = $viewUser->select_where("tbl_stack", $id);
+foreach($rest as $row) {
+    $image = $row['image'];
+    $title = $row['title'];
+    $title_desc = $row['title_desc'];
+    $price = $row['price'];
+}
 
  $qty_add = 1;
- if (isset($_POST['cart'])) {
 
    $add = array(
      'ref_id'         => $sqlUser->escapeString($get_id),
@@ -19,21 +32,11 @@
 
    if ($res) {
 
-     ?>
-     <script>
-       window.location.href="<?php echo BASE_URL.'view/product_details.php?id='.$get_id; ?>";
-     </script>
-     <?php
+      ?>
+      <script>
+          window.location = "<?php echo BASE_URL; ?>view/items.php";
+      </script>
+      <?php
    }
 
- }
-
- if (isset($_POST['buy'])) {
-   
-  ?>
-  <script>
-    window.location.href="<?php echo BASE_URL.'view/checkout.php?id='.$get_id; ?>";
-  </script>
-  <?php
- }
 ?>

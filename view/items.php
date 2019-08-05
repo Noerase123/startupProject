@@ -24,12 +24,7 @@ foreach($res2 as $row) {
     <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../css/carousel.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../css/login.css" />
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="../css/bootstrap.min.css" /> -->
-    <script src="main.js"></script>
-    <script src="jquery-3.4.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -388,11 +383,15 @@ if ($num_row > 0){
       <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
       <p class="name" style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
       <a class="seemore name" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
+      <div class="prod_option">
+      <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$id;?>">Cart</a>
+      </div>
+      
+      
     </div>
   </div>
   <?php
   }
-
   }
   ?>
 
@@ -483,28 +482,6 @@ span.onclick = function() {
 <?php 
 include '../require/footer.php';
 ?>
-
-<script>
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 5000); // Change image every 2 seconds
-}
-</script>
 
 </div>
 <!-- parallax end here -->
