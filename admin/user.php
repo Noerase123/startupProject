@@ -17,16 +17,17 @@ include '../config.php';
 
 <?php 
 include 'require/nav.php';
-$res = $viewUser->get_data("tbl_top_categories");
-    $count = $res->num_rows;
 ?>
 
 <div class="container">
     <br>
-<h1>Product Category (<?php echo $count; ?> Items)</h1>
+<h1><a style="text-decoration:none;color:#000;" href="<?php echo ADMIN_URL.'user.php';?>">End-users</a></h1>
 
 <?php
 include 'require/notif.php';
+
+$res = $viewUser->get_data("tbl_pending_reviews");
+$num_row = $res->num_rows;
 ?>
 
     <div class="search">
@@ -34,10 +35,11 @@ include 'require/notif.php';
         <input style="margin-top:20px;" type="text" placeholder="Search..." name="query">
         <button type="submit" name="searchbtn"><i class="fa fa-search"></i></button>
       </form>
-    </div><br><br>
-    <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div>
+    </div>
+    <!-- <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div> -->
     
 
+<!-- <h4 class="response notif"><a style="color:#000;text-decoration:none;" href="review_pending.php">(<?php echo $num_row;?>) Pending Reviews</a></h4> -->
 
     <div class="content">
         <div class="row">
@@ -47,8 +49,8 @@ include 'require/notif.php';
         if (isset($_GET['query']) && isset($_GET['searchbtn'])) {
                 
             $term = $_GET['query'];
-            $table = "tbl_top_categories";
-            $search = "cat_name";
+            $table = "tbl_user";
+            $search = "username";
             $result = $viewUser->search($term,$table,$search);
       
             $num_result = $result->num_rows;
@@ -63,14 +65,20 @@ include 'require/notif.php';
                     }
                     echo '<h3 style="color:green;">Results: "'.$term.'" ('.$num_result.' '.$item.')</h3>';
 
-                while($row = $result->fetch_assoc()) {
-                    $title = $row['cat_name'];
-                    $id = $row['id'];
+                    while ($row = $result->fetch_assoc()) {
+                        $title = $row['username'];
+                        $name = $row['firstname'];
+                        $id = $row['id'];
+
+                        $table2 = "SELECT * FROM tbl_cart WHERE `customer_name`='$name'";
+                        $res2 = $viewUser->get_query($table2);
+                        $num = $res2->num_rows;
+                        
                     ?>
                     <div class="column">
-                        <a href="product_cat_details.php?id=<?php echo $id;?>">
+                        <a href="users_info.php?id=<?php echo $id;?>">
                             <div class="card">
-                                <h3><?php echo $title; ?></h3>
+                                <h3><small><?php echo $title;?> :</small> <br><?php echo $num; ?> Cart</h3>
                             </div>
                         </a>
                     </div>
@@ -79,20 +87,25 @@ include 'require/notif.php';
             }
         }
 
-        
+        // =========================================================================================        
         else {
-            $table = "SELECT * FROM tbl_top_categories";
-
-            $res = $viewUser->get_query($table);
+            $table = "tbl_user";
+            $res = $viewUser->get_data($table);
 
             while ($row = $res->fetch_assoc()) {
-                $title = $row['top_name'];
+                $title = $row['username'];
+                $name = $row['firstname'];
                 $id = $row['id'];
+                
+            $table2 = "SELECT * FROM tbl_cart WHERE `customer_name`='$name'";
+            $res2 = $viewUser->get_query($table2);
+            $num = $res2->num_rows;
+
         ?>
             <div class="column">
-            <a href="product_top_details.php?id=<?php echo $id;?>">
+            <a href="users_info.php?id=<?php echo $id;?>">
                     <div class="card">
-                        <h3><?php echo $title; ?></h3>
+                        <h3><small><?php echo $title;?> :</small> <br><?php echo $num; ?> Cart</h3>
                     </div>
                     </a>
             </div>

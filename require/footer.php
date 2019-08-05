@@ -68,6 +68,35 @@ window.onclick = function(event) {
 <!-- modal end -->
 
 <script>
+  $(document).ready(function() {
+    $("#form_register").submit(function(e) {
+      e.preventDefault();
+      var email = $("#reg_username").val();
+      var pass = $("#reg_password").val();
+      var first = $("#reg_first").val();
+      var last = $("#reg_last").val();
+      var birth = $("#birthdate").val();
+      var register = $("#register").val();
+      
+      $(".response").load("<?php echo BASE_URL;?>require/ajax/register.php" ,
+      {
+        email: email,
+        pass: pass,
+        first: first,
+        last: last,
+        birth: birth,
+        register: register
+      });
+      
+      window.location = "<?php echo BASE_URL; ?>view/profile.php";
+    // location.reload();
+      // setTimeout(location.reload.bind(),2000);
+
+    });
+  });
+</script>
+
+<script>
 
 $(document).ready(function() {
   $("#form_login").submit(function(event) {
@@ -83,6 +112,7 @@ $(document).ready(function() {
     });
 
     location.reload();
+      // setTimeout(location.reload.bind(),2000);
   });
 });
 

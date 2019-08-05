@@ -2,6 +2,25 @@
 
 include '../config.php';
 
+    $table = "tbl_categories";
+
+    $get_id = $_GET['id'];
+
+    $id = array(
+        'ref_id' => $get_id
+    );
+    
+    $res = $viewUser->select_where($table, $id);
+
+    foreach ($res as $data) {
+        $ptitle = $data['cat_name'];
+        $pid = $data['id'];
+    }
+    
+    $top_cat = $viewUser->get_query("SELECT * FROM tbl_top_categories WHERE id = '$get_id'");
+    foreach($top_cat as $cat) {
+    $title = $cat['top_name'];
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,17 +36,20 @@ include '../config.php';
 
 <?php 
 include 'require/nav.php';
-$res = $viewUser->get_data("tbl_top_categories");
+$res = $viewUser->get_query("SELECT * FROM tbl_categories WHERE ref_id = '$get_id'");
     $count = $res->num_rows;
 ?>
 
 <div class="container">
     <br>
-<h1>Product Category (<?php echo $count; ?> Items)</h1>
+<h1><?php echo $title;?> (<?php echo $count; ?> Items)</h1>
 
 <?php
 include 'require/notif.php';
 ?>
+
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'product_category.php';?>"><?php echo $title; ?></a> >All</h4></div>
+
 
     <div class="search">
       <form method="GET">
@@ -47,7 +69,7 @@ include 'require/notif.php';
         if (isset($_GET['query']) && isset($_GET['searchbtn'])) {
                 
             $term = $_GET['query'];
-            $table = "tbl_top_categories";
+            $table = "tbl_categories";
             $search = "cat_name";
             $result = $viewUser->search($term,$table,$search);
       
@@ -81,16 +103,16 @@ include 'require/notif.php';
 
         
         else {
-            $table = "SELECT * FROM tbl_top_categories";
+            $table = "SELECT * FROM tbl_categories WHERE ref_id = '$get_id'";
 
             $res = $viewUser->get_query($table);
 
             while ($row = $res->fetch_assoc()) {
-                $title = $row['top_name'];
+                $title = $row['cat_name'];
                 $id = $row['id'];
         ?>
             <div class="column">
-            <a href="product_top_details.php?id=<?php echo $id;?>">
+            <a href="product_cat_details.php?id=<?php echo $id;?>">
                     <div class="card">
                         <h3><?php echo $title; ?></h3>
                     </div>

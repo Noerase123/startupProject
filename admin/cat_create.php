@@ -34,6 +34,25 @@ include 'require/nav.php';
             <span style="font-weight:bold;font-size:20px;color:green;" class="response"></span>
             <form action="" method="post" enctype="multipart/form-data" id="form">
       
+      <h4>Category Select :</h4><small style="color:red;" id="title_error"></small>
+
+      <?php
+        $qry = "SELECT * FROM tbl_top_categories";
+        $res = $viewUser->get_query($qry);
+        
+      ?>
+      <h4><select style="width:50%;padding:10px;" name="cat" id="cat">
+      <option value="">Select Category</option>
+      <?php
+        foreach($res as $row) {
+            ?>
+            <option value="<?php echo $row['top_name'];?>"><?php echo $row['top_name'];?></option> 
+            <?php
+        }
+      ?>
+              
+        </select></h4>
+
       <h4>Category Name :</h4><small style="color:red;" id="title_error"></small>
       <h4><input type="text" name="cat_name" id="title" ></h4>
       
