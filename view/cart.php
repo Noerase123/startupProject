@@ -2,6 +2,10 @@
 // session_start();
 include '../config.php';
 
+if (!isset($_SESSION['user']['name'])) {
+  header("location:".BASE_URL."view/items.php");
+}
+
 $tbl = 'tbl_web_content';
 
 $session = $_SESSION['user']['name'];
@@ -110,6 +114,7 @@ include '../require/home_navbar.php';
         $price = $row['price'];
         $qty_id = $row['id'];
         $image = $row['image'];
+        $qty = $row['quantity'];
 
         $pricee = number_format($price,2);
 
@@ -124,8 +129,8 @@ include '../require/home_navbar.php';
           <th style="width:35%;height:130px;"><h3><?php echo $title.'<br><small>by: '.$author.'</small>'; ?></h3></th>
           <th><h3><?php echo 'P'.$pricee; ?></h3></th>
           <th><button style="font-size:25px;font-weight:bold;width:30px;" id="minusbtn<?php echo $qty_id; ?>">-</button> 
-                    <input type="number" name="qty" id="qty<?php echo $qty_id; ?>" value="1" style="width:20%;padding:1px;font-size:25px;"> 
-                   <button style="font-size:25px;font-weight:bold;" id="plusbtn<?php echo $qty_id; ?>">+</button></th>
+                    <input type="number" name="qty" id="qty<?php echo $qty_id; ?>" value="<?php echo $qty; ?>" style="width:20%;padding:1px;font-size:25px;"> 
+              <button style="font-size:25px;font-weight:bold;" id="plusbtn<?php echo $qty_id; ?>">+</button></th>
           <th><h3><?php echo 'P'.$pricee; ?></h3></th>
           <th><a style="padding:10px;background-color:red;color:white;text-decoration:none;margin-left:50px;" id="delete_cart" href="<?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?>">X</a></th>
         </tr>

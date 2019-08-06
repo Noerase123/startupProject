@@ -35,7 +35,10 @@ include 'require/notif.php';
         <button type="submit" name="searchbtn"><i class="fa fa-search"></i></button>
       </form>
     </div><br><br>
-    <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div>
+    <div class="addbtn">
+    <a style="margin-right:10px;" href="<?php echo ADMIN_URL.'top_create.php'; ?>">Add Category<i class="fa fa-plus"></i></a>
+    <a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a>
+    </div>
     
 
 

@@ -35,6 +35,7 @@ foreach($rest as $row) {
       ?>
       <script>
           window.location = "<?php echo BASE_URL; ?>view/items.php";
+        // window.location.reload();
       </script>
       <?php
    }

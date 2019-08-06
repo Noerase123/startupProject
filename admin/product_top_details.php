@@ -20,6 +20,7 @@ include '../config.php';
     $top_cat = $viewUser->get_query("SELECT * FROM tbl_top_categories WHERE id = '$get_id'");
     foreach($top_cat as $cat) {
     $title = $cat['top_name'];
+    $top_id = $cat['id'];
     }
 ?>
 <!DOCTYPE html>
@@ -57,7 +58,7 @@ include 'require/notif.php';
         <button type="submit" name="searchbtn"><i class="fa fa-search"></i></button>
       </form>
     </div><br><br>
-    <div class="addbtn"><a href="<?php echo ADMIN_URL.'cat_create.php'; ?>">Add Item<i class="fa fa-plus"></i></a></div>
+    <div class="addbtn"><a href="<?php echo ADMIN_URL.'ajax/delete_top.php?id='.$top_id;?>" onclick="return confirm('Delete this Category?')">Delete Category<i class="fa fa-plus"></i></a></div>
     
 
 

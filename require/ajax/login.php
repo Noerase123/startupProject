@@ -7,26 +7,27 @@
 
       $query = "SELECT * FROM tbl_user WHERE username='$uname'";
       $res = $viewUser->get_query($query);
+
       foreach($res as $row){
         $user_id = $row['id'];
         $user_name = $row['firstname'];
+        $pw = $row['password'];
       }
 
-      $_SESSION['user'] = array(
-        'id' => $user_id,
-        'name' => $user_name
-      );
+      $encrypt = password_verify($pass, $pw);
 
-      $res = $loginUser->login($uname,$pass);
+      if ($encrypt == true){
 
-      if ($res) {
-        // header("location:".BASE_URL."view/items.php");
-        // exit;
+        $_SESSION['user'] = array(
+          'id' => $user_id,
+          'name' => $user_name
+        );
+
         echo "Welcome ".$_SESSION['user']['name'];
-      }
-      else {
-        echo "No user found";
-      }
+      } else {
+          echo "No user found";
+        }
+      
     }
     
 

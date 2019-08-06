@@ -9,7 +9,7 @@ if($_SESSION["admin"]=="")
 <div class="header">
     <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL.'home.php';?>">Welcome to Admin</a></p>
     <div class="head-content">
-        <p><img src="<?php echo BASE_URL; ?>image/sample-image.jpg" style="height:15px;width:15px;" alt=""> <?php echo $_SESSION["admin"]; ?></p>
+        <p style="cursor:pointer;"><img src="<?php echo BASE_URL; ?>image/sample-image.jpg" style="height:15px;width:15px;" alt=""> <?php echo $_SESSION["admin"]; ?></p>
         <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL.'logout.php';?>">Logout</a></p>
     </div>
 </div>

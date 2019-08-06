@@ -21,6 +21,7 @@ foreach ($res2 as $row) {
     $date_ = $row['date_created'];
     $id = $row['id'];
     $price = $row['price'];
+    $quantity = $row['quantity'];
 
     $money = number_format($price,2);
 
@@ -98,6 +99,7 @@ include '../require/home_navbar.php';
     
     <div class="card">
       <h3 style="float:right;padding:10px;background-image: url('../image/carousel-2.jpg');width:100%;"><?php echo $money ? 'Price : Php '.$money : '' ; ?></h3>
+      <h3 style="float:right;padding:10px;background-image: url('../image/carousel-2.jpg');width:100%;"><?php echo $quantity ? 'Pieces : '.$quantity : '' ; ?></h3>
       <h3><?php echo ucfirst($title); ?></h3>
       <h3><small>Author</small> : <?php echo ucfirst($title_desc); ?></h3>
       <h5>Date posted: <?php echo $date;?></h5>

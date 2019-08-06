@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2019 at 02:36 PM
+-- Generation Time: Aug 06, 2019 at 02:21 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -66,7 +66,7 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`id`, `username`, `password`, `firstname`, `lastname`, `activated`, `date_created`) VALUES
-(1, 'admin@gmail.com', 'admin123', 'Admin Isaac', '', 1, '2019-07-30 07:17:40');
+(2, 'admin@gmail.com', '$2y$10$mHmCIPFXdgAbw6fUniI2DeFm0ZDb37chAsQheOQHcGOKR1BqdVzAG', 'Isaac', 'Caasi', 1, '2019-08-06 20:16:54');
 
 -- --------------------------------------------------------
 
@@ -100,14 +100,6 @@ CREATE TABLE `tbl_cart` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_cart`
---
-
-INSERT INTO `tbl_cart` (`id`, `ref_id`, `customer_name`, `image`, `title`, `title_desc`, `price`, `quantity`, `date_created`) VALUES
-(62, 138, '', 'uploads/8ea0973ff9f595070fed86d3539ef6bffont awesome.png', 'testings', 'admin selector', 12000, 1, '2019-08-05 17:32:20'),
-(63, 138, '', 'uploads/8ea0973ff9f595070fed86d3539ef6bffont awesome.png', 'testings', 'admin selector', 12000, 1, '2019-08-05 17:32:25');
-
 -- --------------------------------------------------------
 
 --
@@ -134,7 +126,8 @@ INSERT INTO `tbl_categories` (`id`, `ref_id`, `cat_name`, `activated`, `date_cre
 (37, 1, 'Comedy', 1, '2019-07-11 21:12:12'),
 (41, 1, 'Mystery', 0, '2019-07-23 18:52:04'),
 (42, 1, 'Education', 0, '2019-07-23 18:53:12'),
-(44, 1, 'Oldies', 0, '2019-08-05 20:23:32');
+(62, 2, 'new categoryyy', 0, '2019-08-06 10:18:13'),
+(64, 2, 'awd', 0, '2019-08-06 10:42:05');
 
 -- --------------------------------------------------------
 
@@ -341,26 +334,27 @@ CREATE TABLE `tbl_stack` (
 --
 
 INSERT INTO `tbl_stack` (`id`, `ref_id`, `title`, `category`, `price`, `quantity`, `title_desc`, `image`, `some_text`, `description`, `date_created`) VALUES
-(75, 0, 'awdawd', 'Science-Fiction', 0, 0, 'awdawd', 'uploads/5dd88b2b0a63d9b7cca9edbc5389fe9dcarousel-3.jpg', 'awdawdawd', 'awdawdawd', '2019-07-04 17:40:59'),
-(105, 0, 'twitter', 'Fantasy', 0, 0, 'awdawd', 'uploads/4464d9a4a684459dc75a520c8aa06d36carousel-1.jpg', 'awdawdawd', 'awdawdawfawfawf', '2019-07-10 08:07:59'),
-(106, 0, 'Books', 'Appliances', 0, 0, 'programming', 'uploads/d176942ee9dc469658e0dd04fb4e1dcaimage_30.jpg', 'bookings', 'this product is available in the store', '2019-07-11 13:39:53'),
-(108, 0, 'fantastic bes', 'Fantasy', 0, 0, 'Fantasy', 'uploads/a42ce638fcc640931cb036689e553435image_14.jpg', 'dadawdawd', 'awdadadadawdawd', '2019-07-11 22:16:05'),
-(112, 0, 'facebook', 'Thriller', 0, 0, 'mark zuckerberg', 'uploads/3bbaa3bb25674cb5592af38d69a78fabimage_07.png', 'adawdawd', 'adadawd', '2019-07-12 09:21:22'),
-(114, 0, 'IT', 'Science-Fiction', 0, 0, 'Stephen Kings', 'uploads/3de35b93244fd30d1c65749dbef6b788image_01.png', '#horror', 'awdadwd', '2019-07-12 12:21:06'),
-(117, 0, 'Baby ko! <3', 'Romance', 50000, 1, 'john isaac', 'uploads/056915c9a599a1d11ae203c7aadc63aaLADP9261.JPEG', '#cute #cutie', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', '2019-07-17 16:03:37'),
-(118, 0, 'Detective Conan', 'Mystery', 0, 0, 'E.L. James', 'uploads/75da47551f203f4f358a84d9fbc85a733.JPG', '#detective', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ', '2019-07-17 17:03:23'),
-(119, 0, 'Ironman', 'Science-Fiction', 0, 0, 'james bond', 'uploads/67ca297f417197bd5a75be20f43fd366dorm2.jpg', '#ironman', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ', '2019-07-17 17:27:40'),
+(75, 0, 'awdawd', 'Science-Fiction', 100, 10, 'awdawd', 'uploads/5dd88b2b0a63d9b7cca9edbc5389fe9dcarousel-3.jpg', 'awdawdawd', 'awdawdawd', '2019-07-04 17:40:59'),
+(105, 0, 'twitter', 'Fantasy', 100, 10, 'awdawd', 'uploads/4464d9a4a684459dc75a520c8aa06d36carousel-1.jpg', 'awdawdawd', 'awdawdawfawfawf', '2019-07-10 08:07:59'),
+(106, 0, 'Books', 'Comedy', 100, 10, 'programming', 'uploads/d176942ee9dc469658e0dd04fb4e1dcaimage_30.jpg', 'bookings', 'this product is available in the store', '2019-07-11 13:39:53'),
+(108, 0, 'fantastic bes', 'Fantasy', 1000, 10, 'Fantasy', 'uploads/a42ce638fcc640931cb036689e553435image_14.jpg', 'dadawdawd', 'awdadadadawdawd', '2019-07-11 22:16:05'),
+(112, 0, 'facebook', 'Thriller', 100, 10, 'mark zuckerberg', 'uploads/3bbaa3bb25674cb5592af38d69a78fabimage_07.png', 'adawdawd', 'adadawd', '2019-07-12 09:21:22'),
+(114, 0, 'IT', 'Science-Fiction', 100, 10, 'Stephen Kings', 'uploads/3de35b93244fd30d1c65749dbef6b788image_01.png', '#horror', 'awdadwd', '2019-07-12 12:21:06'),
+(117, 0, 'Baby ko! <3', 'Romance', 500, 111, 'john isaac', 'uploads/056915c9a599a1d11ae203c7aadc63aaLADP9261.JPEG', '#cute #cutie', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', '2019-07-17 16:03:37'),
+(118, 0, 'Detective Conan', 'Mystery', 100, 10, 'E.L. James', 'uploads/75da47551f203f4f358a84d9fbc85a733.JPG', '#detective', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ', '2019-07-17 17:03:23'),
+(119, 0, 'Ironman', 'Science-Fiction', 100, 10, 'james bond', 'uploads/67ca297f417197bd5a75be20f43fd366dorm2.jpg', '#ironman', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ', '2019-07-17 17:27:40'),
 (120, 0, 'ironman 2', 'Science-Fiction', 2000, 523, 'james bond', 'uploads/c5fde883a595dc1526f209180a9e543cdorm3.jpg', '#ironman2 #ironman', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.', '2019-07-17 17:28:46'),
-(122, 0, 'Programming', 'Education', 0, 0, 'John Doe', 'uploads/d94b38735a078e2cb7e7b2bd10c51894Bulalo-1.jpg', '#foodpanda', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.', '2019-07-17 17:30:53'),
-(123, 0, 'Architectural Database', 'Education', 0, 0, 'james bond', 'uploads/40df31804ada727bb7e3f32710e89284avatar-2.jpg', '#avatar', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.\r\n', '2019-07-17 17:31:40'),
-(124, 0, 'Ecommerce website', 'Fantasy', 20000, 3000, 'john isaac', 'uploads/514a96b5baa9922deea551efbcfdaefcChicken-Platter-1.jpg', '#testing #onetwothree', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt i', '2019-07-18 12:16:43'),
-(125, 0, 'testing new', 'Fantasy', 4, 12000, 'John Isaac', 'uploads/d74e61addc4de8ceb7fae459b0152723Baluarte.jpg', '#baluarte', 'wdawdafawefcawefaw', '2019-07-18 15:00:45'),
-(126, 0, 'testinggggg', 'Fantasy', 123123123, 2147483647, 'awdawdwdaw', 'uploads/d43e98ee2379442ed828d23ba51c1749font awesome.png', 'wdawdawawdawd', 'awdadwdadawd', '2019-07-23 16:22:18'),
-(128, 0, 'twitter', 'Science-Fiction', 1000, 500, 'twitter', 'uploads/004951c2853d9cc591f4b2a948079a6bLADP9261.JPEG', 'twitter', 'twittereererererer', '2019-07-23 16:25:01'),
-(129, 0, 'facebook', 'Fantasy', 5000, 2, 'test', 'uploads/6c72d14b021d63d264d4e86d7f1971f9font awesome.png', '#tags', 'awdwadafawefawe', '2019-07-23 16:55:01'),
-(130, 0, 'anne', 'Romance', 50000, 1, 'Patricia Anne Capuz', 'uploads/680a980a526681977c953aac9cfd84a4einstein remake.jpg', '#avatar', 'sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur.', '2019-07-26 11:34:11'),
-(132, 0, 'testing', 'Fantasy', 34424, 222, 'awdawd', 'uploads/38f01a24d40534c71cca133de583f2b9Cara.jpg', 'awdawd', 'description', '2019-08-01 19:09:06'),
-(138, 0, 'testings', 'Romance', 12000, 1, 'admin selector', 'uploads/8ea0973ff9f595070fed86d3539ef6bffont awesome.png', '#tags', 'awdawdefabulldogs', '2019-08-01 21:51:35');
+(122, 0, 'Programming', 'Education', 100, 10, 'John Doe', 'uploads/d94b38735a078e2cb7e7b2bd10c51894Bulalo-1.jpg', '#foodpanda', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.', '2019-07-17 17:30:53'),
+(123, 0, 'Architectural Database', 'Education', 100, 10, 'james bond', 'uploads/40df31804ada727bb7e3f32710e89284avatar-2.jpg', '#avatar', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.\r\n', '2019-07-17 17:31:40'),
+(124, 0, 'Ecommerce website', 'Fantasy', 20000, 30, 'john isaac', 'uploads/514a96b5baa9922deea551efbcfdaefcChicken-Platter-1.jpg', '#testing #onetwothree', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt i', '2019-07-18 12:16:43'),
+(125, 0, 'testing new', 'Fantasy', 400, 12000, 'John Isaac', 'uploads/d74e61addc4de8ceb7fae459b0152723Baluarte.jpg', '#baluarte', 'wdawdafawefcawefaw', '2019-07-18 15:00:45'),
+(126, 0, 'testinggggg', 'Fantasy', 100, 214, 'awdawdwdaw', 'uploads/d43e98ee2379442ed828d23ba51c1749font awesome.png', 'wdawdawawdawd', 'awdadwdadawd', '2019-07-23 16:22:18'),
+(128, 0, 'twitter', 'Science-Fiction', 200, 500, 'twitter', 'uploads/004951c2853d9cc591f4b2a948079a6bLADP9261.JPEG', 'twitter', 'twittereererererer', '2019-07-23 16:25:01'),
+(129, 0, 'facebook', 'Fantasy', 500, 2, 'test', 'uploads/6c72d14b021d63d264d4e86d7f1971f9font awesome.png', '#tags', 'awdwadafawefawe', '2019-07-23 16:55:01'),
+(130, 0, 'anne', 'Romance', 500, 10, 'Patricia Anne Capuz', 'uploads/680a980a526681977c953aac9cfd84a4einstein remake.jpg', '#avatar', 'sort is a place for relaxation, Family Bondings and for Nature Lover. Beautiful place i can say , clean and nice amenities especially the pools i love their pools, its very clean. Most of all they allow my Fur.', '2019-07-26 11:34:11'),
+(132, 0, 'testing', 'Fantasy', 450, 17, 'awdawd', 'uploads/38f01a24d40534c71cca133de583f2b9Cara.jpg', 'awdawd', 'description', '2019-08-01 19:09:06'),
+(138, 0, 'testings', 'Romance', 250, 108, 'admin selector', 'uploads/8ea0973ff9f595070fed86d3539ef6bffont awesome.png', '#tags', 'awdawdefabulldogs', '2019-08-01 21:51:35'),
+(139, 0, 'Jenny', 'Fantasy', 500, 1, 'Jennifer', 'uploads/d508a4a2103d0c78ea38427419b40820sample-image.jpg', 'egeg', 'sefsef', '2019-08-06 11:06:37');
 
 -- --------------------------------------------------------
 
@@ -395,6 +389,7 @@ CREATE TABLE `tbl_user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `birthdate` varchar(255) NOT NULL,
@@ -405,9 +400,9 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `username`, `password`, `firstname`, `lastname`, `birthdate`, `date_created`) VALUES
-(1, 'admin@gmail.com', 'admin123', 'John Isaac', 'Caasi', '', '2019-06-09 18:57:00'),
-(3, 'user', 'user123', 'John Nikko', 'Caasi', '', '2019-06-09 18:57:46');
+INSERT INTO `tbl_user` (`id`, `username`, `password`, `image`, `firstname`, `lastname`, `birthdate`, `date_created`) VALUES
+(12, 'admin@gmail.com', '$2y$10$NgCD98Fezh7fQjKPKxhcEeEa8twW9w1zbtgvnnEJ3Kq4nFSCluHoi', '', 'John Isaac', 'Caasi', '2019-08-15', '2019-08-06 19:49:05'),
+(13, 'noerase12@gmail.com', '$2y$10$BTZBcmJdNKSre6Rb98/IYeWwNvr9KU75QgxOoLkQ3ugs7OsZQawLa', '', 'jojojo', 'jejeje', '2019-08-14', '2019-08-06 20:00:42');
 
 -- --------------------------------------------------------
 
@@ -436,7 +431,11 @@ INSERT INTO `tbl_user_items` (`id`, `ref_id`, `user_name`, `title`, `price`, `qu
 (19, 130, 'John Isaac', 'anne', 50000, 1, '2019-08-05 14:42:20'),
 (20, 138, 'John Isaac', 'testings', 12000, 1, '2019-08-05 14:42:20'),
 (21, 129, 'John Isaac', 'facebook', 5000, 1, '2019-08-05 14:42:20'),
-(22, 124, 'John Isaac', 'Ecommerce website', 20000, 1, '2019-08-05 15:58:56');
+(22, 124, 'John Isaac', 'Ecommerce website', 20000, 1, '2019-08-05 15:58:56'),
+(72, 139, 'John Isaac', 'Jenny', 500, 1, '2019-08-06 13:06:20'),
+(73, 139, 'John Isaac', 'Jenny', 500, 1, '2019-08-06 13:07:26'),
+(74, 130, 'John Isaac', 'anne', 500, 1, '2019-08-06 13:23:36'),
+(75, 130, 'John Isaac', 'anne', 500, 1, '2019-08-06 13:24:33');
 
 -- --------------------------------------------------------
 
@@ -593,7 +592,7 @@ ALTER TABLE `tbl_about`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_ajax`
 --
@@ -603,12 +602,12 @@ ALTER TABLE `tbl_ajax`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 --
 -- AUTO_INCREMENT for table `tbl_categories`
 --
 ALTER TABLE `tbl_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `tbl_contact_info`
 --
@@ -643,7 +642,7 @@ ALTER TABLE `tbl_products`
 -- AUTO_INCREMENT for table `tbl_prod_review`
 --
 ALTER TABLE `tbl_prod_review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `tbl_reviews`
 --
@@ -653,22 +652,22 @@ ALTER TABLE `tbl_reviews`
 -- AUTO_INCREMENT for table `tbl_stack`
 --
 ALTER TABLE `tbl_stack`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 --
 -- AUTO_INCREMENT for table `tbl_top_categories`
 --
 ALTER TABLE `tbl_top_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tbl_user_items`
 --
 ALTER TABLE `tbl_user_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 --
 -- AUTO_INCREMENT for table `tbl_web_content`
 --

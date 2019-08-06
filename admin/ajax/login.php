@@ -5,27 +5,25 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $query = "SELECT firstname FROM tbl_admin WHERE username = '$username' AND password = '$password'";
+        $query = "SELECT * FROM tbl_admin WHERE username = '$username'";
 
         $res = $viewUser->get_query($query);
         foreach($res as $row){
           $name = $row['firstname'];
-          $_SESSION['admin'] = $name;
+          $pw = $row['password'];
         }
 
+        $encrypt = password_verify($password, $pw);
 
-        if (isset($_SESSION['admin'])) {
-          if ($loginUser->login($username,$password)) {
+          if ($encrypt == true) {
   
+            $_SESSION['admin'] = $name;
             // header("location:home.php?signedin");
             echo "Please wait...";
           }
           else {
             echo '<h4 style="color:red;">Incorrect username or password</h4>';
           }
-        }
-        else {
-          echo '<h4 style="color:red;">User not found</h4>';
-        }
+        
       }
     ?>

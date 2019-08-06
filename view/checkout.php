@@ -2,6 +2,10 @@
 // session_start();
 include '../config.php';
 
+if (!isset($_SESSION['user']['name'])) {
+  header("location:".BASE_URL."view/items.php");
+}
+
 $tbl = 'tbl_web_content';
 
 $session = $_GET['session'];

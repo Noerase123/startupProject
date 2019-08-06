@@ -92,14 +92,18 @@ $res = $viewUser->get_data("tbl_stack");
             $res = $viewUser->get_data($table);
             while ($row = $res->fetch_assoc()) {
                 $title = $row['title'];
-                $author = $row['title_desc'];
+                $money = $row['price'];
+                $qty = $row['quantity'];
+
+                $author = number_format($money,2);
                 $id = $row['id'];
         ?>
             <div class="column">
                 <a href="product_details.php?id=<?php echo $id;?>">
                     <div class="card">
                         <h3><?php echo $title; ?></h3>
-                        <p>by: <?php echo $author; ?></p>
+                        <p>P <?php echo $author; ?></p>
+                        <p>pieces : <?php echo $qty; ?></p>
                     </div>
                 </a>
             </div>

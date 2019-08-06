@@ -16,19 +16,41 @@
         $qty = $row2['quantity'];
 
         $add_arr = array();
-        $add_arr['ref_id'] = $id_cart;
-        $add_arr['user_name'] = $get_customer;
-        $add_arr['title'] = $title;
-        $add_arr['price'] = $price;
-        $add_arr['quantity'] = $qty;
+        $add_arr['ref_id'] = $sqlUser->escapeString($id_cart);
+        $add_arr['user_name'] = $sqlUser->escapeString($get_customer);
+        $add_arr['title'] = $sqlUser->escapeString($title);
+        $add_arr['price'] = $sqlUser->escapeString($price);
+        $add_arr['quantity'] = $sqlUser->escapeString($qty);
 
-        $res = $sqlUser->create("tbl_user_items",$add_arr);
+        $res1 = $sqlUser->create("tbl_user_items",$add_arr);
 
-        if ($res) {
+        if ($res1) {
+
+            $item = "SELECT quantity FROM tbl_stack WHERE id = '$id_cart'";
+            
+            $item2 = $viewUser->get_query($item);
+
+            $it = $item2->fetch_assoc();
+                $quant = $it['quantity'] - $qty;
+                // print_r($quant);
+
+            $update_arr = array(
+                'quantity' => $sqlUser->escapeString($quant)
+            );
+
+            $upd_id = array();
+            $upd_id['id'] = $id_cart;
+
+            $res2 = $sqlUser->update("tbl_stack",$update_arr,$upd_id);
+            
             $query = "DELETE FROM tbl_cart WHERE customer_name = '$get_customer'";
-            $viewUser->get_query($query);
+            $res3 = $viewUser->get_query($query);
 
-            header("location:".BASE_URL."view/items.php");
+            if ($res2 && $res3){
+                header("location:".BASE_URL."view/items.php");
+            }
+
+            
 
         } else {
             echo "error";

@@ -34,7 +34,8 @@ include 'require/nav.php';
             
             <div class="options">
                 <form action="" method="post">
-                    <input class="delete" style="padding:15px;margin-left:20px;color:white;border:none;" type="submit" name="delete" id="delete" value="Delete">
+                    <input onclick="return confirm('Are you sure to delete that been selected?')" class="delete" style="padding:15px;margin-left:20px;color:white;border:none;" type="submit" name="delete" id="delete" value="Delete">
+                    <input onclick="return confirm('You want to clear cart?')" class="delete" style="padding:15px;margin-left:20px;color:white;border:none;" type="submit" name="clear" id="clear" value="Clear">
                 
             </div>
 

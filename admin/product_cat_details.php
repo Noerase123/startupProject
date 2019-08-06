@@ -46,7 +46,7 @@ include 'require/nav.php';
             <div class="options">
                 <!-- <a class="update" href="<?php echo ADMIN_URL.'product_update.php?id='.$pid;?>">Update</a> -->
                 <a class="delete" onclick="return confirm('Do you want to delete including the content?')" href="<?php echo ADMIN_URL.'ajax/delete_cat.php?id='.$pid;?>">Delete Category</a>
-                <a class="delete" onclick="return confirm('Do you want to Empty this <?php echo $ptitle; ?> Category?')" href="<?php echo ADMIN_URL.'ajax/delete.php?id='.$pid;?>">Delete Content</a>
+                <!-- <a class="delete" onclick="return confirm('Do you want to Empty this <?php echo $ptitle; ?> Category?')" href="<?php echo ADMIN_URL.'ajax/delete.php?id='.$pid;?>">Delete Content</a> -->
             </div>
 
             <div style="padding: 20px;">

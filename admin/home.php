@@ -46,12 +46,47 @@ include 'require/nav.php';
 <div class="container">
 <br>
 
-<div>
-<p style="float:left;margin-right:10px;font-size:20px;" id="date"></p>
-<p style="float:left;font-size:20px;" id="time"></p>
-</div><br><br><br>
 
-<h1>Dashboard</h1>
+<!-- <div style="float:right;"> -->
+<h1 style="float:left;">Dashboard</h1>
+<p style="float:right;margin-right:20px;font-size:20px;" id="time"></p>
+<p style="float:right;margin-right:10px;font-size:20px;" id="date"></p>
+<!-- </div> -->
+
+<br><br><br><br>
+
+<?php
+    $query = "SELECT sum(price) FROM tbl_user_items";
+    $res = $viewUser->get_query($query);
+    $row = $res->fetch_assoc();
+    $cpl = number_format($row['sum(price)'],2);
+
+    $tbl_user = "tbl_user";
+    $res = $viewUser->get_data($tbl_user);
+    $users = $res->num_rows;
+    
+    $tbl_user = "tbl_stack";
+    $res = $viewUser->get_data($tbl_user);
+    $products = $res->num_rows;
+    
+    $tbl_user = "tbl_prod_review";
+    $res = $viewUser->get_data($tbl_user);
+    $reviews = $res->num_rows;
+
+    $tbl_user = "tbl_reviews";
+    $res = $viewUser->get_data($tbl_user);
+    $reviews2 = $res->num_rows;
+?>
+
+<div style="border: 1px solid #000;width:98%;">
+<div style="margin-left:20px;">
+<h2>Summary Information :</h2>
+<h4>Companies Capital : $<?php echo $cpl;?></h4>
+<h4>Users : <?php echo $users;?> people</h4>
+<h4>Products : <?php echo $products;?> items</h4>
+<h4>Reviews : <?php echo $reviews;?> item reviews and <?php echo $reviews2;?> messages </h4>
+</div>
+</div>
 
     <div class="content">
         <div class="row">

@@ -23,8 +23,15 @@ $person = new Person;
 if (isset($_GET['string'])) {
     $str = $_GET['string'];
 
-    if ($person->myfunc($str)) {
-        echo "<br>success!";
+    $input = $str;
+    $inputdb =  password_hash($str, PASSWORD_DEFAULT);
+
+    $res = password_verify($input, $inputdb);
+    if ($res) {
+        echo 'hello fucking world!';
+    }
+    else {
+        echo 'hehe';
     }
 }
 ?>
@@ -39,11 +46,10 @@ if (isset($_GET['string'])) {
 
 $person_arr = array();
 
-$person_arr['name'] = array(
-    "fullname" => "John Isaac B. Caasi",
-    "age" => 21
-);
+$person_arr['id'] = array('1','2','3','4');
 
-echo $person_arr['name']['age'];
+echo $person_arr['id'][2];
+
+
 
 ?>

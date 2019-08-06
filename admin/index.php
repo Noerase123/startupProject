@@ -46,7 +46,10 @@
           login: login
         });
         
-        location.reload();
+        // location.reload();
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
         
       });
     });

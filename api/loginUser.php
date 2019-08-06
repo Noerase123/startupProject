@@ -16,6 +16,22 @@ class loginUser extends viewUser {
         }
     }
 
+    public function email_validate($email) {
+        
+        $res = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+        return $res;
+    }
+
+    public function input_val($input) {
+
+        if (preg_match("/^[a-zA-Z]*$/", $input)) {
+
+            return true;
+        }
+
+    }
+
 }
 
 ?>

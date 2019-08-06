@@ -19,7 +19,7 @@ while($row = $res->fetch_assoc()) {
 ?>
 <div class="footer">
     <div style="float:left;width:25%;">
-    <a href="<?php echo BASE_URL; ?>">
+    <a href="#header">
     <img src="../<?php echo $footer_image; ?>" style="height:50px; width:130px;">
     </a>
     <p><?php echo ucfirst($text_display);?>.</p>
@@ -87,8 +87,11 @@ window.onclick = function(event) {
         birth: birth,
         register: register
       });
+
+      setTimeout(() => {
+        window.location = "<?php echo BASE_URL; ?>view/profile.php?tab=summary";
+      }, 1000);
       
-      window.location = "<?php echo BASE_URL; ?>view/profile.php";
     // location.reload();
       // setTimeout(location.reload.bind(),2000);
 
@@ -111,7 +114,9 @@ $(document).ready(function() {
       login: login
     });
 
-    location.reload();
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
       // setTimeout(location.reload.bind(),2000);
   });
 });
@@ -185,60 +190,6 @@ btn.onclick = function() {
 }
 
 </script>
-
-<script>
-    var btn1 = document.getElementById('btn1');
-    var btn2 = document.getElementById('btn2');
-    var btn3 = document.getElementById('btn3');
-    var btn4 = document.getElementById('btn4');
-    var submenu = document.getElementById('submenu');
-    var submenu2 = document.getElementById('submenu2');
-    var submenu3 = document.getElementById('submenu3');
-    var submenu4 = document.getElementById('submenu4');
-    
-
-    btn1.onclick = function() {
-      
-      if (submenu.style.display === "none"){
-        submenu.style.display = "block";
-        submenu2.style.display = "none";
-        submenu3.style.display = "none";
-        submenu4.style.display = "none";        
-      } else {
-        submenu.style.display = "none";
-      }
-    }
-    btn2.onclick = function() {
-      if (submenu2.style.display === "none"){
-        submenu.style.display = "none";
-        submenu2.style.display = "block";
-        submenu3.style.display = "none";
-        submenu4.style.display = "none";        
-      } else {
-        submenu2.style.display = "none";
-      }
-    }
-    btn3.onclick = function() {
-      if (submenu3.style.display === "none"){
-        submenu.style.display = "none";
-        submenu2.style.display = "none";
-        submenu3.style.display = "block";
-        submenu4.style.display = "none";        
-      } else {
-        submenu3.style.display = "none";
-      }
-    }
-    btn4.onclick = function() {
-      if (submenu4.style.display === "none"){
-        submenu.style.display = "none";
-        submenu2.style.display = "none";
-        submenu3.style.display = "none";
-        submenu4.style.display = "block";        
-      } else {
-        submenu4.style.display = "none";
-      }
-    }
-  </script>
 
   <script>
     var qty = document.getElementById("qty<?php echo $qty_id; ?>");

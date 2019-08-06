@@ -2,9 +2,6 @@
 // session_start();
 include '../config.php';
 
-$res = $viewUser->get_data("tbl_stack");
-$rows = $res->num_rows;
-
 $res2 = $viewUser->get_data("tbl_parallax");
 foreach($res2 as $row) {
 
@@ -57,12 +54,20 @@ include '../require/home_navbar.php';
 
     <div class="card">
       <!-- <h2>Categories</h2> -->
-      <p id="btn1" class="Menu">>Categories (<?php echo $rows; ?>)</p>
-      <div class="submenu" id="submenu">
+
+      <?php 
+      $res = $viewUser->orderBy("tbl_top_categories", "id");
+      foreach($res as $data) {
+        $top_id = $data['id'];
+        $top_name = $data['top_name'];
+      ?>
+        <p id="btn<?php echo $top_id; ?>" class="Menu">> <?php echo $top_name; ?></p>
+      
+      <div class="submenu" id="submenu<?php echo $top_id;?>">
 
       <?php
 
-$query = "SELECT * FROM tbl_categories ORDER BY id ASC";
+$query = "SELECT * FROM tbl_categories WHERE ref_id = '$top_id' ORDER BY id ASC";
 
 $res = $viewUser->get_query($query);
 
@@ -74,7 +79,7 @@ if ($num > 0) {
       $cat_name = $row['cat_name'];
       $id = $row['id'];
 
-      $qry = "SELECT category FROM tbl_stack WHERE category = '$cat_name'";
+      $qry = "SELECT category FROM tbl_stack WHERE quantity >= 1 AND category = '$cat_name'";
       $res2 = $viewUser->get_query($qry);
       $num2 = $res2->num_rows;
 
@@ -90,108 +95,20 @@ if ($num > 0) {
   }
   ?>
       </div>
-      <!-- =========================================================== -->
-      <p id="btn2" class="Menu">>New Release</p>
-      <div class="submenu" id="submenu2">
+    <script>
+    var btn = $('#btn<?php echo $top_id;?>');
+    var submenu = $('#submenu<?php echo $top_id; ?>');
+    
+    btn.on('click', () => {
+      alert("click" + <?php echo $top_id;?>);
+      // submenu.toggle();
+    });
 
-      <?php
+    
+  </script>
 
-$query = "SELECT * FROM tbl_categories ORDER BY id ASC";
 
-$res = $viewUser->get_query($query);
-
-$num = $res->num_rows;
-
-if ($num > 0) {
-
-    while($row = $res->fetch_assoc()) {
-      $cat_name = $row['cat_name'];
-      $id = $row['id'];
-
-      $qry = "SELECT category FROM tbl_stack WHERE category = '$cat_name'";
-      $res2 = $viewUser->get_query($qry);
-      $num2 = $res2->num_rows;
-
-  ?>
-
-    <a style="width:100%" href="<?php echo BASE_URL; ?>view/items.php?category=<?php echo $cat_name;?>"><?php echo ucfirst($cat_name); ?>(<?php echo $num2; ?>)</a>
-
-  <?php
-  }
-  } 
-  else {
-    echo 'No Categories available';
-  }
-  ?>
-      </div>
-      <!-- ===================================================================== -->
-      <p id="btn3" class="Menu">>All time Favorites</p>
-      <div class="submenu" id="submenu3">
-
-      <?php
-
-$query = "SELECT * FROM tbl_categories ORDER BY id ASC";
-
-$res = $viewUser->get_query($query);
-
-$num = $res->num_rows;
-
-if ($num > 0) {
-
-    while($row = $res->fetch_assoc()) {
-      $cat_name = $row['cat_name'];
-      $id = $row['id'];
-
-      $qry = "SELECT category FROM tbl_stack WHERE category = '$cat_name'";
-      $res2 = $viewUser->get_query($qry);
-      $num2 = $res2->num_rows;
-
-  ?>
-
-    <a style="width:100%" href="<?php echo BASE_URL; ?>view/items.php?category=<?php echo $cat_name;?>"><?php echo ucfirst($cat_name); ?>(<?php echo $num2; ?>)</a>
-
-  <?php
-  }
-  } 
-  else {
-    echo 'No Categories available';
-  }
-  ?>
-      </div>
-      <!-- ====================================================================================== -->
-      <p id="btn4" class="Menu">>Best Sellers</p>
-      <div class="submenu" id="submenu4">
-
-      <?php
-
-$query = "SELECT * FROM tbl_categories ORDER BY id ASC";
-
-$res = $viewUser->get_query($query);
-
-$num = $res->num_rows;
-
-if ($num > 0) {
-
-    while($row = $res->fetch_assoc()) {
-      $cat_name = $row['cat_name'];
-      $id = $row['id'];
-
-      $qry = "SELECT category FROM tbl_stack WHERE category = '$cat_name'";
-      $res2 = $viewUser->get_query($qry);
-      $num2 = $res2->num_rows;
-
-  ?>
-
-    <a style="width:100%" href="<?php echo BASE_URL; ?>view/items.php?category=<?php echo $cat_name;?>"><?php echo ucfirst($cat_name); ?>(<?php echo $num2; ?>)</a>
-
-  <?php
-  }
-  } 
-  else {
-    echo 'No Categories available';
-  }
-  ?>
-      </div>
+<?php } ?>
     </div>
   </div>
 
@@ -262,6 +179,15 @@ if ($num > 0) {
       <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
       <p style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
       <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
+      <div class="prod_option">
+      <?php
+      if (isset($_SESSION['user']['name'])) {
+      ?>
+      <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$id;?>">Cart</a>
+      <?php
+      } 
+      ?>
+      </div>
     </div>
   </div>
     
@@ -278,12 +204,12 @@ if ($num > 0) {
     $categ = $_GET['category'];
 
     $table_name = "tbl_stack";
-    $query = "SELECT category FROM $table_name WHERE category = '$categ'";
+    $query = "SELECT category FROM $table_name WHERE category = '$categ' AND quantity >= 1";
     $res_row = $viewUser->get_query($query);
     $num_row = $res_row->num_rows;
 
     // tbl
-    $query2 = "SELECT * FROM $table_name WHERE category = '$categ' ORDER BY id DESC";
+    $query2 = "SELECT * FROM $table_name WHERE quantity >= 1 AND category = '$categ' ORDER BY id DESC";
     $res = $viewUser->get_query($query2);
 
 if ($num_row > 0){
@@ -330,6 +256,15 @@ if ($num_row > 0){
       <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
       <p style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
       <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
+      <div class="prod_option">
+      <?php
+      if (isset($_SESSION['user']['name'])) {
+      ?>
+      <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$id;?>">Cart</a>
+      <?php
+      } 
+      ?>
+      </div>
     </div>
   </div>
 
@@ -340,8 +275,8 @@ if ($num_row > 0){
   }
   else {
 // ============================================================
-  $data = "tbl_stack";
-  $res = $viewUser->get_data($data);
+  $data = "SELECT * FROM tbl_stack WHERE quantity >= 1 ORDER BY id DESC";
+  $res = $viewUser->get_query($data);
 
   while ($row = $res->fetch_assoc())
   {
@@ -384,7 +319,13 @@ if ($num_row > 0){
       <p class="name" style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
       <a class="seemore name" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
       <div class="prod_option">
+      <?php
+      if (isset($_SESSION['user']['name'])) {
+      ?>
       <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$id;?>">Cart</a>
+      <?php
+      } 
+      ?>
       </div>
       
       

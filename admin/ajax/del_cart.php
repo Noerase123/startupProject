@@ -20,5 +20,16 @@ if (isset($_POST['delete']))
     
 }
 
+if (isset($_POST['clear'])) {
+
+  $clear = "DELETE FROM tbl_cart";
+  
+  $res = $viewUser->get_query($clear);
+  
+  if ($res) {
+    header("location:".ADMIN_URL."cart.php?cart_clear");
+  }
+}
+
 ?>
 

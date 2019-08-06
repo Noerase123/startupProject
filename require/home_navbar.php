@@ -3,6 +3,10 @@
 
 $tbl_name = "tbl_web_content";
 
+if (isset($_SESSION['user']['name'])) {
+  $session = $_SESSION['user']['name'];
+}
+
 $res = $viewUser->get_data($tbl_name);
 
 while ($row = $res->fetch_assoc()) {
@@ -40,7 +44,7 @@ $num = $res->num_rows;
       if (isset($_SESSION['user']['name'])) {
     ?>
     <a class="cart-o" style="float:right;" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
-    <a class="login-user" href="<?php echo BASE_URL.'view/profile.php';?>" id="user2" style="color:#fff;float:right;">@<?php echo $_SESSION['user']['name'] ; ?></a>
+    <a class="login-user" href="<?php echo BASE_URL.'view/profile.php?tab=summary';?>" id="user2" style="color:#fff;float:right;">@<?php echo ucfirst($_SESSION['user']['name']) ; ?></a>
       <?php } else {?>
         <button class="signup" onclick="document.getElementById('id02').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Signup</button>
     <button class="nav-login" onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
@@ -54,14 +58,14 @@ $num = $res->num_rows;
     <div class="nav" id="nav">
       
   <a href="<?php echo BASE_URL; ?>view/items.php"><i class="fa fa-cart-plus"></i> <?php echo ucfirst($nav1); ?></a>
-  <a href="<?php echo BASE_URL; ?>view/community.php"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
+  <a href="<?php echo BASE_URL; ?>view/community.php?session=<?php echo isset($session) ? $session : 'none';?>"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
   <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
   <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
   
   <?php if (isset($_SESSION['user'])) {?>
   <!-- <a href="<?php echo BASE_URL; ?>view/checkout.php?id"><i class="fa fa-heart"></i> Checkout </a> -->
     <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
-  <a href="<?php echo BASE_URL.'view/profile.php';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user']['name'] ; ?></a>
+  <a href="<?php echo BASE_URL.'view/profile.php?tab=summary';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user']['name'] ; ?></a>
   <?php } else { ?>
   
   <button class="res-nav-login" onclick="document.getElementById('id01').style.display='block'" id="login" href="#"A><i class="fa fa-lock"></i> Login</button>
