@@ -1,25 +1,26 @@
+<script src="../js/jquery-3.3.1.js"></script>
+
 <?php 
     include '../../config.php';
 
     if (isset($_POST['register'])) {
       $uname = $_POST['email'];
       $pass = $_POST['pass'];
+      $pass2 = $_POST['pass2'];
       $first = $_POST['first'];
       $last = $_POST['last'];
       $birth = $_POST['birth'];
 
       $pw = password_hash($pass, PASSWORD_DEFAULT);
 
-      if ($loginUser->email_validate($uname) && $loginUser->input_val($first) && $loginUser->input_val($last)) {
-       
-
       $add_arr = array();
-
       $add_arr['username'] = $uname;
       $add_arr['password'] = $pw;
       $add_arr['firstname'] = $first;
       $add_arr['lastname'] = $last;
       $add_arr['birthdate'] = $birth;
+
+        echo 'Password is not match';
 
       $res = $sqlUser->create("tbl_user",$add_arr);
 
@@ -49,14 +50,7 @@
       } else {
           echo 'error';
       }
-
-    } else {
-      ?>
-      <script>
-        alert("fill up the invalid field!");
-      </script>
-      <?php
-    }
+    
 
     }
     

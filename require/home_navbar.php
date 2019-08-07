@@ -125,19 +125,22 @@ $num = $res->num_rows;
 
     <div class="container">
       <label for="uname"><b>Email</b></label>
-      <input class="input" type="text" placeholder="Enter Email" name="email" id="reg_username" required>
+      <input class="input" type="email" placeholder="Enter Email" name="email" id="reg_username" >
 
       <label for="psw"><b>Password</b></label>
-      <input class="input" type="password" placeholder="Enter Password" name="psw" id="reg_password" required>
+      <input class="input" type="password" placeholder="Enter Password" name="psw" id="reg_password" >
+
+      <label for="psw"><b>Re-enter Password </b></label><span style="color:red;font-weight:bold;" class="re_enter_error"></span>
+      <input class="input" type="password" placeholder="Enter Password" name="psw" id="re-reg_password" >
 
       <label for="psw"><b>First name</b></label>
-      <input class="input" type="text" placeholder="Enter first name" name="firstname" id="reg_first" required>
+      <input class="input" type="text" placeholder="Enter first name" name="firstname" id="reg_first" >
       
       <label for="psw"><b>Last name</b></label>
-      <input class="input" type="text" placeholder="Enter last name" name="lastname" id="reg_last" required>
+      <input class="input" type="text" placeholder="Enter last name" name="lastname" id="reg_last" >
       
-      <label for="psw"><b>Birthdate</b></label>
-      <input class="input" type="date" name="birthdate" id="birthdate" required>
+      <label for="psw"><b>Birthdate </b></label><span style="color:red;font-weight:bold;" class="birth_error"></span>
+      <input class="input" type="date" name="birthdate" id="birthdate" >
       
       
       <br><br>

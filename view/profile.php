@@ -94,6 +94,11 @@ include '../require/home_navbar.php';
     $name = $_SESSION['user']['name'];
     $tbl = "SELECT * FROM tbl_user_items WHERE `user_name` = '$name'";
     $res = $viewUser->get_query($tbl);
+
+    $qry = "SELECT * FROM tbl_user WHERE firstname = '$name'";
+    $birth = $viewUser->get_query($qry);
+    $row = $birth->fetch_assoc();
+    $date = date("M d, Y", strtotime($row['birthdate']));
     
   ?>
 
@@ -110,7 +115,8 @@ include '../require/home_navbar.php';
         ?>
         <div class="content-summary">
         <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
-        <div><h2> <?php echo ucfirst($_SESSION['user']['name']);?></h2></div><br><br><br>
+        <div><h2> <?php echo ucfirst($_SESSION['user']['name']);?></h2></div>
+        <div><h4>Birthdate : <?php echo $date;?></h4></div><br><br><br>
 
         <h3>Summary Details :</h3>
 
@@ -169,12 +175,20 @@ include '../require/home_navbar.php';
         <?php } else if ($_GET['tab'] == 'change_pass') {?>
 
     <div class="content-summary">
-        <div><img src="../image/carousel-3.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
-        <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div><br><br><br>
+        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div>
+        <div><h4>Birthdate : <?php echo $date;?></h4></div><br>
 
         <h3>Change Password :</h3>
-        <input style="padding:10px;width:50%;" type="text" name="change_pass" id="change_pass"><br><br>
-        <input style="background-color:green;width:50%;" type="submit" value="Save">
+        <form action="" method="POST" id="change_pass_form">
+        <label for="">Old Password : </label><br>
+        <input style="padding:10px;width:50%;" type="password" name="old_pass" id="old_pass"><br>
+
+        <label for="">New Password : </label><br>
+        <input style="padding:10px;width:50%;" type="password" name="new_pass" id="new_pass"><br>
+        <h4 class="response_change_pass"></h4>
+        <input style="background-color:green;width:50%;" type="submit" id="submit_change_pass" value="Save">
+        </form>
         </div>
 
 
@@ -182,8 +196,9 @@ include '../require/home_navbar.php';
         <?php } else if ($_GET['tab'] == 'reviews') { ?>
 
             <div class="content-summary">
-        <div><img src="../image/carousel-3.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
-        <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div><br><br><br>
+        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div>
+        <div><h4>Birthdate : <?php echo $date;?></h4></div><br><br><br>
 
         <h3>Reviews :</h3>
 
