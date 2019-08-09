@@ -27,6 +27,9 @@ if (isset($_SESSION['user']['name'])) {
 $query = "SELECT * FROM tbl_cart WHERE `customer_name`='$name' ORDER BY id DESC";
 
 $res = $viewUser->get_query($query);
+foreach($res as $row) {
+  $get_name = $row['customer_name'];
+}
 
 $num = $res->num_rows;
 
@@ -46,7 +49,8 @@ $num = $res->num_rows;
     <a class="cart-o" style="float:right;" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
     <a class="login-user" href="<?php echo BASE_URL.'view/profile.php?tab=summary';?>" id="user2" style="color:#fff;float:right;">@<?php echo ucfirst($_SESSION['user']['name']) ; ?></a>
       <?php } else {?>
-        <button class="signup" onclick="document.getElementById('id02').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Signup</button>
+        <a class="signup" href="<?php echo BASE_URL.'view/signup.php?set_up_login'?>" style="float:right;"><i class="fa fa-lock"></i> Signup</a>
+        <!-- <button class="signup" onclick="document.getElementById('id02').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Signup</button> -->
     <button class="nav-login" onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
       <?php } ?>
 
@@ -114,33 +118,32 @@ $num = $res->num_rows;
 
 <!-- register================================================ -->
 
-<div id="id02" class="modal" style="overflow:auto;">
+<!-- <div id="id02" class="modal" style="overflow:auto;">
   
   <form class="modal-content animate" id="form_register" action="" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
       <h2>Register account</h2>
-      <!-- <span class="response"></span> -->
-    </div>
+      </div>
 
     <div class="container">
-      <label for="uname"><b>Email</b></label>
-      <input class="input" type="email" placeholder="Enter Email" name="email" id="reg_username" >
+      <label for="uname"><b>Email </b></label><span style="color:red;font-weight:bold;" class="email_error"></span>
+      <input class="input" type="email" placeholder="Enter Email" name="email" id="reg_username" required>
 
       <label for="psw"><b>Password</b></label>
-      <input class="input" type="password" placeholder="Enter Password" name="psw" id="reg_password" >
+      <input class="input" type="password" placeholder="Enter Password" name="psw" id="reg_password" required>
 
       <label for="psw"><b>Re-enter Password </b></label><span style="color:red;font-weight:bold;" class="re_enter_error"></span>
-      <input class="input" type="password" placeholder="Enter Password" name="psw" id="re-reg_password" >
+      <input class="input" type="password" placeholder="Enter Password" name="psw" id="re-reg_password" required>
 
       <label for="psw"><b>First name</b></label>
-      <input class="input" type="text" placeholder="Enter first name" name="firstname" id="reg_first" >
+      <input class="input" type="text" placeholder="Enter first name" name="firstname" id="reg_first" required>
       
       <label for="psw"><b>Last name</b></label>
-      <input class="input" type="text" placeholder="Enter last name" name="lastname" id="reg_last" >
+      <input class="input" type="text" placeholder="Enter last name" name="lastname" id="reg_last" required>
       
       <label for="psw"><b>Birthdate </b></label><span style="color:red;font-weight:bold;" class="birth_error"></span>
-      <input class="input" type="date" name="birthdate" id="birthdate" >
+      <input class="input" type="date" name="birthdate" id="birthdate" required>
       
       
       <br><br>
@@ -151,11 +154,33 @@ $num = $res->num_rows;
       <br><br>
       <input type="submit" value="Register" id="register" name="register"><br><br>
       <center><span style="font-size:20px;" class="response"></span></center>
+    </div>
+
+  </form>
+</div> -->
+
+<div id="cashout" class="modal">
+  
+  <form class="modal-content animate" id="form_login" action="" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('cashout').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <h2 class="response">Method of Payment</h2>
+      <!-- <span class="response"></span> -->
+    </div>
+
+    <div class="container">
+      <h2><small>Cash on Delivery</small> </h2>
+      <h3>Name: <small>John Isaac</small> </h3>
+      <h3>Contact No.: <small>(+63)977-456-1234</small> </h3>
+      <h3>Address: <small>#143 Mapagmahal St. Taguig City Philippines</small> </h3>
+      <br>
+      <a onclick="alert('Purchase successful!')" href="<?php echo BASE_URL; ?>require/ajax/user_log.php?customer=<?php echo $get_name;?>" style="padding:8px;background-color:green;color:#fff;text-decoration:none;" id="login" name="login">Confirm</a>
+      <a href="" style="padding:8px;background-color:red;color:#fff;text-decoration:none;" id="login" name="login">Cancel</a>      
       <!-- <button class="login" type="submit" onclick="return login()"> Login </button> -->
     </div>
 
     <!-- <div class="container">
-      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('cashout').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw"><a href="#">Forgot password?</a></span>
     </div> -->
   </form>

@@ -47,6 +47,7 @@
             $res3 = $viewUser->get_query($query);
 
             if ($res2 && $res3){
+                
                 header("location:".BASE_URL."view/items.php");
             }
 

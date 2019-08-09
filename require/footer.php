@@ -75,41 +75,27 @@ window.onclick = function(event) {
       var pass = $("#reg_password").val();
       var first = $("#reg_first").val();
       var last = $("#reg_last").val();
-      var birth = $("#birthdate").val();
+      var address = $("#reg_address").val();
+      var birth = $("#reg_birth").val();
       var register = $("#register").val();
       var pass2 = $("#re-reg_password").val();
       
-      if (email == "" || pass == "" || first == "" || last == "" || birth == "") {
-
-        
-
-        if (pass != pass2) {
-            $(".re_enter_error").text("Password is not match");
-        }
-        if (birth == "") {
-            $(".birth_error").text("Please fill up you Birthdate");
-        }
-
-        alert("fill up all the blanks");
-      }
-      else {
-      
       $(".response").load("<?php echo BASE_URL;?>require/ajax/register.php" ,
       {
-        pass2: pass2,
         email: email,
         pass: pass,
+        pass2: pass2,
         first: first,
         last: last,
+        address: address,
         birth: birth,
         register: register
       });
 
-      setTimeout(() => {
-        window.location = "<?php echo BASE_URL; ?>view/profile.php?tab=summary";
-      }, 1000);
-      
-      }
+      // setTimeout(() => {
+      //   window.location = "<?php echo BASE_URL; ?>view/profile.php?tab=summary";
+      // }, 1000);
+    
     // location.reload();
       // setTimeout(location.reload.bind(),2000);
 

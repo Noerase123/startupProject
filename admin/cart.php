@@ -68,7 +68,7 @@ include 'require/nav.php';
 
                     foreach($res as $cart) {
                         $ref_id = $cart['ref_id'];
-                        $name = $cart['name'];
+                        $name = $cart['customer_name'];
                         $title = $cart['title'];
                         $title_desc = $cart['title_desc'];
                         $price = $cart['price'];

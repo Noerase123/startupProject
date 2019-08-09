@@ -2,6 +2,10 @@
 // session_start();
 include '../config.php';
 
+if (!isset($_SESSION['user']['name'])) {
+  session_destroy();
+}
+
 $res2 = $viewUser->get_data("tbl_parallax");
 foreach($res2 as $row) {
 

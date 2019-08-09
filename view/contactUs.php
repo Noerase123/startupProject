@@ -2,10 +2,6 @@
 // session_start();
 include '../config.php';
 
-if (!isset($_SESSION['user'])) {
-  header("location:".BASE_URL );
-}
-
 $tbl = 'tbl_web_content';
 
 $res = $viewUser->get_data($tbl);

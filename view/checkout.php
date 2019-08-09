@@ -146,7 +146,8 @@ include '../require/home_navbar.php';
   <div class="column-content" style="width:48%;float:right;">
     <div class="card">
       <h3>Methods of Payments</h3>
-      <a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL; ?>require/ajax/user_log.php?customer=<?php echo $get_name;?>">
+      <a style="color:#000;text-decoration:none;" onclick="document.getElementById('cashout').style.display='block'" href="#">
+      <!-- <a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL; ?>require/ajax/user_log.php?customer=<?php echo $get_name;?>"> -->
         <div class="card">
         <h4>Cash on Delivery</h4>
         </div>

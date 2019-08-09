@@ -2,10 +2,19 @@
 // session_start();
 include '../config.php';
 
+$name = $_SESSION['user']['name'];
+
 if (!isset($_SESSION['user']['name'])) {
     header("location:".BASE_URL."view/items.php");
 }
 
+$qry = "SELECT * FROM tbl_user WHERE firstname = '$name'";
+$names = $viewUser->get_query($qry);
+$count = $names->num_rows;
+
+    if ($count == 0) {
+        header("location:".BASE_URL."view/items.php");
+    }
 
 $res2 = $viewUser->get_data("tbl_parallax");
 foreach($res2 as $row) {
