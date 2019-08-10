@@ -2,10 +2,6 @@
 // session_start();
 include '../config.php';
 
-if (!isset($_SESSION['user']['name'])) {
-  session_destroy();
-}
-
 $res2 = $viewUser->get_data("tbl_parallax");
 foreach($res2 as $row) {
 
@@ -117,7 +113,7 @@ if ($num > 0) {
   </div>
 
 
-  <div class="centercolumn rows">
+  <div class="rows">
   <?php
   
   if (isset($_GET['searchbtn']) || isset($_GET['query']))
@@ -162,8 +158,8 @@ if ($num > 0) {
       
             $get_date = $viewUser->datetime($date);
 
-            if (strlen($title) > 18) {
-              $title = substr($title, 0, 18).'...';
+            if (strlen($title) > 15) {
+              $title = substr($title, 0, 15).'...';
             }
 
             ?>
@@ -240,8 +236,8 @@ if ($num_row > 0){
       
     $get_date = $viewUser->datetime($date);
 
-    if (strlen($title) > 18) {
-      $title = substr($title, 0, 18).'...';
+    if (strlen($title) > 15) {
+      $title = substr($title, 0, 15).'...';
     }
   ?>
   <div class="columns">
@@ -302,8 +298,8 @@ if ($num_row > 0){
       
     $get_date = $viewUser->datetime($date);
 
-    if (strlen($title) > 18) {
-      $title = substr($title, 0, 18).'...';
+    if (strlen($title) > 15) {
+      $title = substr($title, 0, 15).'...';
     }
   ?>
   <div class="columns">
@@ -319,9 +315,9 @@ if ($num_row > 0){
       ?>
       </a>
       <h2><a class="name" style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
-      <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
+      <!-- <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a> -->
       <p class="name" style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
-      <a class="seemore name" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
+      <!-- <a class="seemore name" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a> -->
       <div class="prod_option">
       <?php
       if (isset($_SESSION['user']['name'])) {
@@ -384,8 +380,8 @@ span.onclick = function() {
 
   ?>
   <div class="popular">
-    <img src="../<?php echo $img; ?>"><br>
     <span class="tooltip"><a href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more about <?php echo $title; ?></a></span>
+    <img src="../<?php echo $img; ?>"><br>
     </div>
   <?php
     }

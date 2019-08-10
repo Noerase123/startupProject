@@ -211,7 +211,7 @@ if (isset($_SESSION['user']['name'])) {
         <option value="1">1</option>
         </select><br><br>
         
-        <textarea name="desc" id="desc" cols="30" rows="10" placeholder="Message here..."></textarea>
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message here..."></textarea>
         <input type="submit" value="Submit" name="submit" id="submit">
         <p class="response_msg"></p>
       </form>

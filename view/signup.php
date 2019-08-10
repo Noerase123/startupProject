@@ -104,7 +104,7 @@ include '../require/home_navbar.php';
 
         <label style="font-weight:bold;font-size:17px;">Username/Email : </label><br>
         <span style="color:red;" class="email_error"></span>
-        <input type="text" id="reg_username" placeholder="Enter your Email"><br>
+        <input type="email" id="reg_username" placeholder="Enter your Email"><br>
         
         <label style="font-weight:bold;font-size:17px;">Password : </label><br>
         <span style="color:red;" class="pw_error"></span>

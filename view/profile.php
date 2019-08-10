@@ -2,6 +2,8 @@
 // session_start();
 include '../config.php';
 
+include '../require/ajax/change_profile.php';
+
 $name = $_SESSION['user']['name'];
 
 if (!isset($_SESSION['user']['name'])) {
@@ -108,7 +110,18 @@ include '../require/home_navbar.php';
     $birth = $viewUser->get_query($qry);
     $row = $birth->fetch_assoc();
     $date = date("M d, Y", strtotime($row['birthdate']));
+
+    $tbl2 = "SELECT * FROM tbl_prod_review WHERE rev_name = '$name'";
+    $review = $viewUser->get_query($tbl2);
+
     
+    
+        $sql = "SELECT * FROM tbl_user WHERE firstname= '$name'";
+        $user = $viewUser->get_query($sql);
+        foreach($user as $row) {
+            $image = $row['image'];
+            // print_r($image);
+        }
   ?>
 
   <div class="centercolumn rows">
@@ -123,7 +136,7 @@ include '../require/home_navbar.php';
             if ($_GET['tab'] == 'summary') {
         ?>
         <div class="content-summary">
-        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <div><img src="../<?php echo $image; ?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
         <div><h2> <?php echo ucfirst($_SESSION['user']['name']);?></h2></div>
         <div><h4>Birthdate : <?php echo $date;?></h4></div><br><br><br>
 
@@ -171,20 +184,22 @@ include '../require/home_navbar.php';
         <h2>Change Profile Picture</h2>
         <div class="card">
         <center>
-        <img src="../image/sample-image.jpg" style="width:200px; height:200px;margin-right:20px;" id="prof_image_ui" alt=""><br><br>
-        <input type="file" name="prof_image" id="prof_image"><br><br>
-        <input style="background-color:green;width:50%;" type="submit" value="Save">
-        </center>
-        
-        </div>
-        
 
+        <img src="../<?php echo $image;?>" style="height:200px;width:200px;" alt=""><br>
+        <span style="color:green" class="response_change_profile"></span><br><br>
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="file" name="profile_pic" id="profile_pic"><br><br>
+            <input style="width:50%;background-color:green;" type="submit" value="Save" name="btn_profile" id="btn_profile">
+        </form>
+        </center>
         </div>
+        </div>
+
 
         <?php } else if ($_GET['tab'] == 'change_pass') {?>
 
     <div class="content-summary">
-        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <div><img src="../<?php echo $image; ?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
         <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div>
         <div><h4>Birthdate : <?php echo $date;?></h4></div><br>
 
@@ -205,7 +220,7 @@ include '../require/home_navbar.php';
         <?php } else if ($_GET['tab'] == 'reviews') { ?>
 
             <div class="content-summary">
-        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <div><img src="../<?php echo $image;?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
         <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div>
         <div><h4>Birthdate : <?php echo $date;?></h4></div><br><br><br>
 
@@ -213,27 +228,30 @@ include '../require/home_navbar.php';
 
         <table>
             <tr class="menus">
+                <th>Item Name</th>
                 <th>Title</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                <th>Message</th>
                 <th>Date</th>
             </tr>
     <?php
-    foreach($res as $row) {
-        $title = $row['title'];
-        $price = $row['price'];
-
-        $pricee = number_format($price,2);
-        $qty = $row['quantity'];
-        $datee = $row['date_created'];
-
+    foreach($review as $row) {
+        $title = $row['rev_title'];
+        $message = $row['message'];
+        $datee = $row['date_posted'];
+        $ref_id = $row['ref_id'];
         $date = $viewUser->datetime($datee,2);
+
+        $sql = "SELECT * FROM tbl_stack WHERE id = '$ref_id'";
+        $pname = $viewUser->get_query($sql);
+        foreach($pname as $row) {
+            $nameuser = $row['title'];
+        }
 
         ?>
             <tr>
+                <th><h3><?php echo $nameuser; ?></h3></th>
                 <th><h3><?php echo $title; ?></h3></th>
-                <th><p>P <?php echo $pricee; ?></p></th>
-                <th><p><?php echo $qty; ?></p></th>
+                <th><p><?php echo $message; ?></p></th>
                 <th><p><?php echo $date; ?></p></th>
             </tr>
         <?php

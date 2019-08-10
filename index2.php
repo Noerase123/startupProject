@@ -32,8 +32,9 @@ if (isset($_SESSION['user'])) {
     <title>Test Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/home_main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/carousel.css" />
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/scroll.scss" />
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/scss/owl.carousel.scss">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/carousel.css" /> -->
     <script src="main.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -65,20 +66,7 @@ if (isset($_SESSION['user'])) {
     </form>
 
     </div>
-  </div><br><br><br><br><br>
-
-  <div class="logincard" style="float:left;margin-left:20px;width:50%;">
-    <div class="loginform">
-    <form action="" method="post" id="form">
-      <h2>Search Book you're looking for</h2>
-
-      <input type="text" name="uname" placeholder="Search..."><br>
-      
-    </form>
-
     </div>
-  </div>
-
 
 </div>
 
@@ -124,149 +112,55 @@ while ($row = $res->fetch_assoc()) {
 
 <?php } ?>
 
-<div class="row2">
-<!-- modal end -->
-  <div class="card3" id="items">
-        <h2 style="background-image: url('<?php echo $image2?>');  width:100%;height:50px">Best Sellers in the Store</h2>
-    </div>
+<h1 style="font-family: arial; color:red;">NETFLIX</h1>
 
-<div class="row">
+<div class="owl-demo">
+    <section id="section1">
 
-    
-
-  <div class="rightcolumn">
-    
-    <?php
-
-      $query = "SELECT * FROM tbl_stack ORDER BY rand() LIMIT 2";
-
-      $res = $viewUser->get_query($query);
-
-      $num_row = $res->num_rows;
-
-      if ($num_row > 0) {
-      
-      while($row = $res->fetch_assoc()) {
-        
-        $title = $row['title'];
-        $id = $row['id'];
-        $title_desc = $row['title_desc'];
-        $image = $row['image'];
-    ?>
-
-    <div class="card">
-        <h2><?php echo $title; ?></h2>
-        <a href="#home"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
-        <p>by : <?php echo $title_desc; ?></p>
-    </div>
-
-      <?php } } ?>
-
-  </div>
-
-<div class="leftcolumn">
-    
-<?php
-      // $query = "SELECT * FROM tbl_stack ORDER BY rand() LIMIT 1";
-      $res = $viewUser->get_query($query);
-      
-      $num_row = $res->num_rows;
-
-      if ($num_row > 0) {
-
-      while($row = $res->fetch_assoc()) {
-        
-        $title = $row['title'];
-        $title_desc = $row['title_desc'];
-        $image = $row['image'];
-        $id = $row['id'];
-    ?>
-
-    <div class="card">
-        <h2><?php echo $title; ?></h2>
-        <a href="#home"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
-        <p>by : <?php echo $title_desc; ?></p>
-    </div>
-
-      <?php } } ?>
-    
-  </div>
-
-  
-
-
-  <div class="centercolumn">
-
-    <?php
-      // $query = "SELECT * FROM tbl_stack ORDER BY rand() LIMIT 1";
-      $res = $viewUser->get_query($query);
-      
-      $num_row = $res->num_rows;
-
-      if ($num_row > 0) {
-
-      while($row = $res->fetch_assoc()) {
-        
-        $title = $row['title'];
-        $title_desc = $row['title_desc'];
-        $image = $row['image'];
-        $id = $row['id'];
-    ?>
-
-    <div class="card">
-        <h2><?php echo $title; ?></h2>
-        <a href="#home"><img style="width:100%;height:250px;" src="<?php echo $image; ?>"></a>
-        <p>by : <?php echo $title_desc; ?></p>
-    </div>
-
-      <?php } } ?>
-
-  </div>
-
-  </div>
-  </div>
-  <!-- row -->
-
-
-  <!-- ====================================================================================================== -->
-<div id="why" class="parallax" style="background-image: url('<?php echo $image3; ?>');">
-
-<div class="notch">
-<style>
-  .notch {
-    background-color: #f1f1f1;
-    margin-top: 100px;
-    padding:10px;
-  }
-</style>
-</div>
-
-
-<div class="row row2">
-
-
-<div class="center2column">
-  <div class="card">
-      <h1>Why Us?</h1>
-      <p><?php echo $why_desc; ?>.</p>
-  </div>
-
-  <div class="card" style="margin-bottom:25px;">
-      <h1>Join Us</h1>
-      <div class="joinus">
-        <a href="#header" style="font-size:16px;"><i class="fa fa-lock"></i> Login</a>
-        <a href="#" style="font-size:16px;"><i class="fa fa-info-circle"></i> Register</a>
+      <div class="controls">
+        <a class="left" href="#section3"><</a>
+        <a class="right" href="#section2">></a>
       </div>
-  </div>
+
+      <div class="item"><img src="image/carousel-1.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/carousel-2.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/carousel-3.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/Luneta.jpg" alt="Owl Image"></div>
+      
+    </section> 
+    
+    <section id="section2">
+
+      <div class="controls">
+        <a class="left" href="#section1"><</a>
+        <a class="right" href="#section3">></a>
+      </div>
+
+      <div class="item"><img src="image/carousel-1.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/carousel-2.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/carousel-3.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/Luneta.jpg" alt="Owl Image"></div>
+
+      
+    </section> 
+
+    <section id="section3">
+      
+      <div class="controls">
+        <a class="left" href="#section2"><</a>
+        <a class="right" href="#section1">></a>
+      </div>
+
+      <div class="item"><img src="image/carousel-1.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/carousel-2.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/carousel-3.jpg" alt="Owl Image"></div>
+      <div class="item"><img src="image/Luneta.jpg" alt="Owl Image"></div>
+    
+      
+    </section> 
+
+               
 </div>
-
-
-</div>
-<!-- row -->
-
-</div>
-<!-- parallax -->
-
 
 </div>
 <!-- parallax end here -->
@@ -345,6 +239,22 @@ btn.onclick = function() {
       });
     });
   });
+</script>
+
+<script>
+  $(document).ready(function() {
+ 
+ $("#owl-demo").owlCarousel({
+
+     autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+     items : 4,
+     itemsDesktop : [1199,3],
+     itemsDesktopSmall : [979,3]
+
+ });
+
+});
 </script>
 
 

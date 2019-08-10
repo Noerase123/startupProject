@@ -127,6 +127,27 @@ $(document).ready(function() {
 
 </script>
 
+<!-- <script>
+  $(document).ready(function() {
+    $("#change_profile_form").submit(function(e) {
+      e.preventDefault();
+      var btn_profile = $("#btn_profile").val();
+      var prof_image = $("#file").val();
+
+      $(".response_change_profile").load("<?php echo BASE_URL; ?>require/ajax/change_profile.php", 
+      {
+        btn_profile: btn_profile,
+        prof_image: prof_image
+      });
+
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 1000);
+
+    });
+  });
+</script> -->
+
 <script>
   $(document).ready(function() {
     $("#change_pass_form").submit(function(e) {

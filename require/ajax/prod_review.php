@@ -2,12 +2,12 @@
 
 // include '../../config';
 
-// $get_id = $_GET['id'];
+$get_id = $_GET['id'];
 
 if (isset($_POST['submit'])) {
 
     $subject = $_POST['title'];
-    $message_rev = $_POST['desc'];
+    $message_rev = $_POST['message'];
 
     $add_review = array(
         'ref_id' => $sqlUser->escapeString($get_id),

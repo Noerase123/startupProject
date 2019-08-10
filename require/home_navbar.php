@@ -7,6 +7,11 @@ if (isset($_SESSION['user']['name'])) {
   $session = $_SESSION['user']['name'];
 }
 
+if (isset($_GET['query'])) {
+  $q = $_GET['query'];
+  header("location:".BASE_URL."view/items.php?query=$q&searchbtn=");
+}
+
 $res = $viewUser->get_data($tbl_name);
 
 while ($row = $res->fetch_assoc()) {
@@ -71,7 +76,7 @@ $num = $res->num_rows;
     <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
   <a href="<?php echo BASE_URL.'view/profile.php?tab=summary';?>" id="user2" style="color:#fff;">@<?php echo $_SESSION['user']['name'] ; ?></a>
   <?php } else { ?>
-  
+  <a class="nav_signup" href="<?php echo BASE_URL.'view/signup.php?set_up_login'?>" style="float:right;"><i class="fa fa-lock"></i> Signup</a>
   <button class="res-nav-login" onclick="document.getElementById('id01').style.display='block'" id="login" href="#"A><i class="fa fa-lock"></i> Login</button>
   <?php } ?>
 

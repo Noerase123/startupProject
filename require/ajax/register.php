@@ -31,7 +31,7 @@
 
         //empty handlers
         
-        if ($first == "") {
+        if ($first == "" && $success == 0) {
           ?>
         <script>
           $(".first_error").text("Please enter your first name");
@@ -138,12 +138,12 @@
             $(".pw_error").text("");
           </script>
           <?php
-          // $success = 1;
-        }
-
-        if ($loginUser->email_validate($uname) && $pass == $pass2){
           $success = 1;
         }
+
+        // if ($loginUser->email_validate($uname) && $pass == $pass2){
+        //   $success = 1;
+        // }
       
 
       }
