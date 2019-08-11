@@ -31,6 +31,9 @@ if (isset($_SESSION['user']['name'])) {
   if ($num_user > 0) {
   foreach($user as $you) {
     $firstname = $you['firstname'];
+    $lastname = $you['lastname'];
+    $contact = $you['contact_no'];
+    $address = $you['address'];
   }
   }
 
@@ -124,6 +127,7 @@ $num = $res->num_rows;
   </form>
 </div>
 
+
 <div id="cashout" class="modal">
   
   <form class="modal-content animate" style="width:30%;" id="form_login" action="" method="post">
@@ -135,9 +139,10 @@ $num = $res->num_rows;
 
     <div class="container">
       <h2><small>Cash on Delivery</small> </h2>
-      <h3>Name: <small>John Isaac</small> </h3>
-      <h3>Contact No.: <small>(+63)977-456-1234</small> </h3>
-      <h3>Address: <small>#143 Mapagmahal St. Taguig City Philippines</small> </h3>
+      <h3>Fullname: <small><?php echo $firstname.' '.$lastname; ?></small> </h3>
+      <h3>Contact No.: <small><?php echo $contact; ?></small> </h3>
+      <h3>Address: <small><?php echo $address; ?></small> </h3>
+      <!-- <h3>Address: <small>#143 Mapagmahal St. Taguig City Philippines</small> </h3> -->
       <br>
       <a onclick="alert('Purchase successful!')" href="<?php echo BASE_URL; ?>require/ajax/user_log.php?customer=<?php echo $get_name;?>" style="padding:8px;background-color:green;color:#fff;text-decoration:none;" id="login" name="login">Confirm</a>
       <a onclick="document.getElementById('cashout').style.display='none'" style="cursor:pointer;padding:8px;background-color:red;color:#fff;text-decoration:none;" id="login" name="login">Cancel</a>      
@@ -152,21 +157,31 @@ $num = $res->num_rows;
 </div>
 
 
-<div id="edit_prod_review" class="modal">
+<div id="creditdebit" class="modal" style="overflow:auto">
   
   <form class="modal-content animate" style="width:30%;" id="form_login" action="" method="post">
     <div class="imgcontainer">
-      <span onclick="document.getElementById('edit_prod_review').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <h2 class="response">Method of Payment</h2>
-      <!-- <span class="response"></span> -->
+      <span onclick="document.getElementById('creditdebit').style.display='none'" class="close" title="Close Modal">&times;</span>
+      
+      <h2>Payment method</h2>
     </div>
 
     <div class="container">
-      <input type="text" name="title_rev" id="title_rev" value="">
-      <textarea name="message" id="message" cols="30" rows="10" placeholder="Message here..."></textarea>
-      <br>
+      <p>Enter Credit Card # :</p>
+      <input class="input" type="text" maxlength="16" placeholder="Enter Card number.." name="title_rev" id="title_rev" required>
+      
+      <p>Enter Fullname :</p>
+      <input class="input" type="text" placeholder="Enter Fullname.." name="title_rev" id="title_rev" required>
+      
+      <p>Enter Valid Date:</p>
+      <input class="input" type="date" placeholder="Enter Card number.." name="title_rev" id="title_rev" required>
+      
+      <p>Enter CV :</p>
+      <input class="input" type="text" maxlength="3" placeholder="Enter CV number.." name="title_rev" id="title_rev" required>
+
+      <br><br><br>
       <a href="<?php echo BASE_URL; ?>require/ajax/user_log.php?customer=<?php echo $get_name;?>" style="padding:8px;background-color:green;color:#fff;text-decoration:none;" id="login" name="login">Confirm</a>
-      <a onclick="document.getElementById('edit_prod_review').style.display='none'" style="cursor:pointer;padding:8px;background-color:red;color:#fff;text-decoration:none;" id="login" name="login">Cancel</a>      
+      <a onclick="document.getElementById('creditdebit').style.display='none'" style="cursor:pointer;padding:8px;background-color:red;color:#fff;text-decoration:none;" id="login" name="login">Cancel</a>      
       <!-- <button class="login" type="submit" onclick="return login()"> Login </button> -->
     </div>
 

@@ -99,6 +99,9 @@ include '../require/home_navbar.php';
 
   <?php
     $res_tot = $viewUser->get_query("SELECT * FROM tbl_cart WHERE `customer_name` = '$session'");
+    foreach($res_tot as $row) {
+      $id = $row['ref_id'];
+    }
     $charge = 50;
     $count = $res_tot->num_rows;
     $totcharge_ = $charge * $count;
@@ -116,14 +119,23 @@ include '../require/home_navbar.php';
 
     $total_price_ = $price_ + $totcharge_;
     $ptotal = number_format($total_price_, 2);
+
+    $_SESSION['pay'] = $ptotal;
+    $_SESSION['order_id'] = $id;
+
+    if ($count > 1) {
+      $s = 's';
+    } else {
+      $s = '';
+    }
     ?>
 
   <div class="column-content" style="width:48%;">
     <div class="card" style="background-color:rgba(255,255,255,0.8)">
       <h3>Payment</h3>
       <div class="card">
-        <h3>(<?php echo $count > 0 ? $count : '0' ;?> item(s))</h3>
-        <h4>Total: P<?php
+        <h3>(<?php echo $count > 0 ? $count : '0' ;?> item<?php echo $s; ?>)</h3>
+        <h4>Total Price : P<?php
         // if (isset($_GET['id'])) {
         //   $get_prod = $_GET['id'];
         //   $get_id = array('id' => $get_prod);
@@ -152,12 +164,12 @@ include '../require/home_navbar.php';
         <h4>Cash on Delivery</h4>
         </div>
       </a>
-      <a style="color:#000;text-decoration:none;" href="">
+      <a style="color:#000;text-decoration:none;" onclick="document.getElementById('creditdebit').style.display='block'" href="#">
         <div class="card">
         <h4>Credit/Debit Card</h4>
         </div>
       </a>
-      <a style="color:#000;text-decoration:none;" href="">
+      <a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL; ?>view/paypal.php">
         <div class="card">
         <h4>Paymaya</h4>
         </div>
