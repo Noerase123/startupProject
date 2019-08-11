@@ -92,13 +92,6 @@ window.onclick = function(event) {
         register: register
       });
 
-      // setTimeout(() => {
-      //   window.location = "<?php echo BASE_URL; ?>view/profile.php?tab=summary";
-      // }, 1000);
-    
-    // location.reload();
-      // setTimeout(location.reload.bind(),2000);
-
     });
   });
 </script>
@@ -118,6 +111,7 @@ $(document).ready(function() {
       login: login
     });
 
+    $("#login").on("disable").text("logging in...");
       setTimeout(() => {
         location.reload();
       }, 1000);
@@ -149,19 +143,64 @@ $(document).ready(function() {
 </script> -->
 
 <script>
+  $(document).ready(function(){
+    $("#change_contact_form").submit(function(e){
+      e.preventDefault();
+      var contact = $("#contact").val();
+      var address = $("#address").val();
+      var submit_contact = $("#submit_contact").val();
+      
+      $(".response_change_contacts").load("<?php echo BASE_URL; ?>require/ajax/change_contacts.php",
+      {
+        contact: contact,
+        address: address,
+        submit_contact: submit_contact
+      });
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#change_profile_form").submit(function(e) {
+      e.preventDefault();
+      var change_firstname = $("#change_firstname").val();
+      var change_lastname = $("#change_lastname").val();
+      var change_birth = $("#change_birth").val();
+      var namebirth_btn = $("#namebirth_btn").val();
+
+      $(".response_change_namebirth").load("<?php echo BASE_URL; ?>require/ajax/change_namebirth.php",
+      {
+        change_firstname: change_firstname,
+        change_lastname: change_lastname,
+        change_birth: change_birth,
+        namebirth_btn: namebirth_btn
+      });
+
+      $("#namebirth_btn").on("disable").css("opacity", 0.5);
+
+    });
+  });
+</script>
+
+<script>
   $(document).ready(function() {
     $("#change_pass_form").submit(function(e) {
       e.preventDefault();
       var btn_change_pass = $("#submit_change_pass").val();
       var old_pass = $("#old_pass").val();
       var new_pass = $("#new_pass").val();
+      var confirm_pass = $("#confirm_pass").val();
       
       $(".response_change_pass").load("<?php echo BASE_URL; ?>require/ajax/change_pass.php",
       {
         btn_change: btn_change_pass,
         old_pass: old_pass,
-        new_pass: new_pass
+        new_pass: new_pass,
+        confirm_pass: confirm_pass
       });
+
+      $("#submit_change_pass").on('disable').css("opacity", 0.5);
     });
   });
 </script>

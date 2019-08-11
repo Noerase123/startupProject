@@ -70,16 +70,6 @@ include '../require/home_navbar.php';
     
     <div class="card" style="background-color:rgba(255,255,255,0.7);">
 
-      <style>
-        .form-register input[type=text], .form-register input[type=date],
-        .form-register input[type=email] {
-            padding:10px;
-            width:100%;
-            margin-bottom:20px;
-            margin-top:10px;
-        }
-      </style>
-
       <form action="" method="POST" class="form-register" id="form_register">
         
         <h2>Personal Information</h2>
@@ -108,11 +98,11 @@ include '../require/home_navbar.php';
         
         <label style="font-weight:bold;font-size:17px;">Password : </label><br>
         <span style="color:red;" class="pw_error"></span>
-        <input type="text" id="reg_password" placeholder="Enter your Password"><br>
+        <input type="password" id="reg_password" placeholder="Enter your Password"><br>
         
         <label style="font-weight:bold;font-size:17px;">Confirm Password : </label><br>
         <span style="color:red;" class="re_enter_error"></span>
-        <input type="text" id="re-reg_password" placeholder="Enter your Confirm Password"><br>
+        <input type="password" id="re-reg_password" placeholder="Enter your Confirm Password"><br>
 
         <input type="submit" value="Login" id="register">
 

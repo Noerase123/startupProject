@@ -70,7 +70,7 @@ $num_row = $res->num_rows;
                         $name = $row['firstname'];
                         $id = $row['id'];
 
-                        $table2 = "SELECT * FROM tbl_cart WHERE `customer_name`='$name'";
+                        $table2 = "SELECT * FROM tbl_cart WHERE `customer_name`='$title'";
                         $res2 = $viewUser->get_query($table2);
                         $num = $res2->num_rows;
                         
@@ -97,7 +97,7 @@ $num_row = $res->num_rows;
                 $name = $row['firstname'];
                 $id = $row['id'];
                 
-            $table2 = "SELECT * FROM tbl_cart WHERE `customer_name`='$name'";
+            $table2 = "SELECT * FROM tbl_cart WHERE `customer_name`='$title'";
             $res2 = $viewUser->get_query($table2);
             $num = $res2->num_rows;
 

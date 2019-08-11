@@ -10,7 +10,7 @@ $session_name = $_SESSION['user']['name'];
         // $image = $_POST['prof_image'];
         $table = "tbl_user";
 
-        $qry = "SELECT * FROM $table WHERE firstname = '$session_name'";
+        $qry = "SELECT * FROM $table WHERE username = '$session_name'";
         $res = $viewUser->get_query($qry);
         foreach($res as $row) {
             $id = $row['id'];

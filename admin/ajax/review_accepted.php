@@ -14,7 +14,7 @@ $table = "tbl_pending_reviews";
 $res = $viewUser->select_where($table, $id_arr);
 
     foreach ($res as $data) {
-        $name = $data['name'];
+        $name = $_SESSION['user']['firstname'];
         $review = $data['description'];
 
         $add_arr = array(

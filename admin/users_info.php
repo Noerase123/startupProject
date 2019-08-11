@@ -38,15 +38,6 @@ include 'require/nav.php';
     <br>
 <h1><?php echo $name; ?> <small>(<?php echo $email;?>)</small></h1>
 
-<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'user.php';?>">End-users</a> > <?php echo $name; ?></h4></div>
-
-    <div class="content">
-        <div class="row">
-            
-            <!-- <div class="options">
-                <a class="update" href="<?php echo ADMIN_URL.'ajax/review_accepted.php?id='.$pid;?>">Accept</a>
-                <a class="delete" onclick="return confirm('Do you want to delete this review?')" href="<?php echo ADMIN_URL.'ajax/pending_review_delete.php?id='.$pid;?>">Reject</a>
-            </div> -->
 
             <?php 
             $query = "SELECT sum(price) FROM tbl_user_items WHERE `user_name` = '$name'";
@@ -63,6 +54,14 @@ include 'require/nav.php';
                 <h3>Total bought: P<?php echo $consume;?></h3>  
             </div>
 
+<div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL.'user.php';?>">End-users</a> > <?php echo $name; ?></h4></div>
+
+    <div class="content">
+        <div class="row">
+            
+            <div class="options">
+                <a class="delete" onclick="return confirm('Do you want to delete this user?')" href="<?php echo ADMIN_URL.'ajax/delete_user.php?id='.$pid;?>">Delete User</a>
+            </div>
 
             <style>
             table tr th {
@@ -85,7 +84,7 @@ include 'require/nav.php';
                         </tr>
 
             <?php
-                $query = "SELECT * FROM tbl_user_items WHERE `user_name` = '$name'";
+                $query = "SELECT * FROM tbl_user_items WHERE `user_name` = '$email'";
 
                 $res = $viewUser->get_query($query);
 

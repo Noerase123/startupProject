@@ -118,7 +118,7 @@ if ($num > 0) {
   
   if (isset($_GET['searchbtn']) || isset($_GET['query']))
   {
-    $term = $_GET['query'];
+    $term = strip_tags($_GET['query']);
     $table = "tbl_stack";
     $search = "title";
     $result = $viewUser->search($term,$table,$search);

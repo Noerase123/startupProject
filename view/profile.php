@@ -6,11 +6,7 @@ include '../require/ajax/change_profile.php';
 
 $name = $_SESSION['user']['name'];
 
-if (!isset($_SESSION['user']['name'])) {
-    header("location:".BASE_URL."view/items.php");
-}
-
-$qry = "SELECT * FROM tbl_user WHERE firstname = '$name'";
+$qry = "SELECT * FROM tbl_user WHERE username = '$name'";
 $names = $viewUser->get_query($qry);
 $count = $names->num_rows;
 
@@ -92,6 +88,7 @@ include '../require/home_navbar.php';
       <div class="submenu" id="submenu">
 
         <a style="width:100%" href="<?php echo BASE_URL;?>view/profile.php?tab=summary">Summary of Details</a>
+        <a style="width:100%" href="<?php echo BASE_URL;?>view/profile.php?tab=contacts">Contact Details</a>
         <a style="width:100%" href="<?php echo BASE_URL;?>view/cart.php">Shopping Cart</a>
         <a style="width:100%" href="<?php echo BASE_URL;?>view/profile.php?tab=reviews">Reviews</a>
         <a style="width:100%" href="<?php echo BASE_URL;?>view/profile.php?tab=change_profile">Change Profile Picture</a>
@@ -102,21 +99,27 @@ include '../require/home_navbar.php';
   </div>
 
   <?php
+  // Summary of Details
     $name = $_SESSION['user']['name'];
     $tbl = "SELECT * FROM tbl_user_items WHERE `user_name` = '$name'";
     $res = $viewUser->get_query($tbl);
 
-    $qry = "SELECT * FROM tbl_user WHERE firstname = '$name'";
+    $qry = "SELECT * FROM tbl_user WHERE username = '$name'";
     $birth = $viewUser->get_query($qry);
-    $row = $birth->fetch_assoc();
-    $date = date("M d, Y", strtotime($row['birthdate']));
+    foreach($birth as $bir) {
+        $firstname = $bir['firstname'];
+        $lastname = $bir['lastname'];
+        $address = $bir['address'];
+        $contact = $bir['contact_no'];
+        $date = date("M d, Y", strtotime($bir['birthdate']));
+    }
 
-    $tbl2 = "SELECT * FROM tbl_prod_review WHERE rev_name = '$name'";
+    $tbl2 = "SELECT * FROM tbl_prod_review WHERE rev_name = '$firstname'";
     $review = $viewUser->get_query($tbl2);
 
     
     
-        $sql = "SELECT * FROM tbl_user WHERE firstname= '$name'";
+        $sql = "SELECT * FROM tbl_user WHERE username= '$name'";
         $user = $viewUser->get_query($sql);
         foreach($user as $row) {
             $image = $row['image'];
@@ -136,9 +139,28 @@ include '../require/home_navbar.php';
             if ($_GET['tab'] == 'summary') {
         ?>
         <div class="content-summary">
+        <?php if (empty($image)) { ?>
+        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <?php } else { ?>
         <div><img src="../<?php echo $image; ?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
-        <div><h2> <?php echo ucfirst($_SESSION['user']['name']);?></h2></div>
+        <?php } ?>
+        <div><h2> <?php echo $firstname.' '.$lastname. ' (<small>'.$_SESSION['user']['name'].'</small>)';?></h2></div>
         <div><h4>Birthdate : <?php echo $date;?></h4></div><br><br><br>
+        <button onclick="return document.getElementById('namebirth').style.display = 'block'">Edit Name & Birthdate</button>
+        <br><br>
+
+        <div class="nameoptions" id="namebirth">
+        <form action="" method="post" id="change_profile_form">
+
+            <label for="">Change Name : </label><input type="text" placeholder="First name.." name="change_firstname" id="change_firstname" required>
+            <input type="text" placeholder="Last name.." name="change_lastname" id="change_lastname" required><br><br>
+            
+            <label for="">Change Birth : </label><input type="date" name="change_birth" id="change_birth" required><br><br>
+            <input style="width:25%;background-color:green;" type="submit" value="Save" id="namebirth_btn"><br>
+
+            <span class="response_change_namebirth" style="color:green;font-weight:bold;"></span>
+        </form>
+        </div>
 
         <h3>Summary Details :</h3>
 
@@ -185,7 +207,11 @@ include '../require/home_navbar.php';
         <div class="card">
         <center>
 
-        <img src="../<?php echo $image;?>" style="height:200px;width:200px;" alt=""><br>
+        <?php if (empty($image)) { ?>
+        <div><img src="../image/sample-image.jpg" style="width:200px; height:200px;margin-right:20px;" alt=""></div>
+        <?php } else { ?>
+        <div><img src="../<?php echo $image; ?>" style="width:200px; height:200px;margin-right:20px;" alt=""></div>
+        <?php } ?>
         <span style="color:green" class="response_change_profile"></span><br><br>
         <form action="" method="post" enctype="multipart/form-data">
             <input type="file" name="profile_pic" id="profile_pic"><br><br>
@@ -199,17 +225,26 @@ include '../require/home_navbar.php';
         <?php } else if ($_GET['tab'] == 'change_pass') {?>
 
     <div class="content-summary">
+        <?php if (empty($image)) { ?>
+        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <?php } else { ?>
         <div><img src="../<?php echo $image; ?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
-        <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div>
-        <div><h4>Birthdate : <?php echo $date;?></h4></div><br>
+        <?php } ?>
+        
+        <div><h2> <?php echo $firstname.' (<small>'.$_SESSION['user']['name'].'</small>)';?></h2></div><br><br><br>
 
         <h3>Change Password :</h3>
         <form action="" method="POST" id="change_pass_form">
+
         <label for="">Old Password : </label><br>
         <input style="padding:10px;width:50%;" type="password" name="old_pass" id="old_pass"><br>
 
         <label for="">New Password : </label><br>
         <input style="padding:10px;width:50%;" type="password" name="new_pass" id="new_pass"><br>
+
+        <label for="">Confirm New Password : </label><br>
+        <input style="padding:10px;width:50%;" type="password" name="confirm_pass" id="confirm_pass"><br>
+        
         <h4 class="response_change_pass"></h4>
         <input style="background-color:green;width:50%;" type="submit" id="submit_change_pass" value="Save">
         </form>
@@ -219,10 +254,14 @@ include '../require/home_navbar.php';
 
         <?php } else if ($_GET['tab'] == 'reviews') { ?>
 
-            <div class="content-summary">
-        <div><img src="../<?php echo $image;?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
-        <div><h2> <?php echo $_SESSION['user']['name'];?></h2></div>
-        <div><h4>Birthdate : <?php echo $date;?></h4></div><br><br><br>
+        <div class="content-summary">
+        <?php if (empty($image)) { ?>
+        <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <?php } else { ?>
+        <div><img src="../<?php echo $image; ?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+        <?php } ?>
+        
+        <div><h2> <?php echo $firstname.' (<small>'.$_SESSION['user']['name'].'</small>)';?></h2></div><br><br><br>
 
         <h3>Reviews :</h3>
 
@@ -262,6 +301,43 @@ include '../require/home_navbar.php';
         </table>
         
         </div>
+
+        <?php } else if ($_GET['tab'] == 'contacts') {?>
+
+<div class="content-summary">
+    <?php if (empty($image)) { ?>
+    <div><img src="../image/sample-image.jpg" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+    <?php } else { ?>
+    <div><img src="../<?php echo $image; ?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
+    <?php } ?>
+    
+    <div><h2> <?php echo $firstname.' (<small>'.$_SESSION['user']['name'].'</small>)';?></h2></div><br><br><br>
+
+    <style>
+        #contact_det {
+            display:none;
+        }
+    </style>
+
+    <h3>Contact Details :</h3>
+
+    <h4>Contact No. : <?php echo $contact; ?></h4>
+    <h4>Home Address : <?php echo $address; ?></h4>
+
+    <button onclick="document.getElementById('contact_det').style.display = 'block'">Edit Detail</button>
+
+    <div id="contact_det">
+    <form action="" method="POST" id="change_contact_form">
+    <label for="">Contact No. : </label><br>
+    <input style="padding:10px;width:50%;" type="text" maxlength="11" name="contact" id="contact" required><br>
+    <label for="">Home Address : </label><br>
+    <input style="padding:10px;width:50%;" type="text" name="address" id="address" required><br>
+    <h4 class="response_change_contacts"></h4>
+    <input style="background-color:green;width:50%;" type="submit" id="submit_contact" name="submit_contact" value="Save">
+    </form>
+    </div>
+    
+    </div>
 
 
         <?php } } ?>

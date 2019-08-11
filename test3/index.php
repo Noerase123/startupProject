@@ -1,33 +1,67 @@
-<html>
-    <head>
-        <title>Patricia Anne Isaac</title>
+<?php
 
-        <style>
-            body {
-                background-color: yellow;
-                color: red;
-            }
+class Person {
+    function myfunc($str) {
 
-            .nav {
-                padding:10px;
-                width:50%;
-                background-color:#fff;
-            }
-        </style>
-    </head>
-    <body>
-        Hello world!
+        if ($str == "time") {
+            $date = date('h:i A');
+        }
+        else if ($str == "date") {
+            $date = date('m/d/Y');
+        }
+        else {
+            $date = "unable to find";
+        }
 
-        <div class="nav"></div>
+        echo $date;
+        return $date;
+    }
+}
 
-        <h1>Hello</h1>
+$person = new Person;
 
-        <h2>Hello</h2>
-        
-        <h3>Hello</h3>
-        
-        <h4>Hello</h4>
-        
-        <h5>Hello</h5>
-    </body>
-</html>
+if (isset($_GET['string'])) {
+    $str = $_GET['string'];
+
+    $input = $str;
+    $inputdb =  password_hash($str, PASSWORD_DEFAULT);
+
+    $res = password_verify($input, $inputdb);
+    if ($res) {
+        echo 'hello fucking world!';
+    }
+    else {
+        echo 'hehe';
+    }
+
+}
+?>
+
+<form action="" method="get">
+    <input type="text" name="string" id="">
+    <input type="submit" value="Submit">
+</form><br>
+
+
+<?php 
+
+$person_arr = array();
+
+$person_arr['id'] = array('111','222','333','444');
+
+// echo $person_arr['id'][2];
+
+$man = array(
+    'John',
+    'Isaac',
+    'Caasi'
+);
+
+$delimiter = "yow";
+
+$title_room = str_replace(" - ","",$person_arr['id'][0]);
+$target_div = explode(" ", $title_room);
+
+echo $target_div;
+
+?>

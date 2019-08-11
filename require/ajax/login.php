@@ -10,7 +10,9 @@
 
       foreach($res as $row){
         $user_id = $row['id'];
-        $user_name = $row['firstname'];
+        $user_name = $row['username'];
+        $firstname = $row['firstname'];
+        $lastname = $row['lastname'];
         $pw = $row['password'];
       }
 
@@ -20,10 +22,12 @@
 
         $_SESSION['user'] = array(
           'id' => $user_id,
-          'name' => $user_name
+          'name' => $user_name,
+          'firstname' => $firstname,
+          'lastname' => $lastname
         );
 
-        echo "Welcome ".$_SESSION['user']['name'];
+        echo "Welcome ".$_SESSION['user']['firstname'];
       } else {
           echo "No user found";
         }

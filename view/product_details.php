@@ -161,17 +161,30 @@ include '../require/home_navbar.php';
     $message = $row['message'];
     $star_ = $row['rev_star'];
     $rev_id = $row['id'];
+    $rev_image = $row['rev_image'];
+    // $date = $row['date_posted'];
+
+    $sql = "SELECT * FROM tbl_prod_review WHERE id = $rev_id";
+    $res_date = $viewUser->get_query($sql);
+    foreach($res_date as $row_date) {
+      $date = $row['date_posted'];
+
+      $timeago = $viewUser->timeago($date);
+      
+      // $timeago = time() - $date;
+    }
+
 ?>
 
 <div class="card">
 <?php
 if (isset($_SESSION['user']['name'])) {
-if ($_SESSION['user']['name'] == $name) {
+if ($_SESSION['user']['firstname'] == $name) {
 ?>
-<a id="edit_prod_review" href="">Edit</a>
-<a id="delete_prod_review" href="../require/ajax/prev_delete.php?id=<?php echo $get_id; ?>">Delete </a>
+<!-- <a id="edit_prod_review" style="cursor:pointer;" onclick="document.getElementById('edit_prod_review').style.display = 'block'">Edit</a> -->
+<a id="delete_prod_review" href="../require/ajax/prev_delete.php?id=<?php echo $rev_id; ?>">Delete </a>
 <?php } } ?>
-<img src="../image/carousel-3.jpg" style="border-radius:100px;float:right;height:100px;width:100px;">
+<img src="../<?php echo $rev_image; ?>" style="border-radius:100px;float:right;height:100px;width:100px;">
 <h2><?php echo $name;?> 
 <span>( <?php 
 if ($star_ > 5){
@@ -184,8 +197,8 @@ else {
     echo '<img src="../image/Star.png" alt="" style="height:20px;width:30px;">';
   }
 } ?> <small>ratings )</small> </span></h2>
-<h5>Date Posted : hours ago</h5>
-<p><?php echo $title;?></p>
+<h5>Date Posted : <?php echo $timeago; ?></h5>
+<p style="color:#aaa;"><?php echo $title;?></p>
 <p><?php echo $message; ?></p>
 </div>
 
@@ -199,7 +212,7 @@ if (isset($_SESSION['user']['name'])) {
 
     <div class="card rate" style="background-color:rgba(255,255,255,0.8);height:490px;">
     <h3>Rate the product</h3>
-      <form action="" id="prod_form" method="post">
+      <form action="" id="prod_form" method="post" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="Write your Subject" id="title"><br>
         <!-- <label>How many star you like to give? </label><input style="width:10%;padding:10px;" type="number" name="star" id="star"><br><br> -->
         <label for="">How many star you like to give?</label>

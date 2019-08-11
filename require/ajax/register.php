@@ -4,13 +4,13 @@
     include '../../config.php';
 
     if (isset($_POST['register'])) {
-      $uname = $_POST['email'];
-      $pass = $_POST['pass'];
-      $pass2 = $_POST['pass2'];
-      $first = $_POST['first'];
-      $last = $_POST['last'];
-      $address = $_POST['address'];
-      $birth = $_POST['birth'];
+      $uname = strip_tags($_POST['email']);
+      $pass = strip_tags($_POST['pass']);
+      $pass2 = strip_tags($_POST['pass2']);
+      $first = strip_tags($_POST['first']);
+      $last = strip_tags($_POST['last']);
+      $address = strip_tags($_POST['address']);
+      $birth = strip_tags($_POST['birth']);
       $pw = password_hash($pass, PASSWORD_DEFAULT);
 
       $add_arr = array();
@@ -157,8 +157,10 @@
           $res = $viewUser->get_query($query);
           foreach($res as $row) {
             $user_id = $row['id'];
-            $user_name = $row['firstname'];
+            $user_name = $row['username'];
             $passrow = $row['password'];
+            $firstname = $row['firstname'];
+            $lastname = $row['lastname'];
           }
 
           $encrypt = password_verify($pass, $passrow);
@@ -168,9 +170,18 @@
           }
           else {
 
+            $email_arr = array(
+              'ref_id' => $sqlUser->escapeString($user_id),
+              'email' => $sqlUser->escapeString($user_name)
+            );
+
+            $sqlUser->create("tbl_existed_user",$email_arr);
+
             $_SESSION['user'] = array(
               'id' => $user_id,
-              'name' => $user_name
+              'name' => $user_name,
+              'firstname' => $firstname,
+              'lastname' => $lastname
             );
 
             ?>

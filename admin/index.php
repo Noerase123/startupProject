@@ -46,7 +46,7 @@
           login: login
         });
         
-        // location.reload();
+        $("#login").on("disable").css("opacity", 0.5);
         setTimeout(() => {
           location.reload();
         }, 1000);

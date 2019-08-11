@@ -4,16 +4,25 @@
 
 $get_id = $_GET['id'];
 
+$name = $_SESSION['user']['name'];
+
 if (isset($_POST['submit'])) {
 
     $subject = $_POST['title'];
     $message_rev = $_POST['message'];
 
+    $sql = "SELECT * FROM tbl_user WHERE username = '$name'";
+    $res = $viewUser->get_query($sql);
+    foreach($res as $row) {
+        $image = $row['image'];
+    }
+
     $add_review = array(
         'ref_id' => $sqlUser->escapeString($get_id),
-        'rev_name' => $sqlUser->escapeString($_SESSION['user']['name']),
+        'rev_name' => $sqlUser->escapeString($_SESSION['user']['firstname']),
         'rev_star' => $sqlUser->escapeString($_POST['star']),
         'rev_title' => $sqlUser->escapeString($subject),
+        'rev_image' => $sqlUser->escapeString($image),
         'message' => $sqlUser->escapeString($message_rev)
     );
 
