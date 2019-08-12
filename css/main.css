@@ -536,6 +536,41 @@ body {
   margin-top:10px;
 }
 
+.processpanel {
+  position: relative;
+  padding: 10px;
+}
+
+.panelp {
+  margin-left: 120px;
+  position: absolute;
+}
+
+.processpanel button {
+  padding: 10px;
+  background-color: #74db5a;
+  /* color:#fff; */
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.processpanel button:hover {
+  padding: 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+}
+
+.processpanel .panelp .arrow {
+  padding: 0px 50px;
+  background-color: #f2ff3e;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
 @media screen and (max-width:1111px) {
   .row2 {
     padding: 0px 20px;

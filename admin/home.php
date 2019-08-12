@@ -56,7 +56,7 @@ include 'require/nav.php';
 <br><br><br><br>
 
 <?php
-    $query = "SELECT sum(price) FROM tbl_user_items";
+    $query = "SELECT sum(price) FROM tbl_customer_received";
     $res = $viewUser->get_query($query);
     $row = $res->fetch_assoc();
     $cpl = number_format($row['sum(price)'],2);
@@ -81,7 +81,7 @@ include 'require/nav.php';
 <div style="border: 1px solid #000;width:98%;">
 <div style="margin-left:20px;">
 <h2>Summary Information :</h2>
-<h4>Companies Capital : $<?php echo $cpl;?></h4>
+<h4>Company's Revenue : $<?php echo $cpl;?></h4>
 <h4>Users : <?php echo $users;?> people</h4>
 <h4>Products : <?php echo $products;?> items</h4>
 <h4>Reviews : <?php echo $reviews;?> item reviews and <?php echo $reviews2;?> messages </h4>

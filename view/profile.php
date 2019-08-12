@@ -102,7 +102,15 @@ include '../require/home_navbar.php';
   // Summary of Details
     $name = $_SESSION['user']['name'];
     $tbl = "SELECT * FROM tbl_user_items WHERE `user_name` = '$name'";
-    $res = $viewUser->get_query($tbl);
+    $res_order = $viewUser->get_query($tbl);
+    
+    $tbl = "SELECT * FROM tbl_deliver_process WHERE `user_name` = '$name'";
+    $res_deliver = $viewUser->get_query($tbl);
+    
+    $tbl = "SELECT * FROM tbl_customer_received WHERE `user_name` = '$name'";
+    $res_received = $viewUser->get_query($tbl);
+
+    // ========================================
 
     $qry = "SELECT * FROM tbl_user WHERE username = '$name'";
     $birth = $viewUser->get_query($qry);
@@ -145,7 +153,7 @@ include '../require/home_navbar.php';
         <div><img src="../<?php echo $image; ?>" style="float:left;width:100px; height:100px;margin-right:20px;" alt=""></div>
         <?php } ?>
         <div><h2> <?php echo $firstname.' '.$lastname. ' (<small>'.$_SESSION['user']['name'].'</small>)';?></h2></div>
-        <div><h4>Birthdate : <?php echo $date;?></h4></div><br><br><br>
+        <div><h4>Birthdate : <?php echo $date;?></h4></div><br>
         <button onclick="return document.getElementById('namebirth').style.display = 'block'">Edit Name & Birthdate</button>
         <br><br>
 
@@ -158,12 +166,18 @@ include '../require/home_navbar.php';
             <label for="">Change Birth : </label><input type="date" name="change_birth" id="change_birth" required><br><br>
             <input style="width:25%;background-color:green;" type="submit" value="Save" id="namebirth_btn"><br>
 
-            <span class="response_change_namebirth" style="color:green;font-weight:bold;"></span>
+            <span class="response_change_namebirth" style="color:green;font-weight:bold;"></span><br>
         </form>
         </div>
-
-        <h3>Summary Details :</h3>
-
+        <div class="processpanel">
+            <div class="panelp">
+                <button id="orderedbtn">Ordered Pending</button><span class="arrow"></span><button id="delibtn" >Delivery Process</button><span class="arrow"></span><button id="receivedbtn">Items Received</button>
+            </div>
+             </div>
+        <br><br>
+        <div id="ordered">
+        
+        <h3>Ordered Details :</h3>
         <table>
             <tr class="menus">
                 <th>Title</th>
@@ -172,7 +186,7 @@ include '../require/home_navbar.php';
                 <th>Date</th>
             </tr>
     <?php
-    foreach($res as $row) {
+    foreach($res_order as $row) {
         $title = $row['title'];
         $price = $row['price'];
 
@@ -191,10 +205,77 @@ include '../require/home_navbar.php';
             </tr>
         <?php
     }
-    ?>
-
-            
+    ?>    
         </table>
+        </div>  
+
+        <div id="delivery">
+        
+        <h3>Items to Deliver :</h3>
+        <table>
+            <tr class="menus">
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Date</th>
+            </tr>
+    <?php
+    foreach($res_deliver as $row) {
+        $title = $row['title'];
+        $price = $row['price'];
+
+        $pricee = number_format($price,2);
+        $qty = $row['quantity'];
+        $datee = $row['date_created'];
+
+        $date = $viewUser->datetime($datee,2);
+
+        ?>
+            <tr>
+                <th><h3><?php echo $title; ?></h3></th>
+                <th><p>P <?php echo $pricee; ?></p></th>
+                <th><p><?php echo $qty; ?></p></th>
+                <th><p><?php echo $date; ?></p></th>
+            </tr>
+        <?php
+    }
+    ?>    
+        </table>
+        </div>  
+
+        <div id="received">
+        
+        <h3>Items Delivered/Received :</h3>
+        <table>
+            <tr class="menus">
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Date</th>
+            </tr>
+    <?php
+    foreach($res_received as $row) {
+        $title = $row['title'];
+        $price = $row['price'];
+
+        $pricee = number_format($price,2);
+        $qty = $row['quantity'];
+        $datee = $row['date_created'];
+
+        $date = $viewUser->datetime($datee,2);
+
+        ?>
+            <tr>
+                <th><h3><?php echo $title; ?></h3></th>
+                <th><p>P <?php echo $pricee; ?></p></th>
+                <th><p><?php echo $qty; ?></p></th>
+                <th><p><?php echo $date; ?></p></th>
+            </tr>
+        <?php
+    }
+    ?>    
+        </table>
+        </div>  
         
         </div>
 

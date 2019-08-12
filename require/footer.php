@@ -68,6 +68,33 @@ window.onclick = function(event) {
 <!-- modal end -->
 
 <script>
+  $(document).ready(function() {    
+    $("#received").hide();
+    $("#delivery").hide();
+
+    $("#delibtn").on("click", () => {
+      $("#delivery").fadeIn().show();
+      $("#ordered").fadeOut().hide();
+      $("#received").fadeOut().hide();
+    });
+
+    $("#orderedbtn").on("click", () => {
+      $("#delivery").fadeOut().hide();
+      $("#ordered").fadeIn().show();
+      $("#received").fadeOut().hide();
+    });
+
+    $("#receivedbtn").on("click", () => {
+      $("#delivery").fadeOut().hide();
+      $("#ordered").fadeOut().hide();
+      $("#received").fadeIn().show();
+    });
+  });
+</script>
+
+
+
+<script>
   $(document).ready(function() {
     $("#form_register").submit(function(e) {
       e.preventDefault();
