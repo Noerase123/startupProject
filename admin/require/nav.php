@@ -12,6 +12,7 @@ if($_SESSION["admin"]=="")
         <p style="cursor:pointer;"><img src="<?php echo BASE_URL; ?>image/sample-image.jpg" style="height:15px;width:15px;" alt=""> <?php echo $_SESSION["admin"]; ?></p>
         <p><a style="color:#fff;text-decoration:none;" href="<?php echo ADMIN_URL.'logout.php';?>">Logout</a></p>
     </div>
+    
 </div>
 
 <nav class="navi">

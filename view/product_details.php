@@ -161,13 +161,18 @@ include '../require/home_navbar.php';
     $message = $row['message'];
     $star_ = $row['rev_star'];
     $rev_id = $row['id'];
-    $rev_image = $row['rev_image'];
+    // $rev_image = $row['rev_image'];
     // $date = $row['date_posted'];
+    $sql2 = "SELECT * FROM tbl_user WHERE firstname = '$name'";
+    $res_image = $viewUser->get_query($sql2);
+    foreach($res_image as $row) {
+      $rev_image = $row['image'];
+    }
 
     $sql = "SELECT * FROM tbl_prod_review WHERE id = $rev_id";
     $res_date = $viewUser->get_query($sql);
     foreach($res_date as $row_date) {
-      $date = $row['date_posted'];
+      $date = $row_date['date_posted'];
 
       $timeago = $viewUser->timeago($date);
       

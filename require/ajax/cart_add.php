@@ -2,6 +2,8 @@
 
 // include '../../config.php';
 
+$session = $_SESSION['user']['name'];
+
  $qty_add = 1;
  if (isset($_POST['cart'])) {
 
@@ -32,7 +34,7 @@
    
   ?>
   <script>
-    window.location.href="<?php echo BASE_URL.'view/checkout.php?id='.$get_id; ?>";
+    window.location.href="<?php echo BASE_URL.'view/checkout.php?session='.$session.'&direct_id='.$get_id; ?>";
   </script>
   <?php
  }

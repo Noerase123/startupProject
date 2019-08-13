@@ -291,7 +291,7 @@ include '../require/home_navbar.php';
         <?php if (empty($image)) { ?>
         <div><img src="../image/sample-image.jpg" style="width:200px; height:200px;margin-right:20px;" alt=""></div>
         <?php } else { ?>
-        <div><img src="../<?php echo $image; ?>" style="width:200px; height:200px;margin-right:20px;" alt=""></div>
+        <div><img src="../<?php echo $image; ?>" style="width:200px;border-radius:100px; height:200px;margin-right:20px;" alt=""></div>
         <?php } ?>
         <span style="color:green" class="response_change_profile"></span><br><br>
         <form action="" method="post" enctype="multipart/form-data">

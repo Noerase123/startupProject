@@ -64,6 +64,7 @@ body {
   }
 
   .head-content {
+      position: relative;
       float:right;
   }
 

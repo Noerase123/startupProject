@@ -287,17 +287,30 @@ $(document).ready(function() {
 </script>
 
 <script>
-var btn = document.getElementById('btn-nav');
-var nav = document.getElementById('nav');
+$(document).ready(function() {
+  var btn = $('#btn-nav');
+  var nav = $('#nav');
 
-btn.onclick = function() {
-    if (nav.style.display === "none"){
-        nav.style.display = "block";
-    } else {
-        nav.style.display = "none";
-    }
-}
+  btn.on('click', () => {
+    nav.slideToggle();
+  });
 
+});
+</script>
+
+<script>
+  $(document).ready(function() {
+
+  var cat_nav = $("#cat_nav");
+  var btn_cat = $("#btn-cat");
+  var cat_content = $("#cat_content");
+
+
+    btn_cat.on('click', () => {
+      // cat_nav.slideToggle();
+      cat_nav.toggle('slide');
+  });
+  });
 </script>
 
   <script>

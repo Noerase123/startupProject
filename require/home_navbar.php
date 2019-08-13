@@ -55,6 +55,7 @@ $num = $res->num_rows;
   
   <button class="btnmenu" id="btn-nav" style="float:right;">Menu</button>
   <button class="btncat" id="btn-cat">Cat</button>
+  <!-- onclick="return document.getElementById('cat_nav').style.display = 'block'" -->
 
     <?php
       if (isset($_SESSION['user']['name'])) {
@@ -93,6 +94,23 @@ $num = $res->num_rows;
 </div>
 <!-- end of topnav -->
 
+
+<div class="cat_nav" id="cat_nav">
+  <ul class="cat_content" id="cat_content">
+    <li><a href="<?php echo BASE_URL; ?>view/items.php">All Products</a></li>
+    <?php
+    $sql = "SELECT * FROM tbl_categories";
+    $res = $viewUser->get_query($sql);
+    foreach($res as $row) {
+      $name = $row['cat_name'];
+      $qry = "SELECT * FROM tbl_stack WHERE category = '$name'";
+      $res2 = $viewUser->get_query($qry);
+      $num_res = $res2->num_rows;
+      echo '<li><a href="'.BASE_URL.'view/items.php?category='.$name.'">'.$name.' ('.$num_res.')</a></li>';
+    }
+    ?>
+  </ul>
+</div>
 
 
 <!-- modal -->
