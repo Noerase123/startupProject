@@ -65,18 +65,23 @@ $res = $viewUser->get_data("tbl_stack");
                     echo '<h3 style="color:green;">Results: "'.$term.'" ('.$num_result.' '.$item.')</h3>';
 
                 while($row = $result->fetch_assoc()) {
-                    $title = $row['title'];
-                    $author = $row['title_desc'];
-                    $id = $row['id'];
+                $title = $row['title'];
+                $money = $row['price'];
+                $qty = $row['quantity'];
+                $author = $row['title_desc'];
+
+                $price = number_format($money,2);
+                $id = $row['id'];
                     ?>
-                    <div class="column">
-                        <a href="product_details.php?id=<?php echo $id;?>">
-                            <div class="card">
-                                <h3><?php echo $title; ?></h3>
-                                <p>by: <?php echo $author; ?></p>
-                            </div>
-                        </a>
+            <div class="column">
+                <a href="product_details.php?id=<?php echo $id;?>">
+                    <div class="card">
+                        <h3><?php echo $title; ?></h3>
+                        <p>P <?php echo $price; ?></p>
+                        <p>pieces : <?php echo $author; ?></p>
                     </div>
+                </a>
+            </div>
                     <?php
                 }
             }
@@ -94,15 +99,16 @@ $res = $viewUser->get_data("tbl_stack");
                 $title = $row['title'];
                 $money = $row['price'];
                 $qty = $row['quantity'];
+                $author = $row['title_desc'];
 
-                $author = number_format($money,2);
+                $price = number_format($money,2);
                 $id = $row['id'];
         ?>
             <div class="column">
                 <a href="product_details.php?id=<?php echo $id;?>">
                     <div class="card">
                         <h3><?php echo $title; ?></h3>
-                        <p>P <?php echo $author; ?></p>
+                        <p>P <?php echo $price; ?></p>
                         <p>pieces : <?php echo $qty; ?></p>
                     </div>
                 </a>

@@ -1,8 +1,9 @@
 <?php 
 
 // include '../../config.php';
-
-$session = $_SESSION['user']['name'];
+if (isset($_SESSION['user']['name'])) {
+  $session = $_SESSION['user']['name'];
+}
 
  $qty_add = 1;
  if (isset($_POST['cart'])) {
