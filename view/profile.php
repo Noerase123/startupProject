@@ -177,7 +177,7 @@ include '../require/home_navbar.php';
         <br><br>
         <div id="ordered">
         
-        <h3>Ordered Details :</h3>
+        <h3>Pending Orders :</h3>
         <table>
             <tr class="menus">
                 <th>Title</th>

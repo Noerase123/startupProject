@@ -57,11 +57,8 @@ $man = array(
     'Caasi'
 );
 
-$delimiter = "yow";
+$name = ['John Isaac'];
 
-$title_room = str_replace(" - ","",$person_arr['id'][0]);
-$target_div = explode(" ", $title_room);
-
-echo $target_div;
-
+$explode = explode('',$name);
+echo $explode;
 ?>

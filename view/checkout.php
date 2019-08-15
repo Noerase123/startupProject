@@ -171,7 +171,7 @@ include '../require/home_navbar.php';
       </a>
       <a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL; ?>view/paypal.php">
         <div class="card">
-        <h4>Paymaya</h4>
+        <h4>Paypal</h4>
         </div>
       </a>
     </div> 

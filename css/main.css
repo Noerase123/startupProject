@@ -848,4 +848,9 @@ body {
   .processpanel .panelp .arrow {
     display: none;
   }
+
+  .processpanel .panelp {
+    float:left;
+    margin-left: 35px;
+  }
 }

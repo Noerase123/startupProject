@@ -178,7 +178,7 @@ if ($num > 0) {
       <h2><a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
       <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
       <p style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
-      <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
+      <!-- <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a> -->
       <div class="prod_option">
       <?php
       if (isset($_SESSION['user']['name'])) {
@@ -255,7 +255,7 @@ if ($num_row > 0){
       <h2><a style="color:#000;text-decoration:none;" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>"><?php echo ucfirst($title); ?></a></h2>
       <a class="tags" href="" style="color:rgb(94, 92, 92)"><?php echo $some_text; ?></a>
       <p style="color:rgb(94, 92, 92)"><?php echo $price ? 'Price : Php '.$price : '' ; ?></p>
-      <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a>
+      <!-- <a class="seemore" href="<?php echo BASE_URL.'view/product_details.php?id='.$id;?>">See more +</a> -->
       <div class="prod_option">
       <?php
       if (isset($_SESSION['user']['name'])) {
