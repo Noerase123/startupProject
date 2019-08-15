@@ -285,7 +285,7 @@ if ($num_row > 0){
     $some_text = $row['some_text'];
     $description = $row['description'];
     $image = $row['image'];
-    $id = $row['id'];
+    $stack_id = $row['id'];
     $money = $row['price'];
     $qty = $row['quantity'];
 
@@ -322,7 +322,7 @@ if ($num_row > 0){
       <?php
       if (isset($_SESSION['user']['name'])) {
       ?>
-      <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$id;?>">Cart</a>
+      <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$stack_id;?>">Cart</a>
       <?php
       } 
       ?>

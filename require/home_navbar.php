@@ -82,7 +82,8 @@ $num = $res->num_rows;
   
   <?php if (isset($_SESSION['user'])) {?>
   <!-- <a href="<?php echo BASE_URL; ?>view/checkout.php?id"><i class="fa fa-heart"></i> Checkout </a> -->
-    <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
+    <!-- <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a> -->
+    <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart( <span class="result_cart"></span> ) </a>
   <a href="<?php echo BASE_URL.'view/profile.php?tab=summary';?>" id="user2" style="color:#fff;">@<?php echo $num_user > 0 ? ucfirst($firstname) : '' ; ?></a>
   <?php } else { ?>
   <a class="nav_signup" href="<?php echo BASE_URL.'view/signup.php?set_up_login'?>" style="float:right;"><i class="fa fa-lock"></i> Signup</a>

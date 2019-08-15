@@ -148,6 +148,12 @@ $(document).ready(function() {
 
 </script>
 
+<script>
+  $(document).ready(function(){
+    // $("#plusbtn")
+  });
+</script>
+
 <!-- <script>
   $(document).ready(function() {
     $("#change_profile_form").submit(function(e) {
@@ -252,13 +258,24 @@ $(document).ready(function() {
   });
 </script>
 
+<!-- <script>
+  $(document).ready(function() {
+    var btncart = $("#btncart");
+    $("#btncart").click(function() {
+      $(".result_cart").load("<?php echo BASE_URL;?>require/ajax/speed_cart.php", {
+        btncart: btncart
+      });
+    }); 
+  });
+</script> -->
+
 <script>
 
-$(document).ready(function() {
-  $("#delete_cart").click(function() {
-    $(".deleted").load("<?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?>");
-  });
-});
+// $(document).ready(function() {
+//   $("#delete_cart").click(function() {
+//     $(".deleted").load("<?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?>");
+//   });
+// });
 
 
 // var form = $('#bc_form');
@@ -314,9 +331,23 @@ $(document).ready(function() {
 </script>
 
   <script>
-    var qty = document.getElementById("qty<?php echo $qty_id; ?>");
-    var plusbtn = document.getElementById("plusbtn<?php echo $qty_id; ?>");
-    var minusbtn = document.getElementById("minusbtn<?php echo $qty_id; ?>");
+  // $(document).ready(function() {
+    // var qty = $("#qty<?php echo $qty_id;?>");
+    // var plusbtn = $("#plusbtn<?php echo $qty_id;?>");
+    // var minusbtn = $("#minusbtn<?php echo $qty_id;?>");
+
+    // plusbtn.on('click', () => {
+    //   qty.value++;
+    // });
+
+    // minusbtn.on('click', () => {
+    //   qty.value--;
+    // });
+
+    var qty = document.getElementById("qty<?php echo $qty_id;?>");
+    var plusbtn = document.getElementById("plusbtn<?php echo $qty_id;?>");
+    var minusbtn = document.getElementById("minusbtn<?php echo $qty_id;?>");
+
 
     plusbtn.onclick = function() {
       qty.value++;
@@ -324,5 +355,7 @@ $(document).ready(function() {
     minusbtn.onclick = function() {
       qty.value--;
     }
+    
+  // });
     
   </script>

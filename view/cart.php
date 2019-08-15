@@ -131,7 +131,7 @@ include '../require/home_navbar.php';
           <th><button style="font-size:25px;font-weight:bold;width:30px;" id="minusbtn<?php echo $qty_id; ?>">-</button> 
                     <input type="number" name="qty" id="qty<?php echo $qty_id; ?>" value="<?php echo $qty; ?>" style="width:20%;padding:1px;font-size:25px;"> 
               <button style="font-size:25px;font-weight:bold;" id="plusbtn<?php echo $qty_id; ?>">+</button></th>
-          <th><h3><?php echo 'P'.$pricee; ?></h3></th>
+          <th><h3 id="subtotal"><?php echo 'P'.$pricee; ?></h3></th>
           <th><a style="padding:10px;background-color:red;color:white;text-decoration:none;margin-left:50px;" id="delete_cart" href="<?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?>">X</a></th>
         </tr>
         <!-- <?php echo BASE_URL;?>require/ajax/cart_delete.php?id=<?php echo $qty_id;?> -->
