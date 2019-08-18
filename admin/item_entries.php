@@ -17,11 +17,18 @@ include '../config.php';
 <?php 
 include 'require/nav.php';
 
+$sql = "SELECT sum(price) FROM tbl_customer_received";
+$res = $viewUser->get_query($sql);
+foreach($res as $row) {
+    $tot_price = $row['sum(price)'];
+    $tot = number_format($tot_price,2);
+}
 ?>
 
 <div class="container">
     <br>
 <h1>Item Entries</h1>
+<h4>Revenue : P<?php echo $tot;?></h4>
 
 <div style="background-color:#f1f1f1;padding:1px;"><h4>&nbsp &nbsp <a style="color:#000;text-decoration:none;" href="<?php echo ADMIN_URL;?>">Dashboard</a> > Item Entries</h4></div>
 

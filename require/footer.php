@@ -68,6 +68,28 @@ window.onclick = function(event) {
 <!-- modal end -->
 
 <script>
+  $(document).ready(function() {
+    $("#open_search").on('click', () => {
+      $("#form_search").show('slide');
+      $("#open_search").hide();
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+    $("#editnamebirth").on('click', () => {
+      $("#namebirth").slideToggle();
+    });
+
+
+    $("#editcont").on('click', () => {
+      $("#contact_det").slideToggle();
+    });
+  });
+</script>
+
+<script>
   $(document).ready(function() {    
     $("#received").hide();
     $("#delivery").hide();
@@ -107,17 +129,36 @@ window.onclick = function(event) {
       var register = $("#register").val();
       var pass2 = $("#re-reg_password").val();
       
-      $(".response").load("<?php echo BASE_URL;?>require/ajax/register.php" ,
-      {
-        email: email,
-        pass: pass,
-        pass2: pass2,
-        first: first,
-        last: last,
-        address: address,
-        birth: birth,
-        register: register
+      $.ajax({
+        url: "<?php echo BASE_URL;?>require/ajax/register.php",
+        method: "POST",
+        data: {
+          email: email,
+          pass: pass,
+          pass2: pass2,
+          first: first,
+          last: last,
+          address: address,
+          birth: birth,
+          register: register
+        },
+        success: function(data) {
+          $(".response").html(data);
+          $("#register").on("disable").css("opacity", 0.5);
+        }
       });
+
+      // $(".response").load("<?php echo BASE_URL;?>require/ajax/register.php" ,
+      // {
+        // email: email,
+        // pass: pass,
+        // pass2: pass2,
+        // first: first,
+        // last: last,
+        // address: address,
+        // birth: birth,
+        // register: register
+      // });
 
     });
   });
@@ -132,26 +173,38 @@ $(document).ready(function() {
     var password = $("#password").val();
     var login = $("#login").val();
 
-    $(".response").load("<?php echo BASE_URL;?>require/ajax/login.php", {
-      username: username,
-      password: password,
-      login: login
+    $.ajax({
+      url: "<?php echo BASE_URL;?>require/ajax/login.php",
+      method: "POST",
+      data: {
+            username: username,
+            password: password,
+            login: login
+            },
+      success: function(data) {
+        $(".response").html(data);
+
+         $("#login").on("disable").html("logging in...");
+
+        setTimeout(() => {
+          location.reload();
+          }, 1000);
+      }
     });
 
-    $("#login").on("disable").text("logging in...");
-      setTimeout(() => {
-        location.reload();
-      }, 1000);
-      // setTimeout(location.reload.bind(),2000);
+    // $(".response").load("<?php echo BASE_URL;?>require/ajax/login.php", {
+    //   username: username,
+    //   password: password,
+    //   login: login
+    // });
+
+    // $("#login").on("disable").text("logging in...");
+    //   setTimeout(() => {
+    //     location.reload();
+    //   }, 1000);
   });
 });
 
-</script>
-
-<script>
-  $(document).ready(function(){
-    // $("#plusbtn")
-  });
 </script>
 
 <!-- <script>
@@ -258,16 +311,17 @@ $(document).ready(function() {
   });
 </script>
 
-<!-- <script>
+<script>
   $(document).ready(function() {
     var btncart = $("#btncart");
     $("#btncart").click(function() {
-      $(".result_cart").load("<?php echo BASE_URL;?>require/ajax/speed_cart.php", {
+      // alert("hello!");
+      $(".result_cart").load("<?php echo BASE_URL;?>require/ajax/direct_cart.php?id=<?php echo $stack_id; ?>", {
         btncart: btncart
       });
     }); 
   });
-</script> -->
+</script>
 
 <script>
 

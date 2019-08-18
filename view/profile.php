@@ -46,6 +46,10 @@ foreach($res2 as $row) {
             color:#fff;
             text-decoration:none;
         }
+
+        .prof_con .logout:hover {
+            opacity: 0.7;
+        }
         table th{
             border: 1px solid #000;
         }
@@ -154,7 +158,7 @@ include '../require/home_navbar.php';
         <?php } ?>
         <div><h2> <?php echo $firstname.' '.$lastname. ' (<small>'.$_SESSION['user']['name'].'</small>)';?></h2></div>
         <div><h4>Birthdate : <?php echo $date;?></h4></div><br>
-        <button onclick="return document.getElementById('namebirth').style.display = 'block'">Edit Name & Birthdate</button>
+        <button id="editnamebirth">Edit Name & Birthdate</button>
         <br><br>
 
         <div class="nameoptions" id="namebirth">
@@ -405,7 +409,7 @@ include '../require/home_navbar.php';
     <h4>Contact No. : <?php echo $contact; ?></h4>
     <h4>Home Address : <?php echo $address; ?></h4>
 
-    <button onclick="document.getElementById('contact_det').style.display = 'block'">Edit Detail</button>
+    <button id="editcont">Edit Detail</button>
 
     <div id="contact_det">
     <form action="" method="POST" id="change_contact_form">

@@ -3,11 +3,6 @@
 
 $tbl_name = "tbl_web_content";
 
-if (isset($_GET['query'])) {
-  $q = $_GET['query'];
-  header("location:".BASE_URL."view/items.php?query=$q&searchbtn=");
-}
-
 $res = $viewUser->get_data($tbl_name);
 
 while ($row = $res->fetch_assoc()) {
@@ -68,22 +63,24 @@ $num = $res->num_rows;
     <button class="nav-login" onclick="document.getElementById('id01').style.display='block'" href="#" style="float:right;"><i class="fa fa-lock"></i> Login</button>
       <?php } ?>
 
-    <form class="search" style="" method="GET">
-        <input style="background-color:#f1f1f1;" type="text" placeholder="Search..." name="query">
+    <button style="font-family:times new roman;font-size:16px;float:right;" id="open_search">search</button>
+
+    <form id="form_search" class="search" style="" method="GET">
+        <input id="input_search" style="background-color:#f1f1f1;" type="text" placeholder="Search..." name="query">
         <button type="submit" name="searchbtn" style="display:none;"><i class="fa fa-search"></i></button>
     </form>
 
     <div class="nav" id="nav">
       
-  <a href="<?php echo BASE_URL; ?>view/items.php"><i class="fa fa-cart-plus"></i> <?php echo ucfirst($nav1); ?></a>
-  <a href="<?php echo BASE_URL; ?>view/community.php?session=<?php echo isset($name) ? $name : 'none';?>"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
-  <a href="<?php echo BASE_URL; ?>view/contactUs.php"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
-  <a href="<?php echo BASE_URL; ?>view/aboutus.php"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
+  <a href="<?php echo BASE_URL; ?>view/items.php?page=home"><i class="fa fa-cart-plus"></i> <?php echo ucfirst($nav1); ?></a>
+  <a href="<?php echo BASE_URL; ?>view/community.php?page=review&session=<?php echo isset($name) ? $name : 'none';?>"><i class="fa fa-users"></i> <?php echo ucfirst($nav2); ?></a>
+  <a href="<?php echo BASE_URL; ?>view/contactUs.php?page=contactUs"><i class="fa fa-user"></i> <?php echo ucfirst($nav3); ?></a>
+  <a href="<?php echo BASE_URL; ?>view/aboutus.php?page=aboutUs"><i class="fa fa-heart"></i> <?php echo $nav4; ?></a>
   
   <?php if (isset($_SESSION['user'])) {?>
   <!-- <a href="<?php echo BASE_URL; ?>view/checkout.php?id"><i class="fa fa-heart"></i> Checkout </a> -->
-    <!-- <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a> -->
-    <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart( <span class="result_cart"></span> ) </a>
+    <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart(<?php echo $num;?>) </a>
+    <!-- <a class="cart-i" href="<?php echo BASE_URL.'view/cart.php?session='.$name; ?>"><i class="fa fa-cart-plus"></i> Cart( <span class="result_cart"></span> ) </a> -->
   <a href="<?php echo BASE_URL.'view/profile.php?tab=summary';?>" id="user2" style="color:#fff;">@<?php echo $num_user > 0 ? ucfirst($firstname) : '' ; ?></a>
   <?php } else { ?>
   <a class="nav_signup" href="<?php echo BASE_URL.'view/signup.php?set_up_login'?>" style="float:right;"><i class="fa fa-lock"></i> Signup</a>
@@ -94,7 +91,6 @@ $num = $res->num_rows;
 
 </div>
 <!-- end of topnav -->
-
 
 <div class="cat_nav" id="cat_nav">
   <ul class="cat_content" id="cat_content">

@@ -11,7 +11,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Welcome to Admin</title>
+    <title>Login Admin - E-commerce website</title>
         <link rel="stylesheet" href="admin_css/login.css/style.css">
     <script src="../js/jquery-3.3.1.js"></script>
   </head>

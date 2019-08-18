@@ -10,7 +10,6 @@ foreach($res2 as $row) {
   $img3 = $row['image3'];
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +25,6 @@ foreach($res2 as $row) {
 </head>
 <body>
 
-
 <!-- <div class="parallax" style="
   background-image: url('../image/carousel-2.jpg');"> -->
 
@@ -37,7 +35,7 @@ include '../require/header.php';
 <!-- </div> -->
 
 <div class="parallax" style="background-image: url('../<?php echo $img2; ?>');">
-<!-- <div class="parallax" style="background-color: darkblue;"> -->
+<!-- <div class="parallax" style="background-color: lightblue;"> -->
 
 
 <!-- PARALLAX END============================================= -->
@@ -96,15 +94,15 @@ if ($num > 0) {
   ?>
       </div>
     <script>
+    $(document).ready(function() {
     var btn = $('#btn<?php echo $top_id;?>');
-    var submenu = $('#submenu<?php echo $top_id; ?>');
+    var submenu = $('#submenu<?php echo $top_id;?>');
     
     btn.on('click', () => {
-      alert("click" + <?php echo $top_id;?>);
-      // submenu.toggle();
+      // alert("click");
+      submenu.slideToggle();
     });
-
-    
+    });
   </script>
 
 
@@ -138,8 +136,6 @@ if ($num > 0) {
       echo '<h3 style="color:#fff;text-shadow: 0 5px rgba(0, 0, 0, 0.2);">Results: '.$num_result.' '.$item.' "'.$term.'"</h3>';
         while($row =$result->fetch_assoc()){               
             
-            $dataArray[]=$row;
-            // print_r($row);
             $title = $row['title'];
             $title_desc = $row['title_desc'];
             $some_text = $row['some_text'];
@@ -197,6 +193,7 @@ if ($num > 0) {
     } 
     else {
         echo '<h3 style="color:orange;text-shadow: 0 5px rgba(0, 0, 0, 0.2);">No Records Found </h3> &nbsp';
+        // header("location:".BASE_URL."view/error404.php");
     }
   }
   // ================================================================================================
@@ -285,7 +282,7 @@ if ($num_row > 0){
     $some_text = $row['some_text'];
     $description = $row['description'];
     $image = $row['image'];
-    $stack_id = $row['id'];
+    $id = $row['id'];
     $money = $row['price'];
     $qty = $row['quantity'];
 
@@ -322,7 +319,7 @@ if ($num_row > 0){
       <?php
       if (isset($_SESSION['user']['name'])) {
       ?>
-      <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$stack_id;?>">Cart</a>
+      <a class="seemore name prod_cart response" id="btncart" href="<?php echo BASE_URL.'require/ajax/direct_cart.php?id='.$id;?>">Cart</a>
       <?php
       } 
       ?>

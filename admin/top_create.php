@@ -62,11 +62,25 @@ include 'require/nav.php';
         var top_name = $("#top_name").val();
         var btn = $("#create").val();
         
-        $(".response").load("<?php echo ADMIN_URL; ?>ajax/create_top.php",
-        {
-            top_name: top_name,
-            addbtn: btn
+        $.ajax({
+            url: '<?php echo ADMIN_URL; ?>ajax/create_top.php',
+            method: 'POST',
+            data: {
+                top_name: top_name,
+                addbtn: btn
+            },
+            success: function(data) {
+                $(".response").text(data);
+                $("#create").on("disable").css("opacity", 0.5);
+            }
         });
+        
+
+        // $(".response").load("<?php echo ADMIN_URL; ?>ajax/create_top.php",
+        // {
+        //     top_name: top_name,
+        //     addbtn: btn
+        // });
         });
     });
 

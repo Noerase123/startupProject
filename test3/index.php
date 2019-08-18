@@ -51,14 +51,5 @@ $person_arr['id'] = array('111','222','333','444');
 
 // echo $person_arr['id'][2];
 
-$man = array(
-    'John',
-    'Isaac',
-    'Caasi'
-);
 
-$name = ['John Isaac'];
-
-$explode = explode('',$name);
-echo $explode;
 ?>
