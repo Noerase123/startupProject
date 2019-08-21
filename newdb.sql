@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2019 at 07:47 AM
+-- Generation Time: Aug 21, 2019 at 12:58 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -292,7 +292,7 @@ CREATE TABLE `tbl_parallax` (
 --
 
 INSERT INTO `tbl_parallax` (`id`, `image`, `image2`, `image3`, `activated`, `date_created`) VALUES
-(1, 'uploads/6928979260af7226c7b303b3b597cba1carousel-2.jpg', 'uploads/6928979260af7226c7b303b3b597cba1carousel-3.jpg', 'uploads/6928979260af7226c7b303b3b597cba1carousel-1.jpg', 1, '2019-07-24 17:34:45');
+(1, 'uploads/850ce2683e55b8986bf87f2ba33a3471bg3.jpg', 'uploads/850ce2683e55b8986bf87f2ba33a3471bg3.jpg', 'uploads/850ce2683e55b8986bf87f2ba33a3471bg3.jpg', 1, '2019-07-24 17:34:45');
 
 -- --------------------------------------------------------
 
@@ -532,7 +532,7 @@ CREATE TABLE `tbl_web_content` (
 --
 
 INSERT INTO `tbl_web_content` (`id`, `nav_menu1`, `nav_menu2`, `nav_menu3`, `nav_menu4`, `nav_logo`, `home_logo`, `why_desc`, `footer_text`, `header_image`, `footer_image`, `text_display`, `activated`, `date_created`) VALUES
-(1, 'Products', 'Reviews', 'Contact Us', 'About', 'uploads/995bb85ef4932e01c561735019037566vitalis-preloader.png', 'uploads/995bb85ef4932e01c561735019037566vitalis-preloader.png', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum ', 'Copyright Â©2019 Test Website Name - All Rights Reserved', 'uploads/995bb85ef4932e01c561735019037566carousel-1.jpg', 'uploads/318abfdcdd18d34edb75e669583b3273vitalis-preloader.png', 'image where it live', 0, '2019-07-10 21:42:14');
+(1, 'Products', 'Reviews', 'Contact Us', 'About', 'uploads/986be7a846e64d7e901c4bd8269989bevitalis-preloader.png', 'uploads/986be7a846e64d7e901c4bd8269989bevitalis-preloader.png', 'Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum ', 'Copyright Â©2019 Test Website Name - All Rights Reserved', 'uploads/986be7a846e64d7e901c4bd8269989bebg3.jpg', 'uploads/318abfdcdd18d34edb75e669583b3273vitalis-preloader.png', 'image where it live', 0, '2019-07-10 21:42:14');
 
 --
 -- Indexes for dumped tables
