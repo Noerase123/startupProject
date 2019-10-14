@@ -2,7 +2,7 @@
 session_start();
 
 // DOMAIN NAME OF THE WEBSITE----------
-define('BASE_URL','http://localhost/phpApi/startup/');
+define('BASE_URL','http://localhost/startupProject/');
 
 // DOMAIN NAME OF THE ADMIN'S WEBSITE----------
 define('ADMIN_URL', BASE_URL.'admin/');
@@ -15,8 +15,8 @@ define('USER','root');
 define('PASS','');
 
 // DATA CONFIGURATION=============
-define('DBNAME','newdb');
-
+define('DBNAME','db_testSite');
+  
 // SHORTCUT KEYS-------------
 define('API','api/');
 
