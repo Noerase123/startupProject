@@ -1,2 +1,2 @@
-# startupProject
-this start up project was basically my portfolio
+# StartupProject
+Its an E-commerce web application intergrated with Mysql php ajax
